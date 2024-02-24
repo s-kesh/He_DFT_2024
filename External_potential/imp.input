@@ -1,0 +1,7 @@
+&imp
+  selec_gs_k =2*'NA'
+  r_cutoff_gs_k = 2*3.0
+  umax_gs_k = 2*10E+03
+  rimp(1,1) =0D0, rimp(1,2) = 1.536D0, rimp(1,3) =42D0
+  rimp(2,1) =0D0, rimp(2,2) = -1.536D0, rimp(2,3) = 42D0
+/

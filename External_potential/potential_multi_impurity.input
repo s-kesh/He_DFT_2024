@@ -1,0 +1,10 @@
+&Input
+ N_imp=2
+ nx=320
+ ny=320
+ nz=320
+ xmax=64d0
+ ymax=64d0
+ zmax=64d0
+selec_Ar_Ar="Na2_sspg"
+/
