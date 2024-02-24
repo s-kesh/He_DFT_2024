@@ -1,0 +1,48 @@
+&input
+	Lconstraint	=.true.   ! Constraint penalty: 1/2 Intens * (zimp - <z_he> - zdist)
+	Lconstraint_imp = .true.
+	Intens		= 3000.d0
+	mimpur 		= 38.963707d0
+	rimpur		= 3.00d0
+	ximp		= 0.0d0
+	yimp		= 0.0d0
+	zimp 		= 28.095d0
+	zdist		= 28.084d0 ! For equil. zimp=26 and zdist=26.2817 so that 26 - -0.2817 - 26.2817 = 0
+	selec_gs	= 'K'
+	r_cutoff_gs	= 2.5d0
+	umax_gs 	= 3.1503766445E+03
+	filedenin  	= 'den.in'
+	fileimpin	= 'denx.in'
+	title   	= 'Pure 4He_1000 droplet'
+ 	nthread		= 5
+	mode    	= 4
+	xmax 		= 38.4d0
+	ymax 		= 38.4d0
+	zmax 		= 38.4d0
+	nx 			= 192
+	ny 			= 192
+	nz 			= 192
+	n4      	= 1000
+	xc			= 0.0d0
+	yc			= 0.0d0
+	zc			= 0.0110d0
+	core4		= 'OTC'
+	Lsolid 		= .true.
+	limp 		= .true.
+	lexternal 	= .false.
+	pener		= 200
+	pdenpar		= 5000
+	filedenout 	= 'den.out'
+	fileimpout	= 'denx.out'
+	niter		= 500000
+	precie		= 1.e-6
+ 	pafl        = 0.005
+	lpaflv      = .false.
+	nstepp      = 6
+	/
+1000    0.05
+1000    0.06
+1000    0.07
+1000    0.08
+1000    0.09
+1000    0.1

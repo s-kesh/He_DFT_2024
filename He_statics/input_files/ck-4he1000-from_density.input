@@ -1,0 +1,43 @@
+&input
+	mimpur 		= 38.963707d0
+	rimpur		= 3.00d0
+	ximp		= 0.0d0
+	yimp		= 0.0d0
+	zimp 		= 23.2d0
+	selec_gs	= 'K'
+	r_cutoff_gs	= 2.5d0 
+	umax_gs 	= 3.1503766445E+03
+	filedenin  	= 'den.in'
+	title   	= 'Pure 4He_1000 droplet'
+ 	nthread		= 5
+	mode    	= 4
+	xmax 		= 38.4d0
+	ymax 		= 38.4d0
+	zmax 		= 38.4d0
+	nx 			= 192
+	ny 			= 192
+	nz 			= 192
+	n4      	= 1000
+	xc			= 0.0d0
+	yc			= 0.0d0
+	zc			= 0.0d0
+	core4		= 'OTC'
+	Lsolid 		= .true.
+	limp 		= .false.
+	lexternal 	= .true. 	
+	pener		= 200
+	pdenpar		= 5000
+	filedenout 	= 'den.out'
+	niter		= 500000
+	precie		= 1.e-6
+	pafl		= 0.01
+	lpaflv		= .true.
+	nstepp		= 7
+/
+	1000	0.01
+	1000	0.02
+	1000	0.03
+	2000	0.04
+	1000	0.05
+	10000	0.06
+	1000	0.07
