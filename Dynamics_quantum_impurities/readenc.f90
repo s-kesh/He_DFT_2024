@@ -2,7 +2,7 @@
 !---                    Subroutine readenc                      ---
 !------------------------------------------------------------------
 
-subroutine readenc(npart,densat,fileden,fileimp,mode)
+subroutine readenc(npart,densat,fileden,fileimp,mode,vel)
 
 ! INPUT QUANTITIES:
 !
@@ -41,23 +41,29 @@ use util1
 
 implicit none
 integer   (kind=4), intent(in)    :: npart
-real      (kind=8)                :: nph     ! Num. part in hole
+! real      (kind=8)                :: nph     ! Num. part in hole
 real      (kind=8), intent(in)    :: densat
 character (len=60), intent(in)    :: fileden
 character (len=80), intent(in)    :: fileimp(*)
 integer   (kind=4), intent(in)    :: mode
+real   (kind=8), intent(in)    :: vel
 
-real      (kind=8) :: xmaxp,ymaxp,zmaxp,xcp,ycp,zcp,hxp,hyp,hzp,ximp,yimp,zimp
-real      (kind=8) :: aux1, aux2, aux3,ximp0,yimp0,zimp0
-real      (kind=8) :: aux1b,aux2b,aux3b
-real      (kind=8),Allocatable :: dendump(:,:,:)
+real      (kind=8) :: xmaxp,ymaxp,zmaxp
+! real      (kind=8) :: xcp,ycp,zcp
+real      (kind=8) :: hxp,hyp,hzp
+! real      (kind=8) :: ximp,yimp,zimp
+! real      (kind=8) :: aux1, aux2, aux3
+real      (kind=8) :: ximp0,yimp0,zimp0
+! real      (kind=8) :: aux1b,aux2b,aux3b
+! real      (kind=8),Allocatable :: dendump(:,:,:)
 ! real      (kind=8) :: ximp,yimp,zimp
 
 integer   (kind=4) :: nxp,nyp,nzp
-integer   (kind=4) :: ix,iy,iz,isalto,N_imp0
+! integer   (kind=4) :: ix,iy,iz,isalto,N_imp0
+integer   (kind=4) :: ix,isalto
 !logical            :: limp,Ldensity=.true.
 !logical            :: limp
-real      (kind=8) :: rr
+! real      (kind=8) :: rr
 
 !...........................................
 !With 'mode' select the kind of density...
@@ -86,19 +92,20 @@ select case(mode)
        den=Abs(psi)**2
      Endif      
      close(1)
-     Allocate(dendump(nxp,nyp,nzp))
+     ! Allocate(dendump(nxp,nyp,nzp))
      denx = 0.d0
      Do ix=1, N_imp 
        open(unit=1,file=fileimp(ix),status='old')
        call titols(1,cchar,isalto)
        read(1,*) xmaxp,ymaxp,zmaxp,hxp,hyp,hzp,nxp,nyp,nzp,limp,ximp0,yimp0,zimp0
-       read(1,*)dendump
-       psix(:,:,:,ix) = Cmplx(dendump)
-       Write(6,'("W.f.(",I2,") normalization...:",1p,E15.6)')ix, (Sum(dendump**2)*hxp*hyp*hzp)
-       denx(:,:,:) = denx(:,:,:) + Conjg(psix(:,:,:,ix))*psix(:,:,:,ix)
+       read(1,*)psix(:, :, :, ix)
+       ! read(1,*)dendump
+       ! psix(:,:,:,ix) = Cmplx(dendump)
+       Write(6,'("W.f.(",I2,") normalization...:",1p,E15.6)')ix, (Sum(Real(Conjg(psix(:,:,:,ix))*psix(:,:,:,ix)))*hxp*hyp*hzp)
+       denx(:,:,:) = denx(:,:,:) + Real(Conjg(psix(:,:,:,ix))*psix(:,:,:,ix))
        close(1)
      EndDo
-     Deallocate(dendump)
+     ! Deallocate(dendump)
 !---------------------------------------------------------------
  case(2)   ! Continue a calculation (read a previous wave functon)
 !---------------------------------------------------------------
