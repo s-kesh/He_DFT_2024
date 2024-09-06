@@ -363,6 +363,7 @@ call potenimpini() ! interpolation + first call to updatepoten
 !................................
 
 call readenc(n4,densat4,filedenin,fileimpin_k,mode)
+
 !!!!!!!!!!!!!!
 !!!!!!!!!!!!!!
 !!!!!!!!!!!!!!
@@ -379,7 +380,7 @@ call readenc(n4,densat4,filedenin,fileimpin_k,mode)
 !...............................................................test
 
 
-call respar(x,y,z,nx,ny,nz,1,'hedenini','hedenini',den,den)
+call respar(x,y,z,nx,ny,nz,1,'hedenini','hedeniniX',den,denx)
 
 !....................................
 !.. Print-out initial quantities  ...
@@ -537,6 +538,8 @@ Endif
 !.................................
 
 den=Conjg(psi)*psi
+
+
 call potenimp()
 call poten()              ! First Potential  (for Lagrange Equation)
 
@@ -660,9 +663,9 @@ call system_clock(count=t_1, count_rate=ir)
 iter0=iter0+1
 do iter=iter0,niter  ! <--------- Iterative procedure starts here.
 
-Iteraux = iter - iter0 + 1
+   Iteraux = iter - iter0 + 1
 
-pr%it = iter
+   pr%it = iter
 
     if((iter-iter0+1).le.3.Or.lrk)then
       call steprk(deltat)
