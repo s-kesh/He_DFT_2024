@@ -61,24 +61,24 @@ renor = 1.0d0/(nx*ny*nz)
 ! call dfftw_plan_dft_c2r_3d(pfftbk,nx,ny,nz,fout,fin ,fftwplan)
 
 ! Transformadas forward:
-call dfftw_plan_dft_r2c_3d(pfftfw_den,nx,ny,nz,den ,fden,plan)
-call dfftw_plan_dft_r2c_3d(pfftfw_1  ,nx,ny,nz,sto1,wk1 ,plan)
-call dfftw_plan_dft_r2c_3d(pfftfw_2  ,nx,ny,nz,sto2,wk2 ,plan)
-call dfftw_plan_dft_r2c_3d(pfftfw_3  ,nx,ny,nz,sto3,wk3 ,plan)
+call dfftw_plan_dft_r2c_3d(pfftfw_den,nx,ny,nz,den ,fden,fftwplan)
+call dfftw_plan_dft_r2c_3d(pfftfw_1  ,nx,ny,nz,sto1,wk1 ,fftwplan)
+call dfftw_plan_dft_r2c_3d(pfftfw_2  ,nx,ny,nz,sto2,wk2 ,fftwplan)
+call dfftw_plan_dft_r2c_3d(pfftfw_3  ,nx,ny,nz,sto3,wk3 ,fftwplan)
 !rutinas: una para den, otra para 1, y otra para 1+2+3.
 
 ! Transformadas backward:
-call dfftw_plan_dft_c2r_3d(pfftbk_cg,nx,ny,nz,wk1 ,dencg  ,plan)
-call dfftw_plan_dft_c2r_3d(pfftbk_lj,nx,ny,nz,wk1 ,delj4  ,plan)
+call dfftw_plan_dft_c2r_3d(pfftbk_cg,nx,ny,nz,wk1 ,dencg  ,fftwplan)
+call dfftw_plan_dft_c2r_3d(pfftbk_lj,nx,ny,nz,wk1 ,delj4  ,fftwplan)
 If(core4.Eq.'OTC')Then
-  call dfftw_plan_dft_c2r_3d(pfftbk_as,nx,ny,nz,wk1 ,denalf ,plan)
-  call dfftw_plan_dft_c2r_3d(pfftbk_ua,nx,ny,nz,wk1 ,ualphas,plan)
-  call dfftw_plan_dft_c2r_3d(pfftbk_1x,nx,ny,nz,wk1 ,intxalf,plan)
-  call dfftw_plan_dft_c2r_3d(pfftbk_2y,nx,ny,nz,wk2 ,intyalf,plan)
-  call dfftw_plan_dft_c2r_3d(pfftbk_3z,nx,ny,nz,wk3 ,intzalf,plan)
+  call dfftw_plan_dft_c2r_3d(pfftbk_as,nx,ny,nz,wk1 ,denalf ,fftwplan)
+  call dfftw_plan_dft_c2r_3d(pfftbk_ua,nx,ny,nz,wk1 ,ualphas,fftwplan)
+  call dfftw_plan_dft_c2r_3d(pfftbk_1x,nx,ny,nz,wk1 ,intxalf,fftwplan)
+  call dfftw_plan_dft_c2r_3d(pfftbk_2y,nx,ny,nz,wk2 ,intyalf,fftwplan)
+  call dfftw_plan_dft_c2r_3d(pfftbk_3z,nx,ny,nz,wk3 ,intzalf,fftwplan)
 EndIf  
-call dfftw_plan_dft_c2r_3d(pfftbk_1 ,nx,ny,nz,wk1 ,sto1   ,plan)
-call dfftw_plan_dft_c2r_3d(pfftbk_2 ,nx,ny,nz,wk2 ,sto2   ,plan)
+call dfftw_plan_dft_c2r_3d(pfftbk_1 ,nx,ny,nz,wk1 ,sto1   ,fftwplan)
+call dfftw_plan_dft_c2r_3d(pfftbk_2 ,nx,ny,nz,wk2 ,sto2   ,fftwplan)
 
 ! ............................................................................
 ! call dfftw_plan_dft_r2c_3d(pfftfw1  ,nx,ny,nz,sto1,wk1 ,fftwplan)
