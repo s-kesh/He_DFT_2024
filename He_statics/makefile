@@ -1,10 +1,10 @@
-# Makefile for program '4hedft' 
+# Makefile for program '4hedft'
 # 3D static (imaginary time evolution) 4-He Density Functional Theory
 #
 
 COMP = gfortran
 CFLAGS = -c -O3 -fopenmp -fopt-info-vec-optimized -falign-commons -march=native -fcheck=all -fmax-errors=5 -ffree-line-length-512 -J./modules
-LD_FLAGS = -lfftw3 -lm -fopenmp -lfftw3_threads
+LD_FLAGS = -fopenmp -lfftw3_omp -lfftw3 -lm
 
 # Name of the program
 PROGNAME = 4hedft
