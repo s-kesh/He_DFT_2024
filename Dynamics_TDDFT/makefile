@@ -1,12 +1,12 @@
 #
-# Makefile for program '4hetddft-isotropic' 
+# Makefile for program '4hetddft-isotropic'
 # 3D dynamic (real-time evolution) 4-He Density Functional Theory for isotropic PES's
 #
 
-COMP = ifort
+COMP = ifx
 CFLAGS = -c -O3 -xAVX -align array64byte -qopenmp\
 		 -parallel -qopt-matmul -unroll0 -module ./modules
-LD_FLAGS = -threads -I${MKLROOT}/include/fftw -mkl=parallel -qopt-matmul
+LD_FLAGS = -threads -I${MKLROOT}/include/fftw -qmkl=parallel -qopt-matmul
 
 # Name of the program
 PROGNAME = 4hetddft-isotropic
