@@ -4,7 +4,7 @@
 # Compiler and flags
 FC       := ifx
 CFLAGS   := -c -O3 -xAVX -align array64byte -qopenmp -parallel \
-            -qopt-matmul -unroll0 -module modules
+            -qopt-matmul -qopt-report=3 -module modules
 LDFLAGS  := -qopenmp -qmkl=parallel -qopt-matmul
 INCLUDES := -I$(MKLROOT)/include/fftw
 

@@ -33,6 +33,10 @@ integer (kind=4) :: ix,iy,iz,k,m
 real    (kind=8) :: zt,yt,zt2,yt2,r,d,Select_pot
 real    (kind=8) :: aux1,aux2,aux3,drV_HeXor,dzV_XTiO,dV
 
+real (kind=8), external :: ddot
+real (kind=8), dimension(:,:,:), allocatable :: temp
+allocate(temp(nx,ny,nz))
+
 !.................................!
 !... First, the term due to He ...!
 !.................................!
@@ -47,21 +51,32 @@ do k=1,N_imp
 enddo
 
 do k=1,N_imp
-  F(k,1) = -sum(dxden(:,:,:)*uimp_k(k,:,:,:))*dxyz
-  F(k,2) = -sum(dyden(:,:,:)*uimp_k(k,:,:,:))*dxyz
-  F(k,3) = -sum(dzden(:,:,:)*uimp_k(k,:,:,:))*dxyz
-  do m=1,N_imp
-    F(k,1) = F(k,1) + F_ij(k,m,1)
-    F(k,2) = F(k,2) + F_ij(k,m,2)
-    F(k,3) = F(k,3) + F_ij(k,m,3)
-  enddo
+    !$omp parallel do private(ix,iy,iz) collapse(3)
+    do iz=1,nz
+        do iy=1,ny
+            do ix=1,nx
+                temp(ix,iy,iz) = uimp_k(ix,iy,iz,k)
+            enddo
+        enddo
+    enddo
+    !$omp end parallel do
+
+    F(k, 1) = -ddot(nx*ny*nz, dxden, 1, temp, 1)*dxyz
+    F(k, 2) = -ddot(nx*ny*nz, dyden, 1, temp, 1)*dxyz
+    F(k, 3) = -ddot(nx*ny*nz, dzden, 1, temp, 1)*dxyz
+    do m=1,N_imp
+        F(k,1) = F(k,1) + F_ij(k,m,1)
+        F(k,2) = F(k,2) + F_ij(k,m,2)
+        F(k,3) = F(k,3) + F_ij(k,m,3)
+    enddo
 enddo
+deallocate(temp)
 
 !...........................................!
 !... Second, the term due to the surface ...!
 !...........................................!
 
-!F(3) = F(3) - dzV_XTiO(rimp(3)) 
+!F(3) = F(3) - dzV_XTiO(rimp(3))
 
 
 end subroutine forceimp
@@ -70,7 +85,7 @@ end subroutine forceimp
 !double precision function V_ion(x)
 !use impur, only :r_cutoff,selec,umax
 !implicit none
-!Real (Kind=8)  :: r_cutoff=2.0d0, umax=7476.405d0 
+!Real (Kind=8)  :: r_cutoff=2.0d0, umax=7476.405d0
 !Character  (Len=80) :: selec='Rb_plus_Fausto'
 !real (kind=8) :: x, Select_Pot
 !V_ion = Select_Pot(selec,x,r_cutoff,umax)
@@ -90,34 +105,49 @@ real    (kind=8)              :: r,yt,zt,rmod
 integer (kind=4)              :: ix,iy,iz,ir,k,m
 !save (lgridnoout)
 
+real (kind=8) :: ximp, yimp, zimp
+
 !Write(*,*) rmaxinterpol
 
 do k=1,N_imp
-  do iz=1,nz
-    zt = (z(iz)-rimp(k,3))**2
-    do iy=1,ny
-      yt = (y(iy)-rimp(k,2))**2 + zt
-      do ix=1,nx
-        r = dsqrt((x(ix)-rimp(k,1))**2 + yt)
-        ir = int(r/DelInter)+1
-        
-         if(r.gt.rmaxinterpol .and. lgridnoout)then
-          lstopimp=.true.
-          lgridnoout=.false.
-          print *,'>>> WARNING in updatepoten, k,ix,iy,iz= ',k, ix, iy, iz,' r = ',r,' greater than rmax = ',rmaxinterpol
-          r=rmaxinterpol
-         endif
+    ximp = rimp(k,1)
+    yimp = rimp(k,2)
+    zimp = rimp(k,3)
+    !$omp parallel do private(ix,iy,iz,r,yt,zt,ir,rmod) default(shared) collapse(2)
+    do iz=1,nz
+        zt = (z(iz)-zimp)**2
+        do iy=1,ny
+            yt = (y(iy)-yimp)**2 + zt
+            !$omp simd
+            do ix=1,nx
+                r = dsqrt((x(ix)-ximp)**2 + yt)
+                ir = int(r/DelInter)+1
 
-        rmod = mod(r,DelInter)/DelInter
-        uimp_k(k,ix,iy,iz) =  potion(k,ir)*(1.d0-rmod) +  potion(k,ir+1)*rmod
-	  enddo
+                if(r.gt.rmaxinterpol .and. lgridnoout)then
+                lstopimp=.true.
+                lgridnoout=.false.
+                print *,'>>> WARNING in updatepoten, k,ix,iy,iz= ',k, ix, iy, iz,' r = ',r,' greater than rmax = ',rmaxinterpol
+                r=rmaxinterpol
+                endif
+
+                rmod = mod(r,DelInter)/DelInter
+                uimp_k(k,ix,iy,iz) =  potion(k,ir)*(1.d0-rmod) +  potion(k,ir+1)*rmod
+            enddo
+            !$omp end simd
+        enddo
     enddo
-  enddo
+    !$omp end parallel do
 enddo
 
-uimp = 0d0
-do k=1,N_imp
-	uimp(:,:,:) = uimp(:,:,:) + uimp_k(k,:,:,:)
-enddo
+!$omp parallel do private(ix,iy,iz) collapse(3)
+do iz=1,nz; do iy=1,ny; do ix=1,nx
+    uimp(ix, iy, iz) = 0.d0
+    !$omp simd
+    do k = 1, N_imp
+        uimp(ix, iy, iz) = uimp(ix, iy, iz) + uimp_k(k,ix,iy,iz)
+    enddo
+    !$omp end simd
+end do; end do; end do
+!$omp end parallel do
 
 end subroutine updatepoten

@@ -120,7 +120,7 @@ use rho , only: dencg
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_cg)
- dencg = dencg*renor
+ call dscal(npx*npy*npz, renor, dencg, 1)
 end subroutine
 
 subroutine fftbk_lj()
@@ -128,7 +128,7 @@ use lenard4, only: delj4
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_lj)
- delj4 = delj4*renor
+ call dscal(npx*npy*npz, renor, delj4, 1)
 end subroutine
 
 subroutine fftbk_1()
@@ -136,7 +136,7 @@ use work1 , only:sto1
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_1)
- sto1 = sto1*renor
+ call dscal(npx*npy*npz, renor, sto1, 1)
 end subroutine
 
 subroutine fftbk_as()
@@ -144,7 +144,7 @@ use alphasterm, only:denalf
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_as)
- denalf = denalf*renor
+ call dscal(npx*npy*npz, renor, denalf, 1)
 end subroutine
 
 subroutine fftbk_ua()
@@ -152,7 +152,7 @@ use alphasterm, only:ualphas
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_ua)
- ualphas = ualphas*renor
+ call dscal(npx*npy*npz, renor, ualphas, 1)
 end subroutine
 
 subroutine fftbk_xyz()
@@ -162,9 +162,9 @@ implicit none
  call dfftw_execute(pfftbk_1x)
  call dfftw_execute(pfftbk_2y)
  call dfftw_execute(pfftbk_3z)
- intxalf = intxalf*renor
- intyalf = intyalf*renor
- intzalf = intzalf*renor
+ call dscal(npx*npy*npz, renor, intxalf, 1)
+ call dscal(npx*npy*npz, renor, intyalf, 1)
+ call dscal(npx*npy*npz, renor, intzalf, 1)
 end subroutine
 
 
@@ -181,57 +181,57 @@ end subroutine
 ! !...................................................................
 ! !...                Subroutine fftfw                             ...
 ! !...................................................................
-! 
+!
 ! subroutine fftfw(a,b)
-! 
+!
 ! use fftmodule  ! fin,fout,fftwplan,pfftfw,pfftbk,nthread
-! 
+!
 ! implicit none
-! 
+!
 ! integer (kind=4) :: ix,iy,iz    ! Working variables.
 ! real    (kind=8) :: a(npx,npy,npz)
 ! complex (kind=8) :: b(npx/2+1,npy,npz)
-! 
+!
 ! forall(ix=1:npx, iy=1:npy, iz=1:npz)
 !   fin(ix,iy,iz) = a(ix,iy,iz)
 ! end forall
-! 
+!
 ! call dfftw_execute(pfftfw)
-! 
+!
 ! forall(ix=1:npx/2+1, iy=1:npy, iz=1:npz)
 !   b(ix,iy,iz) = fout(ix,iy,iz)
 ! end forall
-! 
+!
 ! return
-! 
+!
 ! end
 ! !...................................................................
 ! !...                Subroutine fftbk                             ...
 ! !...................................................................
-! 
+!
 ! subroutine fftbk(c,d)
-! 
+!
 ! use fftmodule  ! fin,fout,fftwplan,pfftfw,pfftbk,nthread,renor
-! 
+!
 ! implicit none
-! 
+!
 ! integer (kind=4) :: ix,iy,iz    ! Working variables.
 ! complex (kind=8) :: c(npx/2+1,npy,npz)
 ! real    (kind=8) :: d(npx,npy,npz)
-! 
-! 
-! 
+!
+!
+!
 ! forall(ix=1:npx/2+1, iy=1:npy, iz=1:npz)
 !   fout(ix,iy,iz)=c(ix,iy,iz)
 ! end forall
-! 
+!
 ! call dfftw_execute(pfftbk)
-! 
+!
 ! forall(ix=1:npx, iy=1:npy, iz=1:npz)
 !   d(ix,iy,iz) = fin(ix,iy,iz)*renor
 ! end forall
-! 
-! 
+!
+!
 ! return
-! 
+!
 ! end
