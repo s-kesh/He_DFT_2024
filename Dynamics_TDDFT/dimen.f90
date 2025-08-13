@@ -26,7 +26,7 @@ implicit none
 !.. Arrays for real and momentum grids ...
 !.........................................
 !
-allocate (x(nx)) ; allocate (px(nx)) ;  
+allocate (x(nx)) ; allocate (px(nx)) ;
 allocate (y(ny)) ; allocate (py(ny)) ;
 allocate (z(nz)) ; allocate (pz(nz)) ;
 allocate ( pmod(nx/2+1,ny,nz))    ! Array with the modules of p.
@@ -35,7 +35,7 @@ allocate ( pmod(nx/2+1,ny,nz))    ! Array with the modules of p.
 !.. Arrays for Lennard-Jones calculations ...
 !............................................
 !
-allocate (fvlj4(nx/2+1,ny,nz))    ! Array with the FFT of the Kernel of LJ potential  
+allocate (fvlj4(nx/2+1,ny,nz))    ! Array with the FFT of the Kernel of LJ potential
 allocate (delj4(nx    ,ny,nz))    ! Array with rhe energy-density of LJ
 
 !..................................................
@@ -103,14 +103,14 @@ allocate ( wcgk(nx/2+1,ny,nz))    ! Array with the kernel of the coarse-graining
 ! if(limp) then                     ! Things for impurities.
 !    allocate(hpsix(nx,ny,nz))      ! Array with H PSi_x
 !    allocate(upotx(nx,ny,nz))      ! Mean field for the impurity
-!    allocate(potx4(nx,ny,nz))      ! 
+!    allocate(potx4(nx,ny,nz))      !
 !    allocate( psix(nx,ny,nz))      ! Wave function for the impurity
 !    allocate(psixold(nx,ny,nz,3))  ! Wave function for the impurity
 !    allocate(hpsixold(nx,ny,nz,2))  ! Wave function for the impurity
 !    allocate( denx(nx,ny,nz))      ! density function for the impurity
 ! !   allocate(fpsix(nx/2+1,ny,nz))  ! Fourier Transform of the Wave function for the impurity
 !    allocate(fdenx(nx/2+1,ny,nz))  ! Fourier Transform of the Wave function for the impurity
-!    allocate(vq(nx/2+1,ny,nz))     ! 
+!    allocate(vq(nx/2+1,ny,nz))     !
 !    allocate(Epsix(nx,ny,nz))      ! Envelop function
 !    allocate(rmod0(nx,ny,nz))      ! For the  envelop function
 ! end if
@@ -142,7 +142,7 @@ allocate(sto8c(nx,ny,nz))      !    "
 !...................................................................
 !
 allocate(q(nx,ny,nz))
-allocate(pc(nx,ny,nz))         
+allocate(pc(nx,ny,nz))
 q  = 0.d0
 pc = 0.d0
 ! if(limp) then                     ! Things for impurities.

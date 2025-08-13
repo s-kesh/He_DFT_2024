@@ -1,37 +1,60 @@
-# Makefile for program '4hetddft-isotropic'
-# 3D dynamic (real-time evolution) 4-He Density Functional Theory for isotropic PES's
+# Makefile for 4hetddft-isotropic
+# 3D DFT real-time evolution for 4-He with isotropic PES
 
 # Compiler and flags
-COMP = gfortran
-CFLAGS = -c -O3 -fopenmp -fopt-info-vec-optimized -falign-commons -march=native \
-         -fcheck=all -fmax-errors=5 -ffree-line-length-512 -J$(MOD_DIR)
-LD_FLAGS = -lfftw3 -lm -fopenmp -lfftw3_threads
+FC       := ifx
+CFLAGS   := -c -O3 -xAVX -align array64byte -qopenmp -parallel \
+            -qopt-matmul -qopt-report=3 -module modules
+LDFLAGS  := -qopenmp -qmkl=parallel -qopt-matmul
+INCLUDES := -I$(MKLROOT)/include/fftw
 
 # Directories
-MOD_DIR = ./modules
+OBJDIR   := objects
+MODDIR   := modules
+BINDIR   := bin
 
-# Name of the program
-PROGNAME = 4hetddft-isotropic
+# Program name
+PROGNAME := 4hetddft-isotropic
 
-# Fortran objects
-OBJS = init_deriv_parallel.o modules.o spline.o V_impur.o gport.o DFT4He3d.o derden.o \
-       dimen.o energy.o fforma.o fft.o initcg.o morse.o mates.o poten.o printoutc.o \
-       r_cm.o redef.o readenc.o respar.o term_alfa.o timer.o titols.o tstgrid.o \
-       s13adf.o newder.o steprk.o steppc.o potenimp.o potenimpini.o
+# List of Fortran source files (no path)
+SRC := \
+	modules.f90	init_deriv_parallel.f90	spline.f90   V_impur.f90	DFT4He3d.f90	derden.f90 \
+	dimen.f90	energy.f90	 fforma.f90	fft.f90		initcg.f90 \
+	morse.f90	mates.f90	 poten.f90	printoutc.f90	r_cm.f90 \
+	redef.f90	readenc.f90	 respar.f90	term_alfa.f90	timer.f90 \
+	titols.f90	tstgrid.f90	 s13adf.f90	newder.f90 	steprk.f90 \
+	steppc.f90	potenimp.f90 potenimpini.f90
 
-# Rules
-$(PROGNAME): $(OBJS)
-	$(COMP) -o $(PROGNAME) $(OBJS) $(LD_FLAGS)
+# Object files in objects/
+OBJ := $(SRC:%.f90=$(OBJDIR)/%.o)
 
-%.o: %.f90
-	$(COMP) $(CFLAGS) -o $@ $<
+# Default target
+all: $(MODDIR) $(OBJDIR) $(PROGNAME)
 
-%.o: %.f
-	$(COMP) $(CFLAGS) -o $@ $<
+# Link
+$(PROGNAME): $(OBJ)
+	$(FC) -o $(BINDIR)/$@ $^ $(INCLUDES) $(LDFLAGS)
 
-# Cleanup
+# Compile Fortran 90 source
+$(OBJDIR)/%.o: %.f90 | $(OBJDIR) $(MODDIR)
+	$(FC) $(CFLAGS) -o $@ $<
+
+# Compile Fortran 77 source
+$(OBJDIR)/%.o: %.f | $(OBJDIR) $(MODDIR)
+	$(FC) $(CFLAGS) -o $@ $<
+
+# Create directories
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(MODDIR):
+	mkdir -p $(MODDIR)
+
+# Clean targets
 clean:
-	rm -f *.o *.bak *.lst $(MOD_DIR)/*.mod
+	rm -f $(OBJDIR)/*.o $(MODDIR)/*.mod *.lst *.bak $(BINDIR)/*
 
 distclean: clean
 	rm -f $(PROGNAME)
+
+.PHONY: all clean distclean
