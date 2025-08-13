@@ -47,82 +47,88 @@ aux2   = (1.0d0/3.0d0)*cpp4
 
 
 if(ldroplet_frozen)then
-if(Lfrozen_first_iteration)then
-    Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
-    Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
-    Call derivnD(1,nn,hz,3,psi,sto3c,Icon)
+    if(Lfrozen_first_iteration)then
+        Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
+        Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
+        Call derivnD(1,nn,hz,3,psi,sto3c,Icon)
 
-    ekin4 = 0.0d0
-    elj4  = 0.0d0
-    ecor4 = 0.0d0
+        ekin4 = 0.0d0
+        elj4  = 0.0d0
+        ecor4 = 0.0d0
 
-    !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
-    do iz=1,nz
-        do iy=1,ny
-        do ix=1,nx
-            aux3  = den(ix,iy,iz)
-            aux4  = dencg(ix,iy,iz)
-            aux5  = aux3*aux4**2*(aux1+aux2*aux4)
-            ekin4 = ekin4 + abs(sto1c(ix,iy,iz))**2+abs(sto2c(ix,iy,iz))**2+abs(sto3c(ix,iy,iz))**2
-            elj4  = elj4  + delj4(ix,iy,iz)*aux3
-            ecor4 = ecor4 + aux5
-            enddo
-        enddo
-    enddo
-    !$omp end parallel do
-
-    !......................................................
-    !... Calculate the density of energy (alpha_s term) ...
-    !......................................................
-
-    ealphas = 0.0d0
-    select case(core4)
-        case('OTE','OTC')
-            !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
-            do iz=1,nz
-                do iy=1,ny
-                    do ix=1,nx
-                        ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
-                        + dyden(ix,iy,iz)*intyalf(ix,iy,iz)&
-                        + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
-                    enddo
-                enddo
-            enddo
-        ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
-        case default
-            continue
-    end select
-
-    esolid=0.0d0
-    if(lsolid) then
-        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
+        !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:ekin4,elj4,ecor4)
                 do ix=1,nx
-                esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
+                    aux3  = den(ix,iy,iz)
+                    aux4  = dencg(ix,iy,iz)
+                    aux5  = aux3*aux4**2*(aux1+aux2*aux4)
+                    ekin4 = ekin4 + abs(sto1c(ix,iy,iz))**2+abs(sto2c(ix,iy,iz))**2+abs(sto3c(ix,iy,iz))**2
+                    elj4  = elj4  + delj4(ix,iy,iz)*aux3
+                    ecor4 = ecor4 + aux5
                 enddo
+                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
-        esolid = C*dxyz*esolid
-    endif
 
-    ekin4 = h2o2m4*ekin4*dxyz           ! TOTAL Kinetic energy for 4He
-    elj4  = 0.5d0 *elj4 *dxyz           ! TOTAL Lennard-Jones energy
-    ecor4 =        ecor4*dxyz           ! TOTAL Correlation energy for 4He
-    etot4 = ekin4+elj4+ecor4 + esolid   ! TOTAL ENERGY without impurity
+        !......................................................
+        !... Calculate the density of energy (alpha_s term) ...
+        !......................................................
 
-    select case(core4)
-        case('OTE','OTC')
-            etot4 = etot4+ealphas          ! TOTAL ENERGY including Alpha_s term
-        case default
-            continue
-    end select
+        ealphas = 0.0d0
+        select case(core4)
+            case('OTE','OTC')
+                !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
+                do iz=1,nz
+                    do iy=1,ny
+                        !$omp simd reduction(+:ealphas)
+                        do ix=1,nx
+                            ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
+                            + dyden(ix,iy,iz)*intyalf(ix,iy,iz)&
+                            + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
+                        enddo
+                        !$omp end simd
+                    enddo
+                enddo
+            ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
+            case default
+                continue
+        end select
 
-    etot4 = etot4 + ddot(nx*ny*nz, uext, 1, den, 1)*dxyz
+        esolid=0.0d0
+        if(lsolid) then
+            !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
+            do iz=1,nz
+                do iy=1,ny
+                    !$omp simd reduction(+:esolid)
+                    do ix=1,nx
+                        esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
+                    enddo
+                    !$omp end simd
+                enddo
+            enddo
+            !$omp end parallel do
+            esolid = C*dxyz*esolid
+        endif
 
-    Lfrozen_first_iteration=.false. ! Disable the energy calculation for the next iterations
-endif ! If Lfrozen_first_iteration
+        ekin4 = h2o2m4*ekin4*dxyz           ! TOTAL Kinetic energy for 4He
+        elj4  = 0.5d0 *elj4 *dxyz           ! TOTAL Lennard-Jones energy
+        ecor4 =        ecor4*dxyz           ! TOTAL Correlation energy for 4He
+        etot4 = ekin4+elj4+ecor4 + esolid   ! TOTAL ENERGY without impurity
+
+        select case(core4)
+            case('OTE','OTC')
+                etot4 = etot4+ealphas          ! TOTAL ENERGY including Alpha_s term
+            case default
+                continue
+        end select
+
+        etot4 = etot4 + ddot(nx*ny*nz, uext, 1, den, 1)*dxyz
+
+        Lfrozen_first_iteration=.false. ! Disable the energy calculation for the next iterations
+    endif ! If Lfrozen_first_iteration
 
 else ! If ldroplet_frozen
 
@@ -137,6 +143,7 @@ else ! If ldroplet_frozen
     !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
     do iz=1,nz
         do iy=1,ny
+            !$omp simd reduction(+:ekin4,elj4,ecor4)
             do ix=1,nx
                 aux3  = den(ix,iy,iz)
                 aux4  = dencg(ix,iy,iz)
@@ -145,6 +152,7 @@ else ! If ldroplet_frozen
                 elj4  = elj4  + delj4(ix,iy,iz)*aux3
                 ecor4 = ecor4 + aux5
             end do
+            !$omp end simd
         end do
     end do
     !$omp end parallel do
@@ -159,10 +167,12 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:ealphas)
                 do ix=1,nx
                     ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
                     + dyden(ix,iy,iz)*intyalf(ix,iy,iz) + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
                 end do
+                !$omp end simd
             end do
         end do
         !$omp end parallel do
@@ -176,9 +186,11 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:esolid)
                 do ix=1,nx
                     esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
                 enddo
+                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
