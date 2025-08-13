@@ -21,15 +21,12 @@ implicit none
 
 real (kind=8) :: arun(4),brun(4),crun(4)
 
-integer (kind=4) :: i, ix,iy,iz,jrun
+integer (kind=4) :: ix,iy,iz,jrun
 real    (kind=8) :: deltat
 real    (kind=8) :: aux2r(3)
 complex (kind=8) :: auxc(6)
 complex (kind=8) :: aux1c,aux2c
 complex (kind=8) :: ci=cmplx(0.0d0,1.0d0)
-
-real (kind=8) :: ar, br, cr
-complex (kind=8) :: tmp_ke, tmp_pot, tmp_tot
 
 !include 'interface_derivnD.include'  ! Per fer servir les derivades generiques
 
@@ -43,148 +40,105 @@ brun(2)=1.0d0
 brun(3)=1.0d0
 brun(4)=2.0d0
 
-crun(1)=0.5d0
-crun(2)=1.0d0-1.d0/dsqrt(2.d0)
-crun(3)=1.0d0+1.d0/dsqrt(2.d0)
-crun(4)=0.5d0
+ crun(1)=0.5d0
+ crun(2)=1.0d0-1.d0/dsqrt(2.d0)
+ crun(3)=1.0d0+1.d0/dsqrt(2.d0)
+ crun(4)=0.5d0
 
 
 !........................................
-!.. Laplacian of H^{iorder-1}Psi (0) ...
+!.. Laplacian of H^{iorder-1}ï¿½Psi (0) ...
 !........................................
 !
 
 do jrun=1,4
-    ar = arun(jrun)
-    br = brun(jrun)
-    cr = crun(jrun)
 
-    if(ldroplet_frozen)then
-        !Nothing to do
-    else
-        Call derivnD(2,nn,hx,1,psi,sto1c,Icon)
-        Call derivnD(2,nn,hy,2,psi,sto2c,Icon)
-        Call derivnD(2,nn,hz,3,psi,sto3c,Icon)
+if(ldroplet_frozen)then
 
-        !
-        !   We compute HÂ·Psi
-        !
+!Nothing to do
+else
+  Call derivnD(2,nn,hx,1,psi,sto1c,Icon)
+  Call derivnD(2,nn,hy,2,psi,sto2c,Icon)
+  Call derivnD(2,nn,hz,3,psi,sto3c,Icon)
 
-        !$omp parallel do private(ix,iy,iz, tmp_ke, tmp_pot, tmp_tot) collapse(2) schedule(static)
-        do iz=1,nz; do iy=1,ny
-            !$omp simd
-            do ix=1,nx
-                tmp_ke = h2o2m4*timec(ix,iy,iz)*(sto1c(ix,iy,iz) + sto2c(ix,iy,iz) + sto3c(ix,iy,iz))
-                tmp_pot = (-timec(ix,iy,iz)*pot4(ix,iy,iz) - ci*uimp(ix,iy,iz))*psi(ix,iy,iz)
-                tmp_tot = tmp_ke + tmp_pot
-                sto4c(ix,iy,iz) = tmp_tot
-                sto1c(ix,iy,iz) = ar*(tmp_tot - br*q(ix,iy,iz))
-                q(ix,iy,iz) = q(ix,iy,iz) + 3*sto1c(ix,iy,iz) - cr*sto4c(ix,iy,iz)
-            enddo
-            !$omp end simd
-        enddo; enddo
-        !$omp end parallel do
+!
+!   We compute H·Psi
+!
+  Sto4c = timec*((sto1c+sto2c+sto3c)*h2o2m4 - pot4*psi) - ci*uimp*psi
+  Sto1c = arun(jrun)*(Sto4c - brun(jrun)*q)
+  q = q + 3.*Sto1c - crun(jrun)*Sto4c
+
+ if(jrun.eq.1)then
+   hpsiold(:,:,:,2) = hpsiold(:,:,:,1)
+   hpsiold(:,:,:,1) = Sto4c
+   psiold(:,:,:,3) = psiold(:,:,:,2)
+   psiold(:,:,:,2) = psiold(:,:,:,1)
+   psiold(:,:,:,1) = psi
+ endif
+  psi = psi + deltat*Sto1c
+  den = Abs(psi)**2
+endif
 
 
-        if (jrun.eq.1) then
-            call zcopy(nx*ny*nz, hpsiold(:,:,:,1), 1, hpsiold(:,:,:,2), 1)
-            call zcopy(nx*ny*nz, sto4c, 1, hpsiold(:,:,:,1), 1)
-            call zcopy(nx*ny*nz, psiold(:,:,:,2), 1, psiold(:,:,:,3), 1)
-            call zcopy(nx*ny*nz, psiold(:,:,:,1), 1, psiold(:,:,:,2), 1)
-            call zcopy(nx*ny*nz, psi, 1, psiold(:,:,:,1), 1)
-        endif
 
+if(Lcoalescence ) then
+  ! Write(*,*) "Coalescence between droplets, no impurit/ies"
+  else
+!
+! Impurity evolution if it is necessary
+!
+!.................!
+!... positions ...!
+!.................!
+  stor(:,:) = arun(jrun)*(vimp(:,:) - brun(jrun)*qr(:,:))
+     qr(:,:) = qr(:,:) + 3.*stor(:,:) - crun(jrun)*vimp(:,:)
+  if(jrun.eq.1)then
+!    vpold(:,:,2) = vpold(:,:,1) 
+!    vpold(:,:,1) =    vp(:,:)            
+   rimpold(:,:,3) = rimpold(:,:,2)
+   rimpold(:,:,2) = rimpold(:,:,1)
+   rimpold(:,:,1) = rimp(:,:)
+  endif
 
-        !$omp parallel do private(ix,iy,iz) schedule(static) collapse(2)
-        do iz=1,nz
-            do iy=1,ny
-                !$omp simd
-                do ix=1,nx
-                    psi(ix,iy,iz) = psi(ix,iy,iz) + deltat*sto1c(ix,iy,iz)
-                    den(ix,iy,iz) = real(psi(ix,iy,iz))**2 + aimag(psi(ix,iy,iz))**2
-                enddo
-                !$omp end simd
-            enddo
-        enddo
-        !$omp end parallel do
-    endif
+  rimp(:,:) = rimp(:,:) + deltat*stor(:,:)
 
-    if(Lcoalescence ) then
-    ! Write(*,*) "Coalescence between droplets, no impurit/ies"
-    else
-        !
-        ! Impurity evolution if it is necessary
-        !
-        !$omp simd
-        do i=1,N_imp
-            !.................!
-            !... positions ...!
-            !.................!
-            stor(i,1) = ar*(vimp(i,1) - br*qr(i,1))
-            stor(i,2) = ar*(vimp(i,2) - br*qr(i,2))
-            stor(i,3) = ar*(vimp(i,3) - br*qr(i,3))
-            qr(i,1) = qr(i,1) + 3.*stor(i,1) - cr*vimp(i,1)
-            qr(i,2) = qr(i,2) + 3.*stor(i,2) - cr*vimp(i,2)
-            qr(i,3) = qr(i,3) + 3.*stor(i,3) - cr*vimp(i,3)
-            rimp(i,1) = rimp(i,1) + deltat*stor(i,1)
-            rimp(i,2) = rimp(i,2) + deltat*stor(i,2)
-            rimp(i,3) = rimp(i,3) + deltat*stor(i,3)
+!..................!
+!... velocities ...!
+!..................!
+  Stor(:,:) = arun(jrun)*(aimp(:,:) - brun(jrun)*qv(:,:))
+  qv(:,:) = qv(:,:) + 3.*stor(:,:) - crun(jrun)*aimp(:,:)
+  if(jrun.eq.1)then
+   aimpold(:,:,2) = aimpold(:,:,1)
+   aimpold(:,:,1) =    aimp(:,:)
+   vimpold(:,:,3) = vimpold(:,:,2)
+   vimpold(:,:,2) = vimpold(:,:,1)
+   vimpold(:,:,1) =    vimp(:,:)
+  endif
+  vimp(:,:) = vimp(:,:) + deltat*stor(:,:)
 
-            !..................!
-            !... velocities ...!
-            !..................!
-            stor(i,1) = ar*(aimp(i,1) - br*qr(i,1))
-            stor(i,2) = ar*(aimp(i,2) - br*qr(i,2))
-            stor(i,3) = ar*(aimp(i,3) - br*qr(i,3))
-            qv(i,1) = qv(i,1) + 3.*stor(i,1) - cr*aimp(i,1)
-            qv(i,2) = qv(i,2) + 3.*stor(i,2) - cr*aimp(i,2)
-            qv(i,3) = qv(i,3) + 3.*stor(i,3) - cr*aimp(i,3)
-            vimp(i,1) = vimp(i,1) + deltat*stor(i,1)
-            vimp(i,2) = vimp(i,2) + deltat*stor(i,2)
-            vimp(i,3) = vimp(i,3) + deltat*stor(i,3)
-        enddo
-        !$omp end simd
+! ...........................................................
 
-        if(jrun.eq.1)then
-            !    vpold(:,:,2) = vpold(:,:,1)
-            !    vpold(:,:,1) =    vp(:,:)
-            rimpold(:,:,3) = rimpold(:,:,2)
-            rimpold(:,:,2) = rimpold(:,:,1)
-            rimpold(:,:,1) = rimp(:,:)
+  if(jrun.le.3)then
+    call potenimp()
+    call poten()
+    call forceimp()
+  endif
 
-            aimpold(:,:,2) = aimpold(:,:,1)
-            aimpold(:,:,1) =    aimp(:,:)
-            vimpold(:,:,3) = vimpold(:,:,2)
-            vimpold(:,:,2) = vimpold(:,:,1)
-            vimpold(:,:,1) =    vimp(:,:)
-        endif
-
-        ! ...........................................................
-
-        if(jrun.le.3)then
-            call potenimp()
-            call poten()
-            call forceimp()
-        endif
-    endif
+endif
 enddo
 
 
 
-!$omp simd
 do ix=1,3
-    ioldp(ix)=ix
-    ioldr(ix)=ix
-    ioldv(ix)=ix
+  ioldp(ix)=ix
+  ioldr(ix)=ix
+  ioldv(ix)=ix
 enddo
-!$omp end simd
 
-!$omp simd
 do ix=1,2
-    ioldh(ix)=ix
-    iolda(ix)=ix
+  ioldh(ix)=ix
+  iolda(ix)=ix
 enddo
-!$omp end simd
 
 return
 end
