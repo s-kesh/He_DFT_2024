@@ -100,10 +100,9 @@ if(ldroplet_frozen)then
         etot4    =  etot4 + sum(uext*den)*dxyz
 
        Lfrozen_first_iteration=.false. ! Disable the energy calculation for the next iterations
-  endif ! If Lfrozen_first_iteration
+  endif
 
-else ! If ldroplet_frozen
-
+else
       Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
       Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
       Call derivnD(1,nn,hz,3,psi,sto3c,Icon)
@@ -154,7 +153,7 @@ else ! If ldroplet_frozen
 
   etot4    =  etot4 + sum(uext*den)*dxyz
 
-endif ! If ldroplet_frozen
+endif
 
 
 ! Classic vecotrial particle energy:

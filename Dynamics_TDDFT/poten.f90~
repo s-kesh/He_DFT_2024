@@ -22,8 +22,8 @@ integer (kind=4) :: ix,iy,iz
 
 
 if (ldroplet_frozen) then
- ! Write(6,*) "Lfrozen_first_iteration=",Lfrozen_first_iteration
-     if(Lfrozen_first_iteration)then
+
+    if(Lfrozen_first_iteration)then
 
 !...............................................
 !... Calculate of Fourier Transforms for 4He ...
@@ -70,7 +70,7 @@ if (ldroplet_frozen) then
         end forall 
 
 ! call fftfw(sto1,wk1)
-       call fftfw_1()
+call fftfw_1()
 
        forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
           wk1(ix,iy,iz) = wk1(ix,iy,iz)*wcgk(ix,iy,iz)
