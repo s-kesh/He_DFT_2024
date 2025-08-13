@@ -41,7 +41,7 @@ use lenard4
 use he4
 use util1
 use work1
-use ifport
+use gport
 use interpol
 use coalescence
 
@@ -53,7 +53,7 @@ logical              :: lfilepv         ! T-> print save file when change Paflo 
 logical              :: lpaflv=.false.  ! T-> allows change of Paflov coeffient
 logical              :: lrkpc=.true.    ! T-> allows to use diferent evolution procedures
 logical              :: lrk=.false.     ! T-> allows to only Runge-Kutta method
-logical				 :: result			! Logical variable to store result of ifport.makedirqq(outdir)
+logical              :: result		! Logical variable to store result of gport.makedirqq(outdir)
 integer    (kind=4)  :: ndmax=2         ! maxima derivada a calcular
 integer    (kind=4)  :: naux            ! Auxiliar variable
 integer    (kind=4)  :: nstepp=1        ! Number of 'Paflov parameter'.

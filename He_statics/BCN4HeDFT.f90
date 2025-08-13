@@ -116,16 +116,6 @@ Logical              :: Lprint=.false.
 Logical              :: LHe_frozen=.false., LFT_Test_numerica=.false.
 real       (kind=8)  ::  sigma_x,sigma_y,sigma_z,zcom,ycom,xcom, V_Pi, V_Sigma, V_Delta
 
-interface
-  double precision function v_alka(d,elem)
-       character (len=3),  intent(in) :: elem
-       real      (kind=8), intent(in) :: d
-  end function v_alka
-end interface
-
-
-Write(6,*) "name file pure=",filepure
-N_imp=1 !! default value
 
 !....................Variables read in a NAMELIST statement ..............................
 
@@ -165,6 +155,19 @@ namelist /input/title,fftwplan,nthread,nsfiles,                         &
 
 
 namelist /imp/rimp,zdist,ydist,xdist,ximp,yimp,zimp                      
+
+
+interface
+  double precision function v_alka(d,elem)
+       character (len=3),  intent(in) :: elem
+       real      (kind=8), intent(in) :: d
+  end function v_alka
+end interface
+
+
+N_imp=1 !! default value
+Write(6,*) "name file pure=",filepure
+
 !................................ Start main Program ..............................
 call timer(t0)
 
