@@ -17,7 +17,7 @@ program DFT4HeImpd
 ! Version 0  (alpha)   Barcelona April-19,2004   R. Mayol & M. Pi
 ! Version 99 (Epsilon) Barcelona April-19,2006   R. Mayol & M. Pi
 !-----------------------------------------------------------------------------
-!07oct2004/11:30AM  
+!07oct2004/11:30AM
 !06oct2004/11:30AM
 !23sep2004/11:30AM
 !Feb2005
@@ -32,7 +32,7 @@ use energies
 use rho
 use field
 use fftmodule
-use grid 
+use grid
 use gridk
 use classicimp
 use rkpc
@@ -96,12 +96,12 @@ real       (kind=8)  :: pmod1        !    Work variable for controlling p-values
 real       (kind=8)  :: pmod2        !    Work variable for controlling p-values
 complex    (kind=8)  :: ci=(0.d0,1.d0), caux !  Work complex variables
 real       (kind=8)  :: xcm4,ycm4,zcm4,xcmx,ycmx,zcmx ! Center of mass Drop and Impurity
-real       (kind=8)  :: xcm,ycm,zcm ! Center of mass Drop 
-real       (kind=8)  :: vcomx,vcomy,vcomz ! COM velocity for the Drop 
-!   Zero temperature DFT and TDDFT for 4He: A short guide for practitioners page 51/59 
+real       (kind=8)  :: xcm,ycm,zcm ! Center of mass Drop
+real       (kind=8)  :: vcomx,vcomy,vcomz ! COM velocity for the Drop
+!   Zero temperature DFT and TDDFT for 4He: A short guide for practitioners page 51/59
 ! 4.001506179127d0 ! ^4 He (alpha particle) mass in au from NIST https://physics.nist.gov/cuu/Constants/Table/allascii.txt
-real       (kind=8)  :: mhe=4.002572164d0 !! see Zero Temperature DFT and TDDFT .... page 51/59 
-real       (kind=8)  :: xlx,xly,xlz ! Angular momentum 
+real       (kind=8)  :: mhe=4.002572164d0 !! see Zero Temperature DFT and TDDFT .... page 51/59
+real       (kind=8)  :: xlx,xly,xlz ! Angular momentum
 real       (kind=8)  :: distx,disty,distz  ! Distance between center of masses
 real       (kind=8)  :: errHe, errimp,errvimp     ! Error evolution (only form Predictor-Corrector-Modificator)
 real       (kind=8)  :: Zsurf = -25.d0, Morse_HeTiO2_1D, Morse_HeTiO2_3D, auxn4 ! Position of the surface
@@ -166,11 +166,14 @@ namelist /input/title,fftwplan,nthread,nsfiles,outdir,                  &
                 txmean,txsurf,tymean,tysurf,tzmean,tzsurf,              &
                 filedenin_coales_1,filedenin_coales_2,k_coales,  &
                 Lcoalescence,Ldroplet_frozen,file_density_input_frozen
-                
+
 namelist /imp/rimp,vimp,m_imp_u,selec_gs_k,r_cutoff_gs_k,umax_gs_k,		&
 				selec_gs_k_k,r_cutoff_gs_k_k,umax_gs_k_k,				&
 				drselec_gs_k_k,drr_cutoff_gs_k_k,drumax_gs_k_k,			&
 				filerimp_k, filevimp_k, fileaimp_k
+
+! External blas functions
+complex (kind=8), external :: zdotc
 
 !................................ Start main Program ..............................
 call timer(t0)
@@ -312,7 +315,7 @@ enddo
 !.....................................
 vimp = vimp*7.63822291d0 ! Because it is given in A/ps, we have to transform to A*K
 
- mhe= mhe*mp_u
+mhe= mhe*mp_u
 
 !................................
 !... Build grid in real space ...
@@ -386,14 +389,14 @@ if(Lcoalescence ) then
   else
   call potenimpini() ! interpolation + first call to updatepoten
  endif
- 
+
 !................................
 !... read density or build-it ...
 !................................
 
 call readenc(n4,densat4,filedenin,fileimpin,mode)
 !...............................................................test
- do iz=1,nz ; do iy=1,ny ; do ix=1,nx 
+ do iz=1,nz ; do iy=1,ny ; do ix=1,nx
   if(.not.(den(ix,iy,iz).gt.0))print*,ix,iy,iz,den(ix,iy,iz)
  end do ; enddo ; enddo
 !...............................................................test
@@ -471,7 +474,7 @@ select case(core4)
      write(6,*) '    Use Orsay-Trento Interaction.'
      write(6,*) '    Full Orsay-Trento calculation. (Field and Energy)'
      write(6,6040) core4,h4,eps4,sigma4,b4
-     allocate( denalf(nx  ,ny,nz))                                                            
+     allocate( denalf(nx  ,ny,nz))
      allocate(  falfs(nx  ,ny,nz))
      allocate(kalfs(nx/2+1,ny,nz))
      allocate(intxalf(nx  ,ny,nz))
@@ -525,9 +528,15 @@ Else
 Endif
 
 if(core4.eq.'OTC') then
-   forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
-      kalfs(ix,iy,iz) = exp(-(pi*l*pmod(ix,iy,iz))**2)
-   end forall
+    !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
+    do iz=1,nz; do iy=1,ny
+        !$omp simd
+        do ix=1,nx/2+1
+            kalfs(ix,iy,iz) = exp(-(pi*l*pmod(ix,iy,iz))**2)
+        end do
+        !$omp end simd
+    end do; end do
+    !$omp end parallel do
 end if
 
 !
@@ -535,7 +544,16 @@ end if
 !
 ! Initial velocity : Altough xlamdax_i is in K units, xlamda
 ! is introduced in Angstrom/picosecond for the sake of lazyness.
-auxn4 = sum(den)*dxyz
+
+auxn4 = 0.d0
+!$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:auxn4)
+do iz=1,nz; do iy=1,ny;
+    do ix=1,nx
+        auxn4 = auxn4 + den(ix,iy,iz)
+    end do
+end do; end do
+!$omp end parallel do
+auxn4 = auxn4*dxyz
 
 if(xlamda.ne.0.d0)then
 write(*,*)'xlambda not equal zero'
@@ -543,23 +561,35 @@ xlamdaz = xlamda*7.63822291d0/(2.d0*h2o2m4)
 endif
 
 If((mode.eq.0 .OR. mode.eq.7) .And.Ldensity)then
+   !$omp parallel do default(shared) private(ix,iy,iz,aux) collapse(2)
    do iz=1,nz
      do iy=1,ny
-       do ix=1,nx
-         aux=x(ix)*xlamdax       &
-            +y(iy)*xlamday       &
-            +z(iz)*xlamdaz
-         psi(ix,iy,iz) = sqrt(den(ix,iy,iz)) &
-                       * cmplx(cos(aux),sin(aux))
-       end do
+        !$omp simd
+        do ix=1,nx
+            aux=x(ix)*xlamdax       &
+                +y(iy)*xlamday       &
+                +z(iz)*xlamdaz
+            psi(ix,iy,iz) = sqrt(den(ix,iy,iz)) &
+                        * cmplx(cos(aux),sin(aux))
+        end do
+         !$omp end simd
      end do
    end do
+   !$omp end parallel do
 Endif
 !.................................
 !.. First call to total energy ...
 !.................................
 
-den=Conjg(psi)*psi
+!$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
+do iz=1, nz; do iy=1, ny;
+    !$omp simd
+    do ix=1, nx
+        den(ix, iy, iz) = conjg(psi(ix,iy,iz))*psi(ix,iy,iz)
+    end do
+    !$omp end simd
+end do; end do
+!$omp end parallel do
 
   if(Lcoalescence ) then
     Write(*,*) "Coalescence between droplets, no impurity/ies"
@@ -589,16 +619,18 @@ call flush(6)
 
 ! TIME CONSTANT !
 ! This time it's a cylinder.
-do iz=1,nz
- do iy=1,ny
-  do ix=1,nx
-   timec(ix,iy,iz)=cmplx(Lambdah*(1.d0+tanh((abs(x(ix))-txmean)/txsurf)            &
+!$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
+do iz=1,nz; do iy=1,ny
+    !$omp simd
+    do ix=1,nx
+        timec(ix,iy,iz)=cmplx(Lambdah*(1.d0+tanh((abs(x(ix))-txmean)/txsurf)            &
                                  +1.d0+tanh((abs(y(iy))-tymean)/tysurf)            &
                                  +1.d0+tanh((abs(z(iz))-tzmean)/tzsurf))           &
                                  ,1.d0)
-  enddo
- enddo
-enddo
+    enddo
+    !$omp end simd
+    enddo; enddo
+!$omp end parallel do
 
 
 !plot it
@@ -674,14 +706,13 @@ Iteraux = iter - iter0 + 1
 
 pr%it = iter
 
-    if((iter-iter0+1).le.3.Or.lrk)then
-      call steprk(deltat)
+if((iter-iter0+1).le.3.Or.lrk)then
+    call steprk(deltat)
 
-    else
-      call steppc(deltat,errHe,errimp,errvimp)
-
-      write(6,'(" Error( He, imp) (From Steppc)...",1p,3E15.6)')errHe,errimp,errvimp
-    endif
+else
+    call steppc(deltat,errHe,errimp,errvimp)
+    write(6,'(" Error( He, imp) (From Steppc)...",1p,3E15.6)')errHe,errimp,errvimp
+endif
 
  if(Lcoalescence ) then
   call poten()
@@ -689,14 +720,14 @@ pr%it = iter
     call potenimp()
     call poten()
     call forceimp()
-   
- 
+
+
     aimp(:,1) = F(:,1)/m_imp(:)
     aimp(:,2) = F(:,2)/m_imp(:)
     aimp(:,3) = F(:,3)/m_imp(:)
   endif
 
-  
+
     aux1 = time0 + Iteraux*deltatps
     temps = aux1
 
@@ -722,8 +753,8 @@ pr%it = iter
 
     if( Ldroplet_frozen) then
        !Nothing to do
-       
-    else 
+
+    else
         call r_cm(den,n4,xcm4,ycm4,zcm4)    ! Center of mass of 4He Drop
 
           xcm = xcm4; ycm=ycm4; zcm=zcm4
@@ -731,98 +762,87 @@ pr%it = iter
           Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
           Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
           Call derivnD(1,nn,hz,3,psi,sto3c,Icon)
-!          
-! Z Component of angular momentum 
-!          
+!
+! Z Component of angular momentum
+!
           caux = (0.d0, 0.d0)
+          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
           Do iz=1, nz
             Do iy=1, ny
               Do ix=1, nx
                 caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((y(iy)-ycm)*sto1c(ix,iy,iz) - (x(ix)-xcm)*sto2c(ix,iy,iz)) 
+                ((y(iy)-ycm)*sto1c(ix,iy,iz) - (x(ix)-xcm)*sto2c(ix,iy,iz))
               EndDo
             EndDo
           EndDo
+          !$omp end parallel do
           xlz = caux*dxyz
-!          
-! Y Component of angular momentum 
-!          
+!
+! Y Component of angular momentum
+!
           caux = (0.d0, 0.d0)
+          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
           Do iz=1, nz
             Do iy=1, ny
               Do ix=1, nx
                 caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((x(ix)-xcm)*sto3c(ix,iy,iz) - (z(iz)-zcm)*sto1c(ix,iy,iz)) 
+                ((x(ix)-xcm)*sto3c(ix,iy,iz) - (z(iz)-zcm)*sto1c(ix,iy,iz))
               EndDo
             EndDo
           EndDo
+          !$omp end parallel do
           xly = caux*dxyz
-!          
-! X Component of angular momentum 
-!          
+!
+! X Component of angular momentum
+!
           caux = (0.d0, 0.d0)
+          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
           Do iz=1, nz
             Do iy=1, ny
               Do ix=1, nx
                 caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((z(iz)-zcm)*sto2c(ix,iy,iz) - (y(iy)-ycm)*sto3c(ix,iy,iz)) 
+                ((z(iz)-zcm)*sto2c(ix,iy,iz) - (y(iy)-ycm)*sto3c(ix,iy,iz))
               EndDo
             EndDo
           EndDo
+          !$omp end parallel do
           xlx = caux*dxyz
-          
+
         Write(6,'("<Lx,Ly,Lz>.......:",1p,3E20.11)')xlx,xly,xlz
 
 
 
 
 
-!          
+!
 ! V_com_X Component of Velocity COM drop
-!        
+!
        caux = (0.d0, 0.d0)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto1c(ix,iy,iz)
-              EndDo
-            EndDo
-          EndDo
-          vcomx=(caux*dxyz)/(auxn4*mhe)  
+       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto1c, 1)
+       vcomx=(caux*dxyz)/(auxn4*mhe)
 
 
-!          
+!
 ! V_com_y Component of Velocity COM drop
-!        
+!
        caux = (0.d0, 0.d0)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto2c(ix,iy,iz)
-              EndDo
-            EndDo
-          EndDo
-          vcomy=(caux*dxyz)/(auxn4*mhe)  
+       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto2c, 1)
+       vcomy=(caux*dxyz)/(auxn4*mhe)
 
-!          
+!
 ! V_com_z Component of Velocity COM drop
-!        
+!
        caux = (0.d0, 0.d0)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto3c(ix,iy,iz)
-              EndDo
-            EndDo
-          EndDo
-          vcomz=(caux*dxyz)/(auxn4*mhe)  
+       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto3c, 1)
+       vcomz=(caux*dxyz)/(auxn4*mhe)
 
  Write(6,'("<Vcom_x,Vcom_y,Vcom_z>.......:",1p,3E20.11)')vcomx,vcomy,vcomz
-  
-   
+
+
           aux1 = 0.d0
           aux2 = 0.d0
           aux3 = 0.d0
+          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:aux1,aux2,aux3)
           Do iz=1, nz
             Do iy=1, ny
               Do ix=1, nx
@@ -832,12 +852,13 @@ pr%it = iter
               EndDo
             EndDo
           EndDo
+          !$omp end parallel do
           aux1 = aux1*dxyz
           aux2 = aux2*dxyz
           aux3 = aux3*dxyz
 
     endif !Ldroplet_frozen
-          
+
         pr%r2(1)   = aux1
         pr%r2(2)   = aux2
         pr%r2(3)   = aux3
@@ -907,7 +928,7 @@ temps_ela=real(t_2 - t_1,kind=4)/real(ir,kind=4)
 ! Temps CPU de calcul final
 call cpu_time(t_cpu_1)
 t_cpu = t_cpu_1 - t_cpu_0
-! affichage temps 
+! affichage temps
 print*, "elapsed partie iterative : ", temps_ela
 print*, "cpu_time partie iterative : ", t_cpu
       pr%namefile = filedenout
@@ -1082,9 +1103,9 @@ T6,'Title of the run: ',A)
 5055 format('densityx.',SS,i5,'.out')
 5065 format('densityx.',SS,i6,'.out')
 
-7111 FORMAT(1X,6(E15.8,1X))  
+7111 FORMAT(1X,6(E15.8,1X))
 
 !         1         2         3         4         5         6         7         8
 !|2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-end program 
+end program
