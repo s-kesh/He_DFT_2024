@@ -3,16 +3,16 @@
 !--------------------------------------------------------------------
 !
 ! This subroutine gives the time in seconds (REAL*4) measured from
-! the beginning of the run.
+! the begining of the run
+! Should be adapted for each operating system.
 !
-! Version for GNU compilers.
+! Version for Intel compiler. for Other UNIX* see manual
 !
 subroutine timer(secs)
-    real (kind=4) :: secs
-        real (kind=8) :: t
-
-            call cpu_time(t)
-                secs = real(t, kind=4)
-                    
-                        return
-                        end subroutine timer
+use ifport
+!real :: etime
+real (kind=4) :: secs
+real (kind=4) :: ta(2)
+secs=etime(ta)
+return
+end
