@@ -59,14 +59,16 @@ if(Lfrozen_first_iteration)then
     !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
     do iz=1,nz
         do iy=1,ny
-        do ix=1,nx
-            aux3  = den(ix,iy,iz)
-            aux4  = dencg(ix,iy,iz)
-            aux5  = aux3*aux4**2*(aux1+aux2*aux4)
-            ekin4 = ekin4 + abs(sto1c(ix,iy,iz))**2+abs(sto2c(ix,iy,iz))**2+abs(sto3c(ix,iy,iz))**2
-            elj4  = elj4  + delj4(ix,iy,iz)*aux3
-            ecor4 = ecor4 + aux5
+            !$omp simd reduction(+:ekin4,elj4,ecor4)
+            do ix=1,nx
+                aux3  = den(ix,iy,iz)
+                aux4  = dencg(ix,iy,iz)
+                aux5  = aux3*aux4**2*(aux1+aux2*aux4)
+                ekin4 = ekin4 + abs(sto1c(ix,iy,iz))**2+abs(sto2c(ix,iy,iz))**2+abs(sto3c(ix,iy,iz))**2
+                elj4  = elj4  + delj4(ix,iy,iz)*aux3
+                ecor4 = ecor4 + aux5
             enddo
+            !$omp end simd
         enddo
     enddo
     !$omp end parallel do
@@ -81,11 +83,13 @@ if(Lfrozen_first_iteration)then
             !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
             do iz=1,nz
                 do iy=1,ny
+                    !$omp simd reduction(+:ealphas)
                     do ix=1,nx
                         ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
                         + dyden(ix,iy,iz)*intyalf(ix,iy,iz)&
                         + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
                     enddo
+                    !$omp end simd
                 enddo
             enddo
         ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
@@ -98,9 +102,11 @@ if(Lfrozen_first_iteration)then
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:esolid)
                 do ix=1,nx
-                esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
+                    esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
                 enddo
+                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
@@ -137,6 +143,7 @@ else ! If ldroplet_frozen
     !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
     do iz=1,nz
         do iy=1,ny
+            !$omp simd reduction(+:ekin4,elj4,ecor4)
             do ix=1,nx
                 aux3  = den(ix,iy,iz)
                 aux4  = dencg(ix,iy,iz)
@@ -145,6 +152,7 @@ else ! If ldroplet_frozen
                 elj4  = elj4  + delj4(ix,iy,iz)*aux3
                 ecor4 = ecor4 + aux5
             end do
+            !$omp end simd
         end do
     end do
     !$omp end parallel do
@@ -159,10 +167,12 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:ealphas)
                 do ix=1,nx
                     ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
                     + dyden(ix,iy,iz)*intyalf(ix,iy,iz) + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
                 end do
+                !$omp end simd
             end do
         end do
         !$omp end parallel do
@@ -176,9 +186,11 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
         do iz=1,nz
             do iy=1,ny
+                !$omp simd reduction(+:esolid)
                 do ix=1,nx
                     esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
                 enddo
+                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
@@ -216,8 +228,8 @@ eimpu_impu = 0
 do k=1,N_imp
 do m=k+1,N_imp
     r_ij(:) = rimp(k,:)-rimp(m,:)
- aux1 = dsqrt(sum(r_ij(:)**2))
- eimpu_impu = eimpu_impu + Select_pot(selec_gs_k_k(k,m),aux1,r_cutoff_gs_k_k(k,m),umax_gs_k_k(k,m))
+    aux1 = dsqrt(sum(r_ij(:)**2))
+    eimpu_impu = eimpu_impu + Select_pot(selec_gs_k_k(k,m),aux1,r_cutoff_gs_k_k(k,m),umax_gs_k_k(k,m))
 enddo
 enddo
 
