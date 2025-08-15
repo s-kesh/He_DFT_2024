@@ -72,7 +72,6 @@ do jrun=1,4
 
         !$omp parallel do private(ix,iy,iz, tmp_ke, tmp_pot, tmp_tot) collapse(2) schedule(static)
         do iz=1,nz; do iy=1,ny
-            !$omp simd
             do ix=1,nx
                 tmp_ke = h2o2m4*timec(ix,iy,iz)*(sto1c(ix,iy,iz) + sto2c(ix,iy,iz) + sto3c(ix,iy,iz))
                 tmp_pot = (-timec(ix,iy,iz)*pot4(ix,iy,iz) - ci*uimp(ix,iy,iz))*psi(ix,iy,iz)
@@ -81,7 +80,6 @@ do jrun=1,4
                 sto1c(ix,iy,iz) = ar*(tmp_tot - br*q(ix,iy,iz))
                 q(ix,iy,iz) = q(ix,iy,iz) + 3*sto1c(ix,iy,iz) - cr*sto4c(ix,iy,iz)
             enddo
-            !$omp end simd
         enddo; enddo
         !$omp end parallel do
 
@@ -98,12 +96,10 @@ do jrun=1,4
         !$omp parallel do private(ix,iy,iz) schedule(static) collapse(2)
         do iz=1,nz
             do iy=1,ny
-                !$omp simd
                 do ix=1,nx
                     psi(ix,iy,iz) = psi(ix,iy,iz) + deltat*sto1c(ix,iy,iz)
                     den(ix,iy,iz) = real(psi(ix,iy,iz))**2 + aimag(psi(ix,iy,iz))**2
                 enddo
-                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
@@ -115,7 +111,6 @@ do jrun=1,4
         !
         ! Impurity evolution if it is necessary
         !
-        !$omp simd
         do i=1,N_imp
             !.................!
             !... positions ...!
@@ -143,7 +138,6 @@ do jrun=1,4
             vimp(i,2) = vimp(i,2) + deltat*stor(i,2)
             vimp(i,3) = vimp(i,3) + deltat*stor(i,3)
         enddo
-        !$omp end simd
 
         if(jrun.eq.1)then
             !    vpold(:,:,2) = vpold(:,:,1)
@@ -171,20 +165,16 @@ enddo
 
 
 
-!$omp simd
 do ix=1,3
     ioldp(ix)=ix
     ioldr(ix)=ix
     ioldv(ix)=ix
 enddo
-!$omp end simd
 
-!$omp simd
 do ix=1,2
     ioldh(ix)=ix
     iolda(ix)=ix
 enddo
-!$omp end simd
 
 return
 end

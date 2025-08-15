@@ -55,7 +55,7 @@ do k=1,N_imp
     do iz=1,nz
         do iy=1,ny
             do ix=1,nx
-                temp(ix,iy,iz) = uimp_k(ix,iy,iz,k)
+                temp(ix,iy,iz) = uimp_k(k,ix,iy,iz)
             enddo
         enddo
     enddo
@@ -118,7 +118,6 @@ do k=1,N_imp
         zt = (z(iz)-zimp)**2
         do iy=1,ny
             yt = (y(iy)-yimp)**2 + zt
-            !$omp simd
             do ix=1,nx
                 r = dsqrt((x(ix)-ximp)**2 + yt)
                 ir = int(r/DelInter)+1
@@ -133,7 +132,6 @@ do k=1,N_imp
                 rmod = mod(r,DelInter)/DelInter
                 uimp_k(k,ix,iy,iz) =  potion(k,ir)*(1.d0-rmod) +  potion(k,ir+1)*rmod
             enddo
-            !$omp end simd
         enddo
     enddo
     !$omp end parallel do
@@ -142,11 +140,9 @@ enddo
 !$omp parallel do private(ix,iy,iz) collapse(3)
 do iz=1,nz; do iy=1,ny; do ix=1,nx
     uimp(ix, iy, iz) = 0.d0
-    !$omp simd
     do k = 1, N_imp
         uimp(ix, iy, iz) = uimp(ix, iy, iz) + uimp_k(k,ix,iy,iz)
     enddo
-    !$omp end simd
 end do; end do; end do
 !$omp end parallel do
 

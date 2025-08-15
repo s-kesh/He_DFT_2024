@@ -38,11 +38,9 @@ if (ldroplet_frozen) then
 
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx/2 + 1
                 wk1(ix, iy, iz) = fden(ix, iy, iz)*wcgk(ix,iy,iz)
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
         ! call fftbk(wk1,dencg)  ! get Coarse graining density
@@ -56,11 +54,9 @@ if (ldroplet_frozen) then
 
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx/2 + 1
                 wk1(ix, iy, iz) = fden(ix, iy, iz)*fvlj4(ix,iy,iz)
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
         ! call fftbk(wk1,delj4) ! Get delj4 -> (   int{ rho_4*V_4 dr'}  )
@@ -78,11 +74,9 @@ if (ldroplet_frozen) then
 
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx
                 sto1(ix,iy,iz) = den(ix,iy,iz)*dencg(ix,iy,iz)*(cp4+cpp4*dencg(ix,iy,iz))
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
 
@@ -91,11 +85,9 @@ if (ldroplet_frozen) then
 
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx/2 + 1
                 wk1(ix,iy,iz) = wk1(ix,iy,iz)*wcgk(ix,iy,iz)
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
 
@@ -109,12 +101,10 @@ if (ldroplet_frozen) then
         If(lsolid)Then
             !$omp parallel do private(ix,iy,iz, dtemp) collapse(2)
             do iz=1, nz; do iy=1, ny
-                !$omp simd
                 do ix=1, nx
                     dtemp = dtanh(beta*(den(ix,iy,iz)-den_m))
                     penalty(ix,iy,iz) = C*(1.d0 + dtemp + beta*den(ix,iy,iz)*(1.d0 - dtemp**2) )
                 end do
-                !$omp end simd
             end do; end do
             !$omp end parallel do
         Endif
@@ -126,24 +116,20 @@ if (ldroplet_frozen) then
 
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx
                 pot4(ix,iy,iz) = delj4(ix,iy,iz) +                                 &   ! Lennard-Jones
                                 dencg(ix,iy,iz)**2*(a0+a1*dencg(ix,iy,iz)) +      &   ! Correlation
                                 sto1(ix,iy,iz)                                        ! Correlation
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
 
         if(core4.eq.'OTC') then
             !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
             do iz=1, nz; do iy=1, ny
-                !$omp simd
                 do ix=1, nx/2 + 1
                     wk1(ix,iy,iz)   = fden(ix,iy,iz)*kalfs(ix,iy,iz)
                 end do
-                !$omp end simd
             end do; end do
             !$omp end parallel do
             !     call fftbk(wk1,denalf) ! Get Alfa_s density
@@ -174,11 +160,9 @@ else ! (If ldroplet_frozen)
 
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1, nz; do iy=1, ny
-        !$omp simd
         do ix=1, nx/2 + 1
             wk1(ix, iy, iz) = fden(ix, iy, iz)*wcgk(ix,iy,iz)
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
     ! call fftbk(wk1,dencg)  ! get Coarse graining density
@@ -192,11 +176,9 @@ else ! (If ldroplet_frozen)
 
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1, nz; do iy=1, ny
-        !$omp simd
         do ix=1, nx/2 + 1
             wk1(ix, iy, iz) = fden(ix, iy, iz)*fvlj4(ix,iy,iz)
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
     ! call fftbk(wk1,delj4) ! Get delj4 -> (   int{ rho_4*V_4 dr'}  )
@@ -214,11 +196,9 @@ else ! (If ldroplet_frozen)
 
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1, nz; do iy=1, ny
-        !$omp simd
         do ix=1, nx
             sto1(ix,iy,iz) = den(ix,iy,iz)*dencg(ix,iy,iz)*(cp4+cpp4*dencg(ix,iy,iz))
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
 
@@ -227,11 +207,9 @@ else ! (If ldroplet_frozen)
 
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1, nz; do iy=1, ny
-        !$omp simd
         do ix=1, nx/2 + 1
             wk1(ix,iy,iz) = wk1(ix,iy,iz)*wcgk(ix,iy,iz)
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
 
@@ -245,12 +223,10 @@ else ! (If ldroplet_frozen)
     If(lsolid)Then
         !$omp parallel do default(shared) private(ix,iy,iz, dtemp) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx
                 dtemp = dtanh(beta*(den(ix,iy,iz)-den_m))
                 penalty(ix,iy,iz) = C*(1.d0 + dtemp + beta*den(ix,iy,iz)*(1.d0 - dtemp**2) )
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
     Endif
@@ -261,24 +237,20 @@ else ! (If ldroplet_frozen)
 
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1, nz; do iy=1, ny
-        !$omp simd
         do ix=1, nx
             pot4(ix,iy,iz) = delj4(ix,iy,iz) +                                 &   ! Lennard-Jones
                             dencg(ix,iy,iz)**2*(a0+a1*dencg(ix,iy,iz)) +      &   ! Correlation
                             sto1(ix,iy,iz)                                        ! Correlation
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
 
     if(core4.eq.'OTC') then
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
         do iz=1, nz; do iy=1, ny
-            !$omp simd
             do ix=1, nx/2 + 1
                 wk1(ix,iy,iz)   = fden(ix,iy,iz)*kalfs(ix,iy,iz)
             end do
-            !$omp end simd
         end do; end do
         !$omp end parallel do
     !     call fftbk(wk1,denalf) ! Get Alfa_s density

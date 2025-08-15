@@ -120,7 +120,7 @@ Real (Kind=8) :: V_Na_Sigma              ! selec='Na_Sigma'          Pascale pot
 Real (Kind=8) :: V_Na_Pi                 ! selec='Na_Pi'             Pascale potential for Na(3Pi)-He
 Real (Kind=8) :: V_Cs_Cs                 ! selec='Cs_Cs'             Points obtained by Romain Vexiau, 2021
 Real (Kind=8) :: V_Cs_Cs_tsu             ! selec='Cs_Cs_tsu'         Points obtained by Spies, triplet sigma u
-Real (Kind=8) :: V_Rb_Rb                 ! selec='Rb_Rb'             Gregoire Guillon, Alexandra Viel, and Jean-Michel Launay "Triplet state u" !!!Marti sent me  (EGA) these points (11/2021) 
+Real (Kind=8) :: V_Rb_Rb                 ! selec='Rb_Rb'             Gregoire Guillon, Alexandra Viel, and Jean-Michel Launay "Triplet state u" !!!Marti sent me  (EGA) these points (11/2021)
 Real (Kind=8) :: V_Cs_ssg                ! selec='Cs_ssg'      Spies's Potential   Singlet Sigma g 6S-6S
 Real (Kind=8) :: V_Cs_tsu                ! selec='Cs_tsu'      Spies's Potencial   Triplet Sigma u
 Real (Kind=8) :: V_Cs_ssg_ps             ! selec='Cs_ssg_ps'      Spies's Potential   Singlet Sigma g 6S-6P
@@ -162,17 +162,17 @@ Real (Kind=8) :: V_der_K2_veffect        ! selec='der_K2_veffect'   Derivate Vol
 Real (Kind=8) :: V_der_Rb2_veffect       ! selec='der_Rb2_veffect'   Derivate Volumen effect to Rb2 core-core
 Real (Kind=8) :: V_der_Cs2_veffect       ! selec='der_Cs2_veffect'   Derivate Volumen effect to Cs2 core-core
 Real (Kind=8) :: V_Na2_sspg              ! selec='Na2_sspg'    Singlet Sigma plus g  (3s-3s) Olivier Dulieu data X
-Real (Kind=8) :: V_Na2_tspu              ! selec='Na2_tspu'     triplet Sigma plus u  (3s-3s) Olivier Dulieu data a 
-Real (Kind=8) :: V_Na2_sspg_sp           ! selec='Na2_sspg_sp'    Singlet Sigma plus g  (3s-3p) Olivier Dulieu data 
-Real (Kind=8) :: V_Na2_sspu_sp           ! selec='Na2_sspu_sp'    Singlet Sigma plus u  (3s-3p) Olivier Dulieu data 
-Real (Kind=8) :: V_Na2_spig_sp           ! selec='Na2_spig_sp'    Singlet Pi  g  (3s-3p) Olivier Dulieu data 
-Real (Kind=8) :: V_Na2_spiu_sp           ! selec='Na2_spiu_sp'    Singlet Pi  u  (3s-3p) Olivier Dulieu data 
-Real (Kind=8) :: V_Na2_tspg_sp           ! selec='Na2_tspg_sp'    Triplet Sigma  g  (3s-3p) Olivier Dulieu data 
+Real (Kind=8) :: V_Na2_tspu              ! selec='Na2_tspu'     triplet Sigma plus u  (3s-3s) Olivier Dulieu data a
+Real (Kind=8) :: V_Na2_sspg_sp           ! selec='Na2_sspg_sp'    Singlet Sigma plus g  (3s-3p) Olivier Dulieu data
+Real (Kind=8) :: V_Na2_sspu_sp           ! selec='Na2_sspu_sp'    Singlet Sigma plus u  (3s-3p) Olivier Dulieu data
+Real (Kind=8) :: V_Na2_spig_sp           ! selec='Na2_spig_sp'    Singlet Pi  g  (3s-3p) Olivier Dulieu data
+Real (Kind=8) :: V_Na2_spiu_sp           ! selec='Na2_spiu_sp'    Singlet Pi  u  (3s-3p) Olivier Dulieu data
+Real (Kind=8) :: V_Na2_tspg_sp           ! selec='Na2_tspg_sp'    Triplet Sigma  g  (3s-3p) Olivier Dulieu data
 Real (Kind=8) :: V_Na2_tspu_sp           ! selec='Na2_tspu_sp'    Triplet Sigma u  (3s-3p) Olivier Dulieu data
 Real (Kind=8) :: V_Na2_tpig_sp           ! selec='Na2_tpig_sp'    Triplet Pi  g  (3s-3p) Olivier Dulieu data
 Real (Kind=8) :: V_Na2_tpiu_sp           ! selec='Na2_tpiu_sp'    Triplet Pi  u  (3s-3p) Olivier Dulieu data
-Real (Kind=8) :: V_Li_ssg                ! selec='Li_ssg'      J Molecular Spectroscopy 323,563-573,2006   
-Real (Kind=8) :: V_Li_tspu               ! selec='Li_tspu'       J Molecular Spectroscopy 323,563-573,2006 
+Real (Kind=8) :: V_Li_ssg                ! selec='Li_ssg'      J Molecular Spectroscopy 323,563-573,2006
+Real (Kind=8) :: V_Li_tspu               ! selec='Li_tspu'       J Molecular Spectroscopy 323,563-573,2006
 Real (Kind=8) :: V_Li2_plus_ion          ! selec='Li2_plus_ion'  Li2 plus (ion)
 Real (Kind=8) :: V_Na2_plus_ion          ! selec='Na2_plus_ion'  Na2 plus (ion)
 Real (Kind=8) :: V_K2_plus_ion           ! selec='K2_plus_ion'  K2 plus (ion)
@@ -234,8 +234,8 @@ Real (Kind=8) :: V_Ag_gs                 ! selec='Ag_gs'
 Real (Kind=8) :: V_Ag_Pi                 ! selec='Ag_Pi'
 Real (Kind=8) :: V_Ag_Sig                ! selec='Ag_Sig'
 Real (Kind=8) :: V_K_4p_Sigma            ! selec='K_4p_Sigma'     Potencial de Pascale
-Real (Kind=8) :: V_K_4p_Pi               ! selec='K_4p_Pi'            "     "     "       
-Real (Kind=8) :: V_K_5s                  ! selec='K_5s'               "     "     "       
+Real (Kind=8) :: V_K_4p_Pi               ! selec='K_4p_Pi'            "     "     "
+Real (Kind=8) :: V_K_5s                  ! selec='K_5s'               "     "     "
 Real (Kind=8) :: V_Cs_7s                 ! selec='Cs_7s'              "     "     "
 Real (Kind=8) :: V_Rb_6s                 ! selec='Rb_6s'              "     "     "
 Real (Kind=8) :: V_Rb_6p_Sigma           ! selec='Rb_6p_sigma'        "     "     "
@@ -512,7 +512,7 @@ ElseIf(Trim(selec).Eq.'Rb_plus_Fausto')Then
 ElseIf(Trim(selec).Eq.'K_plus_Koutselos')Then
 !
 !  r_cutoff=1.0d0, 2.0d0
-!  umax=1.8628633412d5, 3.2762532479d3 
+!  umax=1.8628633412d5, 3.2762532479d3
 !
    If(r.lt.r_cutoff)Then
      Select_pot = umax
@@ -1006,7 +1006,7 @@ ElseIf(Trim(selec).Eq.'Xe_He')Then
 ElseIf(Trim(selec).Eq.'Ar_He')Then
 !
 !  r_cutoff= 2.0d0
-!  umax= 8.0808095081d3 
+!  umax= 8.0808095081d3
 !
    If(r.lt.r_cutoff)Then
      Select_pot = umax
@@ -1020,7 +1020,7 @@ ElseIf(Trim(selec).Eq.'Ar_He')Then
 ElseIf(Trim(selec).Eq.'Au_Graphene')Then
 !
 !  r_cutoff= 2.3d0
-!  umax= 4.9029319765d3 
+!  umax= 4.9029319765d3
 !
    If(r.lt.r_cutoff)Then
      Select_pot = umax
@@ -1404,7 +1404,7 @@ ElseIf(Trim(selec).Eq.'Na_Pi')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Na_Pi(r)")')
    Endif
-ElseIf(Trim(selec).Eq.'Cs_Cs')Then   
+ElseIf(Trim(selec).Eq.'Cs_Cs')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1414,7 +1414,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_Cs(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs_Cs_tsu')Then   
+   ElseIf(Trim(selec).Eq.'Cs_Cs_tsu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1424,7 +1424,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_Cs_tsu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Rb_Rb')Then   
+    ElseIf(Trim(selec).Eq.'Rb_Rb')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1434,7 +1434,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Rb_Rb(r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'Cs_ssg')Then   
+     ElseIf(Trim(selec).Eq.'Cs_ssg')Then
    If(r.lt.2.03113d0)Then
      Select_pot = 442937d0  !!!umax at rcutoff
    Else
@@ -1444,7 +1444,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_ssg(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs_tsu')Then   
+   ElseIf(Trim(selec).Eq.'Cs_tsu')Then
    If(r.lt.2.04320d0)Then
      Select_pot = 359209d0 !!!umax at rcutoff
    Else
@@ -1454,7 +1454,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_tsu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_ssg_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_ssg_ps')Then
    If(r.lt.2.02509d0)Then
      Select_pot = 348558d0 !! umax at rcutoff
    Else
@@ -1464,7 +1464,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_ssg_ps(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs_ssu_ps')Then   
+   ElseIf(Trim(selec).Eq.'Cs_ssu_ps')Then
    If(r.lt.2.00698d0)Then
      Select_pot = 350085d0 !! umax at rcutoff
    Else
@@ -1474,7 +1474,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_ssu_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_spg_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_spg_ps')Then
    If(r.lt.2.05527d0)Then
      Select_pot = 355265d0  !! umax at rcutoff
    Else
@@ -1484,7 +1484,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_spg_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_spu_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_spu_ps')Then
    If(r.lt.2.80984d0)Then
      Select_pot = 47931.8d0 !! umax at rcutoff
    Else
@@ -1494,7 +1494,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_spu_ps(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs_tpg_ps')Then   
+   ElseIf(Trim(selec).Eq.'Cs_tpg_ps')Then
    If(r.lt.2.81225d0)Then
      Select_pot = 31731.8d0  !! umax at rcutoff
    Else
@@ -1504,7 +1504,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_tpg_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_tpu_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_tpu_ps')Then
    If(r.lt.2.01302d0)Then
      Select_pot = 360916d0!! umax at rcutoff
    Else
@@ -1514,7 +1514,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_tpu_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_tsg_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_tsg_ps')Then
    If(r.lt.2.02509d0)Then
      Select_pot = 347322d0 !! umax at rcutoff
    Else
@@ -1524,7 +1524,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_tsg_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_tsu_ps')Then   
+    ElseIf(Trim(selec).Eq.'Cs_tsu_ps')Then
    If(r.lt.2.80374d0)Then
      Select_pot = 62616d0  !! umax at rcutoff
    Else
@@ -1534,7 +1534,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_tsu_ps(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sspg')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sspg')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1544,7 +1544,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sspg(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sspu')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sspu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1554,7 +1554,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sspu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_spig')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_spig')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1564,7 +1564,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_spig(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Li_ssg')Then   
+   ElseIf(Trim(selec).Eq.'Li_ssg')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1574,7 +1574,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Li_ssg(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Li_tspu')Then   
+   ElseIf(Trim(selec).Eq.'Li_tspu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1584,7 +1584,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Li_tspu(r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'Cs_RO_spiu')Then   
+     ElseIf(Trim(selec).Eq.'Cs_RO_spiu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1594,7 +1594,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_spiu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sdg')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sdg')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1604,7 +1604,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sdg(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tspg')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tspg')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1614,7 +1614,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tspg(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tspu')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tspu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1624,7 +1624,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tspu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tpig')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tpig')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1634,7 +1634,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tpig(r)")')
    Endif
-      ElseIf(Trim(selec).Eq.'Cs_RO_tdg')Then   
+      ElseIf(Trim(selec).Eq.'Cs_RO_tdg')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1644,7 +1644,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tdg(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tdu')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tdu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1654,7 +1654,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tdu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sdu')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sdu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1664,7 +1664,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sdu(r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'Cs_RO_tpiu')Then   
+     ElseIf(Trim(selec).Eq.'Cs_RO_tpiu')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1674,7 +1674,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tpiu(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sspg_plus')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sspg_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1684,7 +1684,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sspg_plus(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tspu_plus')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tspu_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1694,7 +1694,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tspu_plus(r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'Cs_RO_sspu_plus')Then   
+     ElseIf(Trim(selec).Eq.'Cs_RO_sspu_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1704,7 +1704,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sspu_plus(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs_RO_spig_plus')Then   
+   ElseIf(Trim(selec).Eq.'Cs_RO_spig_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1714,7 +1714,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_spig_plus(r)")')
    Endif
-      ElseIf(Trim(selec).Eq.'Cs_RO_spiu_plus')Then   
+      ElseIf(Trim(selec).Eq.'Cs_RO_spiu_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1724,7 +1724,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_spiu_plus(r)")')
    Endif
-       ElseIf(Trim(selec).Eq.'Cs_RO_tspg_plus')Then   
+       ElseIf(Trim(selec).Eq.'Cs_RO_tspg_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1734,7 +1734,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tspg_plus(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tpig_plus')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tpig_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1744,7 +1744,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tpig_plus(r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'Cs_RO_tpiu_plus')Then   
+     ElseIf(Trim(selec).Eq.'Cs_RO_tpiu_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1754,7 +1754,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tpiu_plus(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_sspg_plus_plus')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_sspg_plus_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1764,7 +1764,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_sspg_plus_plus(r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_RO_tspu_plus_plus')Then   
+    ElseIf(Trim(selec).Eq.'Cs_RO_tspu_plus_plus')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1774,7 +1774,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Cs_RO_tspu_plus_plus(r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Na2_veffect')Then   
+   ElseIf(Trim(selec).Eq.'Na2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1784,7 +1784,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_veffect (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'K2_veffect')Then   
+    ElseIf(Trim(selec).Eq.'K2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1794,7 +1794,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_K2_veffect (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Rb2_veffect')Then   
+    ElseIf(Trim(selec).Eq.'Rb2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1804,7 +1804,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Rb2_veffect (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs2_veffect')Then   
+    ElseIf(Trim(selec).Eq.'Cs2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1814,7 +1814,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Cs2_veffect (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'der_Na2_veffect')Then   
+   ElseIf(Trim(selec).Eq.'der_Na2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1824,7 +1824,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Na2_veffect (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'der_K2_veffect')Then   
+   ElseIf(Trim(selec).Eq.'der_K2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1834,7 +1834,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_K2_veffect (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'der_Rb2_veffect')Then   
+   ElseIf(Trim(selec).Eq.'der_Rb2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1844,7 +1844,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Rb2_veffect (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'der_Cs2_veffect')Then   
+   ElseIf(Trim(selec).Eq.'der_Cs2_veffect')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1854,7 +1854,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_veffect (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Na2_sspg')Then   
+   ElseIf(Trim(selec).Eq.'Na2_sspg')Then
    If(r.lt.1.44695d0)Then
      Select_pot = 61777.7d0 !! umax at rcutoff
    Else
@@ -1864,7 +1864,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_sspg  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Na2_tspu')Then   
+   ElseIf(Trim(selec).Eq.'Na2_tspu')Then
    If(r.lt.1.76217d0)Then
      Select_pot = 39192.2d0 !! umax at rcutoff
    Else
@@ -1874,8 +1874,8 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a V_Na2_tspu  (r)")')
   Endif
-   
-   ElseIf(Trim(selec).Eq.'Na2_sspg_sp ')Then   
+
+   ElseIf(Trim(selec).Eq.'Na2_sspg_sp ')Then
    If(r.lt.1.56018d0)Then
      Select_pot = 82182.6d0 !! umax at rcutoff
    Else
@@ -1885,8 +1885,8 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_sspg_sp  (r)")')
    Endif
-  
-   ElseIf(Trim(selec).Eq.'Na2_sspu_sp ')Then   
+
+   ElseIf(Trim(selec).Eq.'Na2_sspu_sp ')Then
    If(r.lt.1.57797d0)Then
      Select_pot = 69777.7d0 !! umax at rcutoff
    Else
@@ -1896,8 +1896,8 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_sspu_sp  (r)")')
    Endif
-  
-     ElseIf(Trim(selec).Eq.'Na2_spig_sp ')Then   
+
+     ElseIf(Trim(selec).Eq.'Na2_spig_sp ')Then
    If(r.lt.1.79258d0)Then
      Select_pot = 59549.7d0  !! umax at rcutoff
    Else
@@ -1908,7 +1908,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("Hem trucat a  V_Na2_spig_sp  (r)")')
    Endif
 
-    ElseIf(Trim(selec).Eq.'Na2_spiu_sp ')Then   
+    ElseIf(Trim(selec).Eq.'Na2_spiu_sp ')Then
    If(r.lt.1.69004d0)Then
      Select_pot = 60091.6d0 !! umax at rcutoff
    Else
@@ -1919,7 +1919,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("Hem trucat a  V_Na2_spiu_sp  (r)")')
    Endif
 
-    ElseIf(Trim(selec).Eq.'Na2_tspg_sp ')Then   
+    ElseIf(Trim(selec).Eq.'Na2_tspg_sp ')Then
    If(r.lt.1.79030d0)Then
      Select_pot = 57229d0 !! umax at rcutoff
    Else
@@ -1931,7 +1931,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
    Endif
 
 
-      ElseIf(Trim(selec).Eq.'Na2_tspu_sp ')Then   
+      ElseIf(Trim(selec).Eq.'Na2_tspu_sp ')Then
    If(r.lt.1.65024d0)Then
      Select_pot = 79866.2d0 !! umax at rcutoff
    Else
@@ -1943,7 +1943,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
    Endif
 
 
-      ElseIf(Trim(selec).Eq.'Na2_tpig_sp ')Then   
+      ElseIf(Trim(selec).Eq.'Na2_tpig_sp ')Then
    If(r.lt.1.71135d0)Then
      Select_pot = 70001.5d0 !! umax at rcutoff
    Else
@@ -1955,7 +1955,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
    Endif
 
 
-       ElseIf(Trim(selec).Eq.'Na2_tpiu_sp ')Then   
+       ElseIf(Trim(selec).Eq.'Na2_tpiu_sp ')Then
    If(r.lt.1.65223d0)Then
      Select_pot = 48618.8d0 !! umax at rcutoff
    Else
@@ -1965,7 +1965,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_tpiu_sp  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Li2_plus_ion')Then   
+   ElseIf(Trim(selec).Eq.'Li2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1975,7 +1975,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Li2_plus_ion  (r)")')
    Endif
-  ElseIf(Trim(selec).Eq.'Na2_plus_ion')Then   
+  ElseIf(Trim(selec).Eq.'Na2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1985,7 +1985,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Na2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'K2_plus_ion')Then   
+   ElseIf(Trim(selec).Eq.'K2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -1995,7 +1995,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_K2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Rb2_plus_ion')Then   
+   ElseIf(Trim(selec).Eq.'Rb2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2005,7 +2005,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Rb2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'Cs2_plus_ion')Then   
+   ElseIf(Trim(selec).Eq.'Cs2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2015,7 +2015,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_Cs2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'der_Li2_plus_ion')Then   
+    ElseIf(Trim(selec).Eq.'der_Li2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2025,7 +2025,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Li2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'der_Na2_plus_ion')Then   
+    ElseIf(Trim(selec).Eq.'der_Na2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2035,7 +2035,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Na2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'der_K2_plus_ion')Then   
+    ElseIf(Trim(selec).Eq.'der_K2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2045,7 +2045,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_K2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'der_Rb2_plus_ion')Then   
+    ElseIf(Trim(selec).Eq.'der_Rb2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2055,7 +2055,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Rb2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'der_Cs2_plus_ion')Then   
+    ElseIf(Trim(selec).Eq.'der_Cs2_plus_ion')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2065,7 +2065,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Na_plus_Saldan')Then   
+    ElseIf(Trim(selec).Eq.'Na_plus_Saldan')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2075,7 +2075,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Cs_plus_Tudela')Then   
+    ElseIf(Trim(selec).Eq.'Cs_plus_Tudela')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2085,7 +2085,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-    ElseIf(Trim(selec).Eq.'Li_plus_Rastogi')Then   
+    ElseIf(Trim(selec).Eq.'Li_plus_Rastogi')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2095,7 +2095,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-      ElseIf(Trim(selec).Eq.'K_plus_Viehland')Then   
+      ElseIf(Trim(selec).Eq.'K_plus_Viehland')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2105,7 +2105,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'He_Hg_gs')Then   
+   ElseIf(Trim(selec).Eq.'He_Hg_gs')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2115,7 +2115,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'He_Xe_gs')Then   
+   ElseIf(Trim(selec).Eq.'He_Xe_gs')Then
     If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2125,7 +2125,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-   ElseIf(Trim(selec).Eq.'He_Xe_plus_gs')Then   
+   ElseIf(Trim(selec).Eq.'He_Xe_plus_gs')Then
     If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2135,7 +2135,7 @@ ElseIf(Trim(selec).Eq.'Cs_Cs')Then
      Write(6,'("selec....:",A80)')selec
      Write(6,'("Hem trucat a  V_der_Cs2_plus_ion  (r)")')
    Endif
-     ElseIf(Trim(selec).Eq.'He_Hgplus_gs')Then   
+     ElseIf(Trim(selec).Eq.'He_Hgplus_gs')Then
    If(r.lt.r_cutoff)Then
      Select_pot = umax
    Else
@@ -2394,7 +2394,7 @@ return
 contains
 
 !....................................................................
-!. Function fac 
+!. Function fac
 !....................................................................
 
 ! Small version of factorial
@@ -2412,7 +2412,7 @@ end function fac
 end function V_alka
 
 
-! Everything in Angstrom Kelvin 
+! Everything in Angstrom Kelvin
 
 function V_Ba_gs(x)
 !..........................................................!
@@ -2446,7 +2446,7 @@ Data Pg/                           &
   47482174965.3049172156448636792347Q0, -519244658310.373320149026960630547Q0,  3776794752968.39098091679878465104Q0,  &
  -18931184609496.2743530917730707405Q0,  66467512849641.5867602022345173376Q0, -163349259737503.439380947298152502Q0,  &
   275471652871895.368050105366543138Q0, -303799513108731.163572027673779711Q0,  197342887711895.715873097734435815Q0,  &
- -57247315878299.6181404889603871296Q0/ 
+ -57247315878299.6181404889603871296Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 2.3097950000000001D+04/
 Data r0/ 2.0000000000000000D+00/
@@ -2493,7 +2493,7 @@ Data Pg/                           &
   1725318458.71278993648593521565983Q0, -19436563702.5972378924691700268134Q0,  135815448941.441168085385272965158Q0,  &
  -614470726947.401636604960682655298Q0,  1813794100230.25415271043202962245Q0, -3408845825677.80602502264479414645Q0,  &
   3767306350864.97856677416953497814Q0, -1870543050026.55759258430089080476Q0, -263830499030.803962487458419711050Q0,  &
-  490468253633.822352576865392543355Q0/ 
+  490468253633.822352576865392543355Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 8.9667530000000006D+03/
 Data r0/ 2.0000000000000000D+00/
@@ -2536,7 +2536,7 @@ Data Pg/                           &
   509815799.148361882435180461889140Q0, -5103275255.84719311793286237036308Q0,  24347543963.7285486850837178167031Q0,  &
  -22098022739.0755793944143793174099Q0, -371505231363.903388585217865272476Q0,  2188591221460.46490291662922516704Q0,  &
  -6008459393013.55312031551791210851Q0,  9242835510174.84636285804976040549Q0, -7681295358440.52888750989831902749Q0,  &
-  2696390604822.62910359945307774040Q0/ 
+  2696390604822.62910359945307774040Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 1.1687330000000000D+04/
 Data r0/ 2.0000000000000000D+00/
@@ -2581,7 +2581,7 @@ Data Pg/                           &
   34487035482.8661381911727426332743Q0, -312315418217.722824241631231266832Q0,  1837177830634.86715823984693486481Q0,  &
  -7222749564186.92692954840041234856Q0,  19113448483679.6067074196915946358Q0, -33537885793985.8415962556220185604Q0,  &
   37188922413954.1348677597526953193Q0, -23134511849820.2719590286530591524Q0,  5477820267454.80225927552742559374Q0,  &
-  657017642818.351074515977126633909Q0/ 
+  657017642818.351074515977126633909Q0/
 Data rcutoff/ 1.0000000000000000D+00/
 Data fcutoff/ 2.7557869999999999D+04/
 Data r0/ 2.0000000000000000D+00/
@@ -2626,7 +2626,7 @@ Data Pg/                           &
   1903942512.84206481338934071885394Q0, -30134081435.0207804471353184171407Q0,  340887729307.024694401976841468399Q0,  &
  -2749060057173.10100779144500705256Q0,  15421639364129.7422511135464734090Q0, -58747373560398.8645333932507612952Q0,  &
   147892600745628.790351767793542405Q0, -234781354096552.082032333269632683Q0,  212676835684307.885943839636875957Q0,  &
- -83791034270656.6190293274527463146Q0/ 
+ -83791034270656.6190293274527463146Q0/
 Data rcutoff/ 1.0000000000000000D+00/
 Data fcutoff/ 6.9240280000000002D+03/
 Data r0/ 2.3999999999999999D+00/
@@ -2706,7 +2706,7 @@ Data Pg/                           &
  -486504109.501964824574972292520630Q0,  10201523709.2410213874782756339362Q0, -115537603753.397220352368797609468Q0,  &
   811129915505.566723750323994437416Q0, -3741881843963.65413253722118668059Q0,  11556765251738.7569992644472524436Q0,  &
  -23666525048784.0598736494386530051Q0,  30832393059680.8435265222087894345Q0, -23137225457502.0957616538305554638Q0,  &
-  7615700353700.85986113395012178657Q0/ 
+  7615700353700.85986113395012178657Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 7.953992E+03/
 Data r0/ 2.1250000000000000D+00/
@@ -2751,7 +2751,7 @@ Data Pg/                           &
   1248284301.42647870704024354840855Q0, -13069642195.0685028205930753960471Q0,  83381807453.7017144683188590909548Q0,  &
  -330934385581.979371931451499683451Q0,  772746327472.086796494677428176487Q0, -781686189760.313352024174457834920Q0,  &
  -739084882072.026661092648940188249Q0,  3162914410401.90196849006392816034Q0, -3570205775497.43736747130271625283Q0,  &
-  1460004701781.63332377962082886275Q0/ 
+  1460004701781.63332377962082886275Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 1.0377790000000001D+04/
 Data r0/ 2.0000000000000000D+00/
@@ -2798,7 +2798,7 @@ Data Pg/                           &
   101026984958.806322366443362695122Q0, -1156732968598.98543549109440671187Q0,  8665994393409.78419887735371608207Q0,  &
  -43862571678823.8062435100392360317Q0,  152374645410796.393876923253474426Q0, -363469581548844.057191969295126660Q0,  &
   584580735231448.559942865666177553Q0, -605026417604047.637639655063714044Q0,  363284554181176.601081977921602535Q0,  &
- -95975010650140.9085581326839809273Q0/ 
+ -95975010650140.9085581326839809273Q0/
 Data rcutoff/ 1.5000000000000000D+00/
 Data fcutoff/ 2.2626640000000000D+07/
 Data r0/ 1.0000000000000000D+00/
@@ -2845,7 +2845,7 @@ Data Pg/                           &
   71971618157.3904453097848751064117Q0, -1705493726202.32479039775818481073Q0,  25631441812788.7446995165917324296Q0,  &
  -257596356972754.910546506340985159Q0,  1771762993803105.76996486810206154Q0, -8363689636005407.15424774634164701Q0,  &
   26640527998718191.1824700127470625Q0, -54721138485295325.7984174767437262Q0,  65456519239493414.9665950639016363Q0,  &
- -34651280867863688.9220625829424204Q0/ 
+ -34651280867863688.9220625829424204Q0/
 Data rcutoff/ 1.0000000000000000D+00/
 Data fcutoff/ 2.0907770000000000D+04/
 Data r0/ 3.5000000000000000D+00/
@@ -2878,7 +2878,7 @@ EndDo
 V_Ba_plus_sigma_fixC4=Sto
 Return
 End
-  Block Data Inicio_AP_Fit_APG_Cs_7s0                                                                  
+  Block Data Inicio_AP_Fit_APG_Cs_7s0
       Implicit Real*8(A-H,O-Z)
       Parameter(Npg=12)
       Common/Param_AP_Fit_APG_Cs_7s0/r0,aa,bb,cc,Pg(Npg),Ps(Npg)
@@ -2908,7 +2908,7 @@ End
         x=x0
       Else
          x=xx
-      Endif   
+      Endif
       If(x.le.r0)Then
         V_Cs_7s=aa*x**2+bb*x+cc
         Return
@@ -2951,7 +2951,7 @@ End
 
       CC4 = C4 + a_d/2.0d0; CC6 = C6 + a_q/2.0d0; CC8 =C8 + a_o/2.0d0
       x=xx/a_bohr  ! Transformem els Angs en unitats at�miques de llongitut
-      Rs=x/rho     
+      Rs=x/rho
       V_ex=v_0*(A*Dexp(-a_a*Rs) - B*Dexp(-b_b*Rs))
       Aux=R_m*1.28d0
       If(x.Ge.Aux)Then
@@ -2998,7 +2998,7 @@ End
 
       CC4 = C4 + a_d/2.0d0; CC6 = C6 + a_q/2.0d0; CC8 =C8 + a_o/2.0d0
       x=xx/a_bohr  ! Transformem els Angs en unitats at�miques de llongitut
-      Rs=x/rho     
+      Rs=x/rho
       V_ex=v_0*(A*Dexp(-a_a*Rs) - B*Dexp(-b_b*Rs))
       Aux=R_m*1.28d0
       If(x.Ge.Aux)Then
@@ -3014,7 +3014,7 @@ End
       Endif
       V_Koutselos_Li_plus_gs=Sto*Hartree*eV_k
       End Function V_Koutselos_Li_plus_gs
-      
+
       Double Precision Function V_Koutselos_Na_plus_gs(xx)
 !
 !                     xx: Entrada en Angs.
@@ -3045,7 +3045,7 @@ End
 
       CC4 = C4 + a_d/2.0d0; CC6 = C6 + a_q/2.0d0; CC8 =C8 + a_o/2.0d0
       x=xx/a_bohr  ! Transformem els Angs en unitats at�miques de llongitut
-      Rs=x/rho     
+      Rs=x/rho
       V_ex=v_0*(A*Dexp(-a_a*Rs) - B*Dexp(-b_b*Rs))
       Aux=R_m*1.28d0
       If(x.Ge.Aux)Then
@@ -3089,7 +3089,7 @@ End
 
       CC4 = C4 + a_d/2.0d0; CC6 = C6 + a_q/2.0d0; CC8 =C8 + a_o/2.0d0
       x=xx/a_bohr  ! Transformem els Angs en unitats at�miques de llongitut
-      Rs=x/rho     
+      Rs=x/rho
       V_ex=v_0*(A*Dexp(-a_a*Rs) - B*Dexp(-b_b*Rs))
       Aux=R_m*1.28d0
       If(x.Ge.Aux)Then
@@ -3133,7 +3133,7 @@ End
 
       CC4 = C4 + a_d/2.0d0; CC6 = C6 + a_q/2.0d0; CC8 =C8 + a_o/2.0d0
       x=xx/a_bohr  ! Transformem els Angs en unitats at�miques de llongitut
-      Rs=x/rho     
+      Rs=x/rho
       V_ex=v_0*(A*Dexp(-a_a*Rs) - B*Dexp(-b_b*Rs))
       Aux=R_m*1.28d0
       If(x.Ge.Aux)Then
@@ -3274,7 +3274,7 @@ Data Pg/                           &
   38854872489697.0224741123416213730Q0, -535664068036490.962168104702289226Q0,  5175823532151103.79719017070590004Q0,  &
  -36081508593491482.7030173645408564Q0,  183930078114942817.654215375874979Q0, -686481003395905469.369448400855558Q0,  &
   1855128368497788766.28473667982076Q0, -3532497504702993458.11254607147916Q0,  4493344993463040582.19605074943107Q0,  &
- -3425510460926691233.35152150484476Q0,  1183127973060179869.81759271465610Q0/ 
+ -3425510460926691233.35152150484476Q0,  1183127973060179869.81759271465610Q0/
 Data rcutoff/ 2.7500000000000000D+00/
 Data fcutoff/ 2.1223260000000000D+03/
 Data r0/ 2.5000000000000000D+00/
@@ -3321,7 +3321,7 @@ Data Pg/                           &
  -68037224947910.0508055503708771544Q0,  948500179815737.587517335900477079Q0, -9034983578856463.08414720204540198Q0,  &
   60838778286068358.5669137120545770Q0, -294962476058276873.288394571504344Q0,  1035102455473919644.13005948263137Q0,  &
  -2608241792508316463.19876570809066Q0,  4603440277322316076.27999884747413Q0, -5404901585348550051.78209124683525Q0,  &
-  3792737249528805624.44606122782020Q0, -1203728882114200188.77827500640065Q0/ 
+  3792737249528805624.44606122782020Q0, -1203728882114200188.77827500640065Q0/
 Data rcutoff/ 2.6000000000000001D+00/
 Data fcutoff/ 2.3170690000000000D+03/
 Data r0/ 2.5000000000000000D+00/
@@ -3368,7 +3368,7 @@ Data Pg/                           &
   160947890567832.110284939811381405Q0, -3494992921526184.29345177011789542Q0,  43853249263146779.6148549547055530Q0,  &
  -362634101182696589.346055675040595Q0,  2082630471929281529.33806179721184Q0, -8475927125141034661.39181490017403Q0,  &
   24430137804313288176.7891778391113Q0, -48844600104781726185.3454398788720Q0,  64493166634665917457.9924699139579Q0,  &
- -50603788390020951995.5383689991595Q0,  17874696930230973941.5742344069639Q0/ 
+ -50603788390020951995.5383689991595Q0,  17874696930230973941.5742344069639Q0/
 Data rcutoff/ 2.8999999999999999D+00/
 Data fcutoff/ 1.3262239999999999D+03/
 Data r0/ 2.7000000000000002D+00/
@@ -3415,7 +3415,7 @@ Data Pg/                           &
   757625158504.461142433946867564510Q0, -8235739328760.26112437184337510191Q0,  62619687246020.4804186731767136627Q0,  &
  -342217765797573.666436871785982512Q0,  1361896256113801.28031727108845724Q0, -3953071532136512.29016059435905051Q0,  &
   8282683882411200.31626276523433664Q0, -12202657183519187.5983436477674604Q0,  11995345991890722.2461560807048455Q0,  &
- -7064895065092973.46664535404252966Q0,  1885957227405596.86900447464232992Q0/ 
+ -7064895065092973.46664535404252966Q0,  1885957227405596.86900447464232992Q0/
 Data rcutoff/ 2.3999999999999999D+00/
 Data fcutoff/ 2.6430850000000000D+03/
 Data r0/ 2.1000000000000001D+00/
@@ -3462,7 +3462,7 @@ Data Pg/                           &
  -626736755694.868731078365328255351Q0,  8889903709250.47980290206377580454Q0, -98809797408403.8989098633620172560Q0,  &
   838535230285386.179156473882388379Q0, -5250871933035878.90801737880175866Q0,  23702922123542559.7263712283775712Q0,  &
  -75653235518269118.4852893687161765Q0,  166080556623113322.510632192031701Q0, -238324245940614178.157128370536680Q0,  &
-  201208460378793600.224928931873042Q0, -75780945879534690.8963660066902431Q0/ 
+  201208460378793600.224928931873042Q0, -75780945879534690.8963660066902431Q0/
 Data rcutoff/ 2.7500000000000000D+00/
 Data fcutoff/ 1.7084310000000000D+03/
 Data r0/ 2.5000000000000000D+00/
@@ -3509,7 +3509,7 @@ Data Pg/                           &
  -45968257647250.0207867967385818922Q0,  614701763499008.868032004191219577Q0, -5618036039629895.48401381180406123Q0,  &
   36301923962954331.4203297556619919Q0, -168897353040772297.040299997362214Q0,  568755905574416789.719347690523984Q0,  &
  -1375110600761493082.00782733743110Q0,  2328499818364179948.01741052654689Q0, -2622699174021865946.26117767851036Q0,  &
-  1765450061925162442.37646295715979Q0, -537479750788251198.126286046944468Q0/ 
+  1765450061925162442.37646295715979Q0, -537479750788251198.126286046944468Q0/
 Data rcutoff/ 2.3999999999999999D+00/
 Data fcutoff/ 3.3863560000000002D+03/
 Data r0/ 2.3999999999999999D+00/
@@ -3556,7 +3556,7 @@ Data Pg/                           &
  -628459250285.123546375190971037063Q0,  6849776778387.97809323521638065669Q0, -52146078017554.2500446984422353406Q0,  &
   285792287469017.676532214877262703Q0, -1143063591357831.95828165866077991Q0,  3339589997615048.00774407054849081Q0,  &
  -7045930377343015.98657569250566483Q0,  10445469637201842.5898884645426793Q0, -10315641071334019.0899871943233809Q0,  &
-  6090035673546989.48603755367194306Q0, -1625247766723261.80485107267140556Q0/ 
+  6090035673546989.48603755367194306Q0, -1625247766723261.80485107267140556Q0/
 Data rcutoff/ 2.2000000000000002D+00/
 Data fcutoff/ 2.7312600000000002D+03/
 Data r0/ 1.0000000000000000D+00/
@@ -3603,7 +3603,7 @@ Data Pg/                           &
   7286963557.49977496017331947024218Q0, -67050629086.2414609732865947739718Q0,  423545364741.341210425847019599572Q0,  &
  -1884804263958.89912314686654731090Q0,  5961212677076.96608868548002263051Q0, -13327238149555.0874553559671429585Q0,  &
   20600169905046.3280051663330937625Q0, -20966862545953.0513329124868195299Q0,  12657369730747.1509804505111593368Q0,  &
- -3437256517661.33873687152088791033Q0/ 
+ -3437256517661.33873687152088791033Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 6.9130180000000000D+03/
 Data r0/ 2.1000000000000001D+00/
@@ -3648,7 +3648,7 @@ Data Pg/                           &
   314957742848247.648994876344500017Q0, -4375394053042189.01319139625006427Q0,  42025746888366128.5201928564392822Q0,  &
  -288764135760081719.682880070083058Q0,  1443952790541320699.20726573664655Q0, -5274837452555578768.65696176481809Q0,  &
   13946175032217141852.1624775870371Q0, -26003985198509507719.3486720078825Q0,  32447777154760679012.5074313031215Q0,  &
- -24326312738770487365.6660811096881Q0,  8287435576981232747.15789107114440Q0/ 
+ -24326312738770487365.6660811096881Q0,  8287435576981232747.15789107114440Q0/
 Data rcutoff/ 3.0000000000000000D+00/
 Data fcutoff/ 2.5755680000000002D+03/
 Data r0/ 2.8999999999999999D+00/
@@ -3739,7 +3739,7 @@ IMPLICIT REAL*8(A-H,O-Z)
 Data cmm1toK/1.4387770d0/
 Data de/95.9583d0/,alpha/1.47089d0/,ze/4.22534d0/
 Data z0/4.77765d0/,c3/8.85163d0/, aa/1.06161d0/
-vz= de*(1-dexp(-alpha*(z-ze)))**2-de 
+vz= de*(1-dexp(-alpha*(z-ze)))**2-de
 vzd= - 0.5d0 * (1.d0 + dtanh ((z-z0)/aa)*c3*(c3/z)**3)
 V_TiO2=(vz+vzd)*cmm1toK
 return
@@ -3811,7 +3811,7 @@ Data Pg/                           &
  -567844642080.136519610799404824244Q0,  4746308391191.44071750176385675985Q0, -10143616872740.8356624374938660844Q0,  &
   14089430994274.8504311602782253396Q0, -14374323621667.8460913194491051522Q0,  11078725941332.5159330085651217405Q0,  &
  -6402732017618.46278859102735729547Q0,  2688141511623.61334745699379906995Q0, -771949591132.651962769099634129229Q0,  &
-  135129364439.500429837521587722877Q0, -10838377535.0308515558156365736038Q0/ 
+  135129364439.500429837521587722877Q0, -10838377535.0308515558156365736038Q0/
 Data rcutoff/ 1.0000000000000000D+00/
 Data fcutoff/ 6.5305870000000003D+04/
 Data r0/ 5.0000000000000000D-01/
@@ -3859,7 +3859,7 @@ Data Pg/                           &
  -11626907744717667292.0430483506713Q0,  85342874325414564884.2727262312123Q0, -479206558620624734149.448129236565Q0,  &
   2079235750526732316320.70782350523Q0, -6995096564286351837337.16158701126Q0,  18191735476673693147864.7261298775Q0,  &
  -36198334606432096939869.4997435395Q0,  54039097780171191560513.9501513440Q0, -58516086287882353120407.4077308311Q0,  &
-  43341928857121805849873.8181966873Q0, -19613221630184108600706.5386003175Q0,  4082648274688574570356.65959774196Q0/ 
+  43341928857121805849873.8181966873Q0, -19613221630184108600706.5386003175Q0,  4082648274688574570356.65959774196Q0/
 Data rcutoff/ 2.3500000000000001D+00/
 Data fcutoff/ 2.2097469999999998D+03/
 Data r0/-3.2000000000000002D+00/
@@ -3907,7 +3907,7 @@ Data Pg/                           &
   393964578545592969.739990894637550Q0, -3176400344113005754.50295649136964Q0,  19540934127522939346.8829848452431Q0,  &
  -92640862627641172344.0073533069276Q0,  339664614593611552754.420694144245Q0, -960564218001611305059.888936433560Q0,  &
   2074959812887202322685.47117302676Q0, -3359492547653334985410.92994317689Q0,  3944818157081899283205.45238007755Q0,  &
- -3171181660093470107341.15793633147Q0,  1560672268303756719160.88518302906Q0, -354536702973118696499.223764295971Q0/ 
+ -3171181660093470107341.15793633147Q0,  1560672268303756719160.88518302906Q0, -354536702973118696499.223764295971Q0/
 Data rcutoff/ 2.1499999999999999D+00/
 Data fcutoff/ 3.0895619999999999D+03/
 Data r0/-3.2000000000000002D+00/
@@ -3952,7 +3952,7 @@ real      (kind=8) :: AA     = 124.3d0
 real      (kind=8) :: BB     = 2.153d0
 real      (kind=8) :: C6     = 9.538d0
 real      (kind=8) :: C8     = 167.5d0
-real      (kind=8) :: C10    = 3701.d0 
+real      (kind=8) :: C10    = 3701.d0
 real      (kind=8) :: rbohr  = 0.5292d0
 real      (kind=8) :: Hartree_to_K  = 27.21d0*11604.d0
 real (kind=8) :: r, rr, Stoe, Stor, F6, F8, F10, Sto, Aux
@@ -3965,7 +3965,7 @@ Save     :: Lfirst, Fact
 if(r.Le.r_cutoff)Then
   V_Ar_He = f_cutoff
   Return
-Endif        
+Endif
 If(Lfirst)Then
 !  Write(6,'("#Control per veure si nomes hi pasem una vegada")')
   Fact(0) = 1.d0; Fact(1) = 1.d0
@@ -3980,7 +3980,7 @@ c1or6 = c1or2*c1or2*c1or2
 Stor = bb*rr
 Stoe = Exp(-Stor)
 Sto  = 1.d0
-Aux = Stor 
+Aux = Stor
 Do i=1, 6
   Sto = Sto + Aux/Fact(i)
   Aux = Aux*Stor
@@ -4063,7 +4063,7 @@ Data Pg/                           &
  -16369756.1679657643374850977670248Q0,  358314586.951384914502183247424336Q0,  25272036141.5453163057909074234291Q0,  &
  -1211017031542.79911725659637667590Q0,  21309419454172.0588581060167965039Q0, -197508142095030.863285799109515175Q0,  &
   1082206330864640.68613317062793854Q0, -3643715772086083.49000422254676492Q0,  7432352868423233.80679404088747201Q0,  &
- -8450047598780025.77211999338779863Q0,  4117216576621054.92026930080355380Q0/ 
+ -8450047598780025.77211999338779863Q0,  4117216576621054.92026930080355380Q0/
 Data rcutoff/ 3.1750600000000002D+00/
 Data fcutoff/ 2.7347030000000000D+03/
 Data r0/ 2.5000000000000000D+00/
@@ -4109,7 +4109,7 @@ Data Pg/                           &
  -8741753.92488395686001702665966285Q0,  486176414.868784278332186303239805Q0, -11591463068.8021123878989034988742Q0,  &
   148126647810.351946447172854810821Q0, -1164177194524.65854784396663864098Q0,  5992071282192.61641098759405074505Q0,  &
  -20640521486966.5879282525969265615Q0,  47219174940119.0277918081596800239Q0, -68878071746805.1901021018758721574Q0,  &
-  57983399307116.7535300990213004201Q0, -21431560362273.3380432160483734331Q0/ 
+  57983399307116.7535300990213004201Q0, -21431560362273.3380432160483734331Q0/
 Data rcutoff/ 2.1167099999999999D+00/
 Data fcutoff/ 4.8593370000000004D+03/
 Data r0/ 2.0000000000000000D+00/
@@ -4157,7 +4157,7 @@ Data Pg/                           &
  -17090582433391375124.6575563934023Q0,  125655099724694531869.495505442861Q0, -706879748387175611849.223558587160Q0,  &
   3073458276584230945887.87133405050Q0, -10363697041788686021395.9401520884Q0,  27020880156532784314594.6844200979Q0,  &
  -53918859334910322896215.0051685128Q0,  80747814635804792925159.0352864619Q0, -87748853076398042247783.7300727085Q0,  &
-  65257436010976109146648.5575394867Q0, -29668229502584876388311.8179117254Q0,  6209323876594826013383.91461241976Q0/ 
+  65257436010976109146648.5575394867Q0, -29668229502584876388311.8179117254Q0,  6209323876594826013383.91461241976Q0/
 Data rcutoff/ 2.3500000000000001D+00/
 Data fcutoff/ 3.0013080000000000D+03/
 Data r0/-3.2000000000000002D+00/
@@ -4205,7 +4205,7 @@ Data Pg/                           &
   621277997758149591.165075250840335Q0, -4971929235445194262.19280905259923Q0,  30392879922429262840.1034288721564Q0,  &
  -143297441127511031342.841171428469Q0,  522870652282050925787.809971272961Q0, -1472390377555816831804.88187901110Q0,  &
   3168561475038540774092.35836032836Q0, -5112734757976406776681.55293208016Q0,  5985212425925539459439.17268289123Q0,  &
- -4798131130638083481859.59074371543Q0,  2355427891789631538140.18011927531Q0, -533852506199621938645.045228250685Q0/ 
+ -4798131130638083481859.59074371543Q0,  2355427891789631538140.18011927531Q0, -533852506199621938645.045228250685Q0/
 Data rcutoff/ 2.1499999999999999D+00/
 Data fcutoff/ 4.4447330000000002D+03/
 Data r0/-3.2000000000000002D+00/
@@ -4251,7 +4251,7 @@ Data Pg/                           &
  -84641112.1038843174868366388591186Q0,  5501813411.89974475880756271682097Q0, -158511366392.752661259845175521651Q0,  &
   2656659334094.79191838532512036583Q0, -28623286583317.0595767811072611642Q0,  206395570574320.545052095736748454Q0,  &
  -1005349880685171.95006561484544998Q0,  3261504889875669.31289981948240792Q0, -6745427649591000.99921588607933893Q0,  &
-  8040867895208215.67859457559937689Q0, -4202197034021318.61309730280594230Q0/ 
+  8040867895208215.67859457559937689Q0, -4202197034021318.61309730280594230Q0/
 Data rcutoff/ 3.1750200000000000D+00/
 Data fcutoff/ 5.8000649999999996D+02/
 Data r0/ 0.0000000000000000D+00/
@@ -4285,22 +4285,22 @@ V_He2s_fci=Sto
 Return
 End
 !
-!     Potential Au/Graphene (hollow) with Vz in K  and z in Angs. 
+!     Potential Au/Graphene (hollow) with Vz in K  and z in Angs.
 !
-Double Precision Function Au_Graphene(z)     
+Double Precision Function Au_Graphene(z)
 Implicit Double Precision (a-h,o-z)
-Data xmeV_To_K/11.604448d0/, A/448058.D0/, beta/2.12336D0/, C4/83077.3D0/      
+Data xmeV_To_K/11.604448d0/, A/448058.D0/, beta/2.12336D0/, C4/83077.3D0/
 Au_Graphene=(A*dexp(-beta*z) - C4/z**4)*xmeV_To_K
-Return      
+Return
 End
 !
-!     Gradiente del potential Au/Graphene (hollow) with dz_Vz in K  and Z in Angs. 
+!     Gradiente del potential Au/Graphene (hollow) with dz_Vz in K  and Z in Angs.
 !
-Double Precision Function dz_Au_Graphene(z)     
+Double Precision Function dz_Au_Graphene(z)
 Implicit Double Precision (a-h,o-z)
-Data xmeV_To_K/11.604448d0/, A/448058.D0/, beta/2.12336D0/, C4/83077.3D0/      
+Data xmeV_To_K/11.604448d0/, A/448058.D0/, beta/2.12336D0/, C4/83077.3D0/
 dz_Au_Graphene=(-A*beta*dexp(-beta*z) + 4.d0*C4/z**5)*xmeV_To_K
-Return      
+Return
 End
 !
 ! Function for He-He+ potential, from Jussi Eloranta (6/6/2016)
@@ -4317,7 +4317,7 @@ Data Pg/                           &
   66544986310.3971244712772558577499Q0, -230023812497.692645654143106555337Q0,  540723165541.193441108405864043649Q0,  &
  -908192814328.760315407843038697665Q0,  1115091165095.81869466120443671210Q0, -1006768340907.62729321655030853465Q0,  &
   662532608654.360730944885641242397Q0, -309620499229.935417801050724076383Q0,  97461010879.4325864938071757129741Q0,  &
- -18542204834.6544171733101740365183Q0,  1611683836.74445477113707981227279Q0/ 
+ -18542204834.6544171733101740365183Q0,  1611683836.74445477113707981227279Q0/
 Data rcutoff/ 5.2917700000000001D-01/
 Data fcutoff/ 1.1804110000000001D+04/
 Data r0/ 7.3999999999999999D-01/
@@ -4352,7 +4352,7 @@ Return
 End
 !
 !  Potencial de la molecula CH3I con lambda=0
-! 
+!
 double precision function V_CH3I_0(r)
 implicit none
 Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0,  umax=3.1648655845d3
@@ -4362,15 +4362,15 @@ Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0,  umax=3.1648655845d3
       Real  (Kind=8)  :: a_bohr=0.529177d0, Hartree=27.2114d0, eV_K=11604.448d0
 If(r.Le.r_cutoff)Then
   V_CH3I_0 = Umax
-Else      
-  r_au     = r/a_bohr      
+Else
+  r_au     = r/a_bohr
   V_CH3I_0 = Radpot(0,r_au)*Hartree*eV_K
 EndIf
 Return
 end function
 !
 !  Potencial de la molecula CH3I con lambda=1
-! 
+!
 double precision function V_CH3I_1(r)
 implicit none
 Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6, umax=-5.1115736616d3
@@ -4380,15 +4380,15 @@ Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6, umax=-5.1115736616d3
       Real  (Kind=8)  :: a_bohr=0.529177d0, Hartree=27.2114d0, eV_K=11604.448d0
 If(r.Le.r_cutoff)Then
   V_CH3I_1 = Umax
-Else      
-  r_au     = r/a_bohr      
+Else
+  r_au     = r/a_bohr
   V_CH3I_1 = Radpot(1,r_au)*Hartree*eV_K
 EndIf
 Return
 end function
 !
 !  Potencial de la molecula CH3I con lambda=2
-! 
+!
 double precision function V_CH3I_2(r)
 implicit none
 Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0, umax=5.5581502684d3
@@ -4398,15 +4398,15 @@ Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0, umax=5.5581502684d3
       Real  (Kind=8)  :: a_bohr=0.529177d0, Hartree=27.2114d0, eV_K=11604.448d0
 If(r.Le.r_cutoff)Then
   V_CH3I_2 = Umax
-Else      
-  r_au     = r/a_bohr      
+Else
+  r_au     = r/a_bohr
   V_CH3I_2 = Radpot(2,r_au)*Hartree*eV_K
 EndIf
 Return
 end function
 !
 !  Potencial de la molecula CH3I con lambda=3
-! 
+!
 double precision function V_CH3I_3(r)
 implicit none
 Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0, umax=-2.7398540818d3
@@ -4416,15 +4416,15 @@ Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6d0, umax=-2.7398540818d3
       Real  (Kind=8)  :: a_bohr=0.529177d0, Hartree=27.2114d0, eV_K=11604.448d0
 If(r.Le.r_cutoff)Then
   V_CH3I_3 = Umax
-Else      
-  r_au     = r/a_bohr      
+Else
+  r_au     = r/a_bohr
   V_CH3I_3 = Radpot(3,r_au)*Hartree*eV_K
 EndIf
 Return
 end function
 !
 !  Potencial de la molecula CH3I con lambda=4
-! 
+!
 double precision function V_CH3I_4(r)
 implicit none
 Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6, umax=2.4025334047d3
@@ -4434,8 +4434,8 @@ Real (kind=8) :: Radpot, r, r_au, r_cutoff=3.6, umax=2.4025334047d3
       Real  (Kind=8)  :: a_bohr=0.529177d0, Hartree=27.2114d0, eV_K=11604.448d0
 If(r.Le.r_cutoff)Then
   V_CH3I_4 = Umax
-Else      
-  r_au     = r/a_bohr      
+Else
+  r_au     = r/a_bohr
   V_CH3I_4 = Radpot(4,r_au)*Hartree*eV_K
 EndIf
 Return
@@ -4453,7 +4453,7 @@ end function
       real*8  d,b,c
 
 
-      select case (l) 
+      select case (l)
 
 !  fort.50 2:3
       case (0)
@@ -4492,7 +4492,7 @@ end function
 !     Morse function
       radpot=d*(1.d0-dexp(-b*(r-c)))**2-d
 
-      return 
+      return
       end
 !
 ! Function for He-K(4p_Sigma), From Pascale data potential
@@ -4509,7 +4509,7 @@ Data Pg/                           &
   8982444221608931.65773550693292715Q0, -40017473420474543.0863116482077444Q0,  127156098740259262.973889637297298Q0,  &
  -286289630234854071.709781745781639Q0,  443029672222162513.944773691873259Q0, -435778229290691161.879891464441776Q0,  &
   216297197302294980.110743898796384Q0, -1493759170257458.23144984879814468Q0,  3521195510768782.35743497581930372Q0,  &
- -105695005528937470.204215869914495Q0,  101576258377617829.001630054279239Q0, -30021724906855482.6250169475416685Q0/ 
+ -105695005528937470.204215869914495Q0,  101576258377617829.001630054279239Q0, -30021724906855482.6250169475416685Q0/
 Data rcutoff/ 2.2000000000000002D+00/
 Data fcutoff/ 5.4944210000000003D+03/
 Data r0/-2.0000000000000000D+00/
@@ -4557,7 +4557,7 @@ Data Pg/                           &
   688611363436857.181033088432509010Q0, -3659192698303041.57349366577052330Q0,  14504208321803535.5304968565259890Q0,  &
  -43002303720081040.5938560703278609Q0,  94613503021063793.2518086792502445Q0, -151026197668471021.305996587780281Q0,  &
   166277977852662387.539989377379199Q0, -110888302469029095.889154928172435Q0,  22770818008615233.2321789074210083Q0,  &
-  27284389361289459.6643521776459617Q0, -23355843002431104.0076310950131271Q0,  5879948233732488.71454983137084160Q0/ 
+  27284389361289459.6643521776459617Q0, -23355843002431104.0076310950131271Q0,  5879948233732488.71454983137084160Q0/
 Data rcutoff/ 1.8999999999999999D+00/
 Data fcutoff/ 5.3483040000000001D+03/
 Data r0/-2.0000000000000000D+00/
@@ -4606,7 +4606,7 @@ End
 ! -4098091530865115675119.54131140732Q0,  16712660424005787663159.1277264440Q0, -54228388406852069443691.0811371931Q0,  &
 !  139769338235053275092644.042876545Q0, -284264086314955716327432.688486366Q0,  450393287366663046416997.448177291Q0,  &
 ! -544150565669437497681315.135493803Q0,  484098752094243106107299.506791578Q0, -298854633397265157385967.162411014Q0,  &
-!  114324971752633317584036.132040739Q0, -20408914798270344038969.9560381946Q0/ 
+!  114324971752633317584036.132040739Q0, -20408914798270344038969.9560381946Q0/
 !Data rcutoff/ 2.0000000000000000D+00/
 !Data fcutoff/ 2.7298080000000000D+03/
 !Data r0/-2.0000000000000000D+00/
@@ -4704,7 +4704,7 @@ Data Pg/                           &
  -2383712935315990337409.86157129657Q0,  9903388137504520111389.34436541863Q0, -32614132404123601870878.9652482507Q0,  &
   85047981814704420869972.3572341441Q0, -174535601306065036127719.999618677Q0,  278400480074652198718256.087011167Q0,  &
  -337958051090618684547853.261359119Q0,  301590125879860950437663.888010620Q0, -186494245763497980212184.175837030Q0,  &
-  71375363687513215919486.0552441231Q0, -12734873402816982253348.4841107942Q0/ 
+  71375363687513215919486.0552441231Q0, -12734873402816982253348.4841107942Q0/
 Data rcutoff/ 2.0000000000000000D+00/
 Data fcutoff/ 2.2432860000000001D+03/
 Data r0/-2.0000000000000000D+00/
@@ -4753,7 +4753,7 @@ Data Pg/                           &
  -2383712935315990337409.86157129657Q0,  9903388137504520111389.34436541863Q0, -32614132404123601870878.9652482507Q0,  &
   85047981814704420869972.3572341441Q0, -174535601306065036127719.999618677Q0,  278400480074652198718256.087011167Q0,  &
  -337958051090618684547853.261359119Q0,  301590125879860950437663.888010620Q0, -186494245763497980212184.175837030Q0,  &
-  71375363687513215919486.0552441231Q0, -12734873402816982253348.4841107942Q0/ 
+  71375363687513215919486.0552441231Q0, -12734873402816982253348.4841107942Q0/
 Data rcutoff/ 2.2000000000000000D+00/
 Data fcutoff/ -6.976782d3/
 Data r0/-2.0000000000000000D+00/
@@ -4805,9 +4805,9 @@ integer (kind=4)            :: k,m
 data p/ 9.397738d-6,1.233746d0,0.06802583d0,    &
         0.4441812d0,1.641748d0,4.73051d0/
 
-data clr/36.404,2.0834d+3,1.2405d+5,7.68460D+6,4.95275D+8/ 
+data clr/36.404,2.0834d+3,1.2405d+5,7.68460D+6,4.95275D+8/
 
-interface  
+interface
 function gam(l,x)
    integer (kind=4) :: l
    real    (kind=8) :: x
@@ -4849,7 +4849,7 @@ end do
 gam = 1.0d0-gam*exp(-x)
 
 return
-end 
+end
 !
 !  Funcio que calcula el potencial Ar-Ar, entrada \AA, sortida K
 !
@@ -4862,7 +4862,7 @@ real      (kind=8) :: AA     = 748.3d0
 real      (kind=8) :: BB     = 2.031d0
 real      (kind=8) :: C6     = 64.3d0
 real      (kind=8) :: C8     = 1623.d0
-real      (kind=8) :: C10    = 49060.d0 
+real      (kind=8) :: C10    = 49060.d0
 real      (kind=8) :: rbohr  = 0.5292d0
 real      (kind=8) :: Hartree_to_K  = 27.21d0*11604.d0
 real (kind=8) :: r, rr, Stoe, Stor, F6, F8, F10, Sto, Aux
@@ -4875,7 +4875,7 @@ Save     :: Lfirst, Fact
 if(r.Le.r_cutoff)Then
   V_Ar_Ar = f_cutoff
   Return
-Endif        
+Endif
 If(Lfirst)Then
 !  Write(6,'("#Control per veure si nomes hi pasem una vegada")')
   Fact(0) = 1.d0; Fact(1) = 1.d0
@@ -4890,7 +4890,7 @@ c1or6 = c1or2*c1or2*c1or2
 Stor = bb*rr
 Stoe = Exp(-Stor)
 Sto  = 1.d0
-Aux = Stor 
+Aux = Stor
 Do i=1, 6
   Sto = Sto + Aux/Fact(i)
   Aux = Aux*Stor
@@ -4920,7 +4920,7 @@ real      (kind=8) :: AA     = 951.8d0
 real      (kind=8) :: BB     = 1.681d0
 real      (kind=8) :: C6     = 285.9d0
 real      (kind=8) :: C8     = 12810.d0
-real      (kind=8) :: C10    = 619800.d0 
+real      (kind=8) :: C10    = 619800.d0
 real      (kind=8) :: rbohr  = 0.5292d0
 real      (kind=8) :: Hartree_to_K  = 27.21d0*11604.d0
 real (kind=8) :: r, rr, Stoe, Stor, F6, F8, F10, Sto, Aux
@@ -4933,7 +4933,7 @@ Save     :: Lfirst, Fact
 If(r.Le.r_cutoff)Then
   V_Xe_Xe = f_cutoff
   Return
-EndIf  
+EndIf
 If(Lfirst)Then
 !  Write(6,'("#Control per veure si nomes hi pasem una vegada")')
   Fact(0) = 1.d0; Fact(1) = 1.d0
@@ -4948,7 +4948,7 @@ c1or6 = c1or2*c1or2*c1or2
 Stor = bb*rr
 Stoe = Exp(-Stor)
 Sto  = 1.d0
-Aux = Stor 
+Aux = Stor
 Do i=1, 6
   Sto = Sto + Aux/Fact(i)
   Aux = Aux*Stor
@@ -4980,7 +4980,7 @@ real      (kind=8) :: AA     = 748.3d0
 real      (kind=8) :: BB     = 2.031d0
 real      (kind=8) :: C6     = 64.3d0
 real      (kind=8) :: C8     = 1623.d0
-real      (kind=8) :: C10    = 49060.d0 
+real      (kind=8) :: C10    = 49060.d0
 real      (kind=8) :: rbohr  = 0.5292d0
 real      (kind=8) :: Hartree_to_K  = 27.21d0*11604.d0
 real (kind=8) :: r, rr, Stoe, Stor, F6, F8, F10, Sto, Aux
@@ -4993,7 +4993,7 @@ Save     :: Lfirst, Fact
 If(r.Le.r_cutoff)Then
   drV_Ar_Ar = f_cutoff
   Return
-EndIf  
+EndIf
 If(Lfirst)Then
 !  Write(6,'("#Control per veure si nomes hi pasem una vegada")')
   Fact(0) = 1.d0; Fact(1) = 1.d0
@@ -5013,7 +5013,7 @@ c1or7 = c1or2*c1or2*c1or2*c1or
 Stor = bb*rr
 Stoe = Exp(-Stor)
 Sto  = 1.d0
-Aux = Stor 
+Aux = Stor
 Do i=1, 6
   Sto = Sto + Aux/Fact(i)
   Aux = Aux*Stor
@@ -5044,7 +5044,7 @@ real      (kind=8) :: AA     = 951.8d0
 real      (kind=8) :: BB     = 1.681d0
 real      (kind=8) :: C6     = 285.9d0
 real      (kind=8) :: C8     = 12810.d0
-real      (kind=8) :: C10    = 619800.d0 
+real      (kind=8) :: C10    = 619800.d0
 real      (kind=8) :: rbohr  = 0.5292d0
 real      (kind=8) :: Hartree_to_K  = 27.21d0*11604.d0
 real (kind=8) :: r, rr, Stoe, Stor, F6, F8, F10, Sto, Aux
@@ -5057,7 +5057,7 @@ Save     :: Lfirst, Fact
 If(r.Le.r_cutoff)Then
   drV_Xe_Xe = f_cutoff
   Return
-EndIf  
+EndIf
 If(Lfirst)Then
 !  Write(6,'("#Control per veure si nomes hi pasem una vegada")')
   Fact(0) = 1.d0; Fact(1) = 1.d0
@@ -5077,7 +5077,7 @@ c1or7 = c1or2*c1or2*c1or2*c1or
 Stor = bb*rr
 Stoe = Exp(-Stor)
 Sto  = 1.d0
-Aux = Stor 
+Aux = Stor
 Do i=1, 6
   Sto = Sto + Aux/Fact(i)
   Aux = Aux*Stor
@@ -5110,27 +5110,27 @@ Data X/                                                                         
   2.00000000000000D0,  3.00000000000000D0,  4.00000000000000D0,  5.00000000000000D0,  5.30000000000000D0, &
   6.30000000000000D0,  6.40000000000000D0,  6.50000000000000D0,  6.60000000000000D0,  6.70000000000000D0, &
   6.80000000000000D0,  7.50000000000000D0,  8.00000000000000D0,  9.00000000000000D0,  10.0000000000000D0, &
-  12.0000000000000D0/ 
+  12.0000000000000D0/
 Data A/                                                                                                   &
   19682.2373956429D0,  135538.884184861D0, -28755.0411506975D0,  82682.1648908597D0, -1028.21398783985D0, &
   12723.4933807024D0, -3297.73585567146D0,  5511.51880624365D0, -1397.11955900432D0,  555.849036582276D0, &
   824.670054265175D0, -628.064864640832D0, -6.25389576350048D0, -82.9390390800452D0, -21.4578500114020D0, &
-  0.00000000000000D0/ 
+  0.00000000000000D0/
 Data B/                                                                                                   &
   12722.4786274321D0, -103134.168161786D0,  20086.2758398830D0, -46776.0477850513D0,  607.185542514463D0, &
  -5941.24653774376D0,  1568.70466680649D0, -2497.10517715432D0,  643.184988867479D0, -231.278561395176D0, &
  -349.876069196455D0,  231.217898365948D0, -1.96121496305145D0,  23.6004994757968D0,  5.15614275520381D0, &
-  0.00000000000000D0/ 
+  0.00000000000000D0/
 Data C/                                                                                                   &
  -12360.7671325954D0,  26258.1151304771D0, -4546.99586994003D0,  8825.46885504684D0, -114.763848267464D0, &
   924.669815265587D0, -248.760060445390D0,  376.749146317813D0, -99.0523939885207D0,  31.4645538118754D0, &
   48.9053637826517D0, -28.5738318923353D0, 0.573557273789606D0, -2.26663321941575D0,-0.422197547356456D0, &
-  0.00000000000000D0/ 
+  0.00000000000000D0/
 Data D/                                                                                                   &
   2060.12785543257D0, -2230.85906268660D0,  336.233520681496D0, -555.264127650962D0,  7.01465872100645D0, &
  -47.9818314130174D0,  13.1343079469293D0, -18.9430872716965D0,  5.08729355185571D0, -1.40608693572618D0, &
  -2.26102860096032D0,  1.18249120681688D0,-3.198334177165370D0, 7.320889871743369D0, 1.172770964879045D0, &
-  0.00000000000000D0/ 
+  0.00000000000000D0/
 Data ak/-4.6914394784477353D+05/
 Data a12/ 1.2247267783468750D+10/
 Data rf/ 8.0000000000000000D+00/
@@ -5169,7 +5169,7 @@ real (kind=8) :: r,ff
  If(r==0)then
    V_Kerkines_Li_gs = A
    Return
- EndIf  
+ EndIf
  ff=1.d0
  If(r.le.D)ff=dexp(-(D/r-1.d0)**2)
  V_Kerkines_Li_gs = A*dexp( -alpha*r -beta*r**2) - ff*(C6/r**6 + C12/r**12)
@@ -5189,7 +5189,7 @@ real (kind=8) :: r,ff
  If(r==0)then
    V_Kerkines_Li_Pi = A
    Return
- EndIf  
+ EndIf
  ff=1.d0
  If(r.le.D)ff=dexp(-(D/r-1.d0)**2)
  V_Kerkines_Li_Pi = A*dexp( -Beta*r**2) - ff*(C6/r**6 + C10/r**10)
@@ -5209,7 +5209,7 @@ real (kind=8) :: r,ff
  If(r==0)then
    V_Kerkines_Li_Sigma = A
    Return
- EndIf  
+ EndIf
  ff=1.d0
  If(r.le.D)ff=dexp(-(D/r-1.d0)**2)
  V_Kerkines_Li_Sigma = A*dexp( -alpha*r) - ff*(C10/r**10 + C12/r**12)
@@ -7111,10 +7111,10 @@ Data ECs/                                                                       
 -0.33326897D-10, -0.33276373D-10, -0.33229007D-10, -0.33178483D-10, -0.33127959D-10, &
 -0.33080592D-10, -0.33030068D-10, -0.32979544D-10, -0.32932178D-10, -0.32881654D-10, &
 -0.32834288D-10, -0.32783764D-10, -0.32736397D-10, -0.32685873D-10, -0.32638507D-10, &
--0.32587983D-10, -0.32540617D-10, -0.32493251D-10, -0.32442727D-10, -0.32395360D-10 / 
+-0.32587983D-10, -0.32540617D-10, -0.32493251D-10, -0.32442727D-10, -0.32395360D-10 /
 
 Data roCs/ 3.502d0/
-Data ECsmax/ 1974d0/  
+Data ECsmax/ 1974d0/
 Data rfCs/12.0/
 End
 
@@ -7135,7 +7135,7 @@ Endif
 Call spline2(RCs,ECs,a,b,c,d,0,0,N)
 Call Findi2(RCs,xx,N,ix)
 V_Cs_CS= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -7159,7 +7159,7 @@ Data ECstsu/                                                                    
 -0.15157202D+02, -0.11683676D+02 /
 
 Data roCstsu/ 3.502d0/
-Data ECsmaxtsu/ 10529d0/  
+Data ECsmaxtsu/ 10529d0/
 Data rfCstsu/30.0d0/
 
 End
@@ -7167,7 +7167,7 @@ End
 Double Precision Function V_Cs_Cs_tsu(xx)
 Parameter(N=22)
 Implicit Real*8(A-H,O-Z)  !! When Fortran was originally developed memory was at a premium. Variables and procedure names could have a maximum of 6 characters, and variables were often implicitly typed. This means that the first letter of the variable name determines its type.
-Double Precision:: a(N),b(N),c(N),d(N),C_6=-253924406.172384,C_8= 28604481648.8368  
+Double Precision:: a(N),b(N),c(N),d(N),C_6=-253924406.172384,C_8= 28604481648.8368
 Common/Param_Spline2_Cs_Cs_tsu/RCstsu(N),ECstsu(N),roCstsu,ECsmaxtsu,rfCstsu
 
 If(xx.le.roCstsu)Then
@@ -7185,7 +7185,7 @@ Endif
 Call spline2(RCstsu,ECstsu,a,b,c,d,0,0,N)
 Call Findi2(RCstsu,xx,N,ix)
 V_Cs_CS_tsu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Rb_Rb
@@ -7318,7 +7318,7 @@ Data ECrb/                                                                      
 -0.50261089D-01, -0.49243303D-01, -0.48249521D-01  /
 
 Data rorb/ 5/
-Data ECrbmax/ 10E3/  
+Data ECrbmax/ 10E3/
 Data rfrb/30.0/
 
 End
@@ -7326,7 +7326,7 @@ End
 Double Precision Function V_Rb_Rb(xx)
 Parameter(N=298)
 Implicit Real*8(A-H,O-Z)  !! When Fortran was originally developed memory was at a premium. Variables and procedure names could have a maximum of 6 characters, and variables were often implicitly typed. This means that the first letter of the variable name determines its type.
-Double Precision:: a(N),b(N),c(N),d(N),C_6=-253924406.172384,C_8= 28604481648.8368  
+Double Precision:: a(N),b(N),c(N),d(N),C_6=-253924406.172384,C_8= 28604481648.8368
 Common/Param_Spline2_Rb_Rb/Rrb(N),ECrb(N),rorb,ECrbmax,rfrb
 
 If(xx.le.rorb)Then
@@ -7340,7 +7340,7 @@ Endif
 Call spline2(Rrb,ECrb,a,b,c,d,0,0,N)
 Call Findi2(Rrb,xx,N,ix)
 V_Rb_Rb= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
-Return 
+Return
 End
 
 Block Data Inicio_Cs_ssg
@@ -7363,7 +7363,7 @@ Data ECcs/                                                                      
 -0.15157202D+02, -0.11683676D+02  /
 
 Data rocs/ 2/
-Data ECcsmax/ 35E4/  
+Data ECcsmax/ 35E4/
 Data rfcs/30.0/
 End
 
@@ -7371,7 +7371,7 @@ Double Precision Function V_Cs_ssg(xx)
 Parameter(N=22)
 Implicit Real*8(A-H,O-Z)  !! When Fortran was originally developed memory was at a premium. Variables and procedure names could have a maximum of 6 characters, and variables were often implicitly typed. This means that the first letter of the variable name determines its type.
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-3.30140614193524,Bb=110616565.168922,c6= -253924406.172384d0 &
-   ,c8=28604481648.8367d0,limdiso= 0 
+   ,c8=28604481648.8367d0,limdiso= 0
 Common/Param_Spline2_Cs_ssg/RCs(N),ECcs(N),rocs,ECcsmax,rfcs
 
 If(xx.le.rocs)Then
@@ -7399,7 +7399,7 @@ Endif
 Call spline2(RCs,ECcs,a,b,c,d,0,0,N)
 Call Findi2(RCs,xx,N,ix)
 V_Cs_ssg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_tsu
@@ -7422,15 +7422,15 @@ Data ECcstsu/                                                                   
 -0.15157202D+02, -0.11683676D+02 /
 
 Data rocstsu/ 2/
-Data ECcsmaxtsu/ 35E4/  
+Data ECcsmaxtsu/ 35E4/
 Data rfcstsu/30.0/
 End
 
 Double Precision Function V_Cs_tsu(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-1.22277238056927,Bb=623779.020961941, &
-                  c6=-253924406.172384d0,c8=28604481648.8367d0, limdiso=0d0    
+                  c6=-253924406.172384d0,c8=28604481648.8367d0, limdiso=0d0
 Common/Param_Spline2_Cs_tsu/RCstsu(N),ECcstsu(N),rocstsu,ECcsmaxtsu,rfcstsu
 
 If(xx.le.rocstsu)Then
@@ -7456,7 +7456,7 @@ Endif
 Call spline2(RCstsu,ECcstsu,a,b,c,d,0,0,N)
 Call Findi2(RCstsu,xx,N,ix)
 V_Cs_tsu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -7479,15 +7479,15 @@ Data ECssgps/                                                                   
  0.16892701D+05,  0.16845966D+05 /
 
 Data rocsssgps/ 2/
-Data ECcsmaxssgps/ 35E4/  
+Data ECcsmaxssgps/ 35E4/
 Data rfcsssgps/30.0/
 End
 
 Double Precision Function V_Cs_ssg_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N), Aa=-0.572915582214139  ,Bb=134913.512037932,c3=  873141.601232198d0, &
-                  c6=  258780017.314225d0,c8=  -97005874366.0061d0,limdiso=   16594.8521959782d0   
+                  c6=  258780017.314225d0,c8=  -97005874366.0061d0,limdiso=   16594.8521959782d0
 Common/Param_Spline2_Cs_ssg_ps/RCssgps(N),ECssgps(N),rocsssgps,ECcsmaxssgps,rfcsssgps
 
 If(xx.le.rocsssgps)Then
@@ -7509,7 +7509,7 @@ Endif
 Call spline2(RCssgps,ECssgps,a,b,c,d,0,0,N)
 Call Findi2(RCssgps,xx,N,ix)
 V_Cs_ssg_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_ssu_ps
@@ -7531,16 +7531,16 @@ Data ECssups/                                                                   
  0.16199575D+05,  0.16285781D+05 /
 
 Data rocsssups/ 2/
-Data ECcsmaxssups/ 35E4/  
+Data ECcsmaxssups/ 35E4/
 Data rfcsssups/30.0/
 End
 
 Double Precision Function V_Cs_ssu_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.628617556588238,Bb=160089.634987034,c3=  -972061.219990292d0, &
-                 c6=149269661.059803d0,c8=-56574362700.8519d0,limdiso=16594.8521959782d0   
-    
+                 c6=149269661.059803d0,c8=-56574362700.8519d0,limdiso=16594.8521959782d0
+
 Common/Param_Spline2_Cs_ssu_ps/RCssups(N),ECssups(N),rocsssups,ECcsmaxssups,rfcsssups
 
 If(xx.le.rocsssups)Then
@@ -7562,7 +7562,7 @@ Endif
 Call spline2(RCssups,ECssups,a,b,c,d,0,0,N)
 Call Findi2(RCssups,xx,N,ix)
 V_Cs_ssu_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_spg_ps
@@ -7584,15 +7584,15 @@ Data ECspgps/                                                                   
  0.16398197D+05,  0.16439248D+05 /
 
 Data rocspgps/ 2/
-Data ECcsmaxspgps/ 35E4/  
+Data ECcsmaxspgps/ 35E4/
 Data rfcspgps/30.0/
 End
 
 Double Precision Function V_Cs_spg_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.534123475256684 ,Bb=147801.773470314 , c3=-463325.124203367d0, &
-                 c6=-215248511.630481d0,c8=16656397277.2317d0, limdiso=16594.8521959782d0      
+                 c6=-215248511.630481d0,c8=16656397277.2317d0, limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_spg_ps/RCspgps(N),ECspgps(N),rocspgps,ECcsmaxspgps,rfcspgps
 
 If(xx.le.rocspgps)Then
@@ -7614,7 +7614,7 @@ Endif
 Call spline2(RCspgps,ECspgps,a,b,c,d,0,0,N)
 Call Findi2(RCspgps,xx,N,ix)
 V_Cs_spg_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -7637,16 +7637,16 @@ Data ECspups/                                                                   
  0.16753444D+05,  0.16724077D+05  /
 
 Data rocspups/ 2/
-Data ECcsmaxspups/ 35E4/  
+Data ECcsmaxspups/ 35E4/
 Data rfcspups/30.0/
 End
 
 
 Double Precision Function V_Cs_spu_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.469251910087447,Bb=87031.7325631338,c3=455178.323874284d0, &
-                  c6=-135390972.323767d0, c8=4860000644.76914d0, limdiso=16594.8521959782d0  
+                  c6=-135390972.323767d0, c8=4860000644.76914d0, limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_spu_ps/RCspups(N),ECspups(N),rocspups,ECcsmaxspups,rfcspups
 
 If(xx.le.rocspups)Then
@@ -7669,7 +7669,7 @@ Endif
 Call spline2(RCspups,ECspups,a,b,c,d,0,0,N)
 Call Findi2(RCspups,xx,N,ix)
 V_Cs_spu_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_tpg_ps
@@ -7691,15 +7691,15 @@ Data ECtpgps/                                                                   
  0.16753444D+05,  0.16724077D+05   /
 
 Data roctpgps/ 2/
-Data ECcsmaxtpgps/ 35E4/  
+Data ECcsmaxtpgps/ 35E4/
 Data rfctpgps/30.0/
 End
 
 Double Precision Function V_Cs_tpg_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.523499015845119,Bb=138135.086037472, c3=465322.603136315d0,&
-                c6=-209563973.859353d0,c8=13899473131.9753d0, limdiso=16594.8521959782d0  
+                c6=-209563973.859353d0,c8=13899473131.9753d0, limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_tpg_ps/RCtpgps(N),ECtpgps(N),roctpgps,ECcsmaxtpgps,rfctpgps
 
 If(xx.le.roctpgps)Then
@@ -7721,7 +7721,7 @@ Endif
 Call spline2(RCtpgps,ECtpgps,a,b,c,d,0,0,N)
 Call Findi2(RCtpgps,xx,N,ix)
 V_Cs_tpg_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
-Return 
+Return
 End
 
 Block Data Inicio_Cs_tpu_ps
@@ -7743,15 +7743,15 @@ Data ECtpups/                                                                   
  0.16397882D+05,  0.16438932D+05  /
 
 Data roctpups/ 2/
-Data ECcsmaxtpups/ 35E4/  
+Data ECcsmaxtpups/ 35E4/
 Data rfctpups/30.0/
 End
 
 Double Precision Function V_Cs_tpu_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N), Aa=-1.01940967475422,Bb=355385.189266468,  c3=-491344.870278783d0, &
-             c6=-21222397.9053257d0,c8=-6663544470.07716d0, limdiso=16594.8521959782d0 
+             c6=-21222397.9053257d0,c8=-6663544470.07716d0, limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_tpu_ps/RCtpups(N),ECtpups(N),roctpups,ECcsmaxtpups,rfctpups
 
 If(xx.le.roctpups)Then
@@ -7773,7 +7773,7 @@ Endif
 Call spline2(RCtpups,ECtpups,a,b,c,d,0,0,N)
 Call Findi2(RCtpups,xx,N,ix)
 V_Cs_tpu_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -7796,16 +7796,16 @@ Data ECtsgps/                                                                   
  0.16202417D+05,  0.16286729D+05   /
 
 Data roctsgps/ 2/
-Data ECcsmaxtsgps/ 35E4/  
+Data ECcsmaxtsgps/ 35E4/
 Data rfctsgps/30.0/
 End
 
 
 Double Precision Function V_Cs_tsg_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.554919787852500,Bb=126551.352734429,c3=-918041.114554261d0, &
-              c6= -293613314.237302d0,c8=4278943359.73192d0,  limdiso=16594.8521959782d0      
+              c6= -293613314.237302d0,c8=4278943359.73192d0,  limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_tsg_ps/RCtsgps(N),ECtsgps(N),roctsgps,ECcsmaxtsgps,rfctsgps
 
 If(xx.le.roctsgps)Then
@@ -7826,7 +7826,7 @@ Endif
 Call spline2(RCtsgps,ECtsgps,a,b,c,d,0,0,N)
 Call Findi2(RCtsgps,xx,N,ix)
 V_Cs_tsg_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_tsu_ps
@@ -7848,15 +7848,15 @@ Data ECtsups/                                                                   
  0.16897753D+05,  0.16847229D+05  /
 
 Data roctsups/ 2/
-Data ECcsmaxtsups/ 35E4/  
+Data ECcsmaxtsups/ 35E4/
 Data rfctsups/30.0/
 End
 
 Double Precision Function V_Cs_tsu_ps(xx)
 Parameter(N=22)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.542751552281975 ,Bb= 174297.728031481,c3=955575.157740705d0, &
-              c6= -461452710.444077d0,c8=5179271723.01146d0, limdiso=16594.8521959782d0      
+              c6= -461452710.444077d0,c8=5179271723.01146d0, limdiso=16594.8521959782d0
 Common/Param_Spline2_Cs_tsu_ps/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -7878,7 +7878,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_tsu_ps= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -7972,14 +7972,14 @@ Data ECsspg/                                                                    
 -0.33624891D+00, -0.32734974D+00, -0.31863340D+00 /
 
 Data rocsspg/ 2.01d0/
-Data ECcsmaxsspg/ 318756d0/  
+Data ECcsmaxsspg/ 318756d0/
 Data rfcsspg/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_sspg(xx)
 Parameter(N=198)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=-1.53246359411411 , Bb=255769.879618313      
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=-1.53246359411411 , Bb=255769.879618313
 Common/Param_Spline2_Cs_RO_sspg/RCsspg(N),ECsspg(N),rocsspg,ECcsmaxsspg,rfcsspg
 
 If(xx.le.rocsspg)Then
@@ -7995,7 +7995,7 @@ Endif
 Call spline2(RCsspg,ECsspg,a,b,c,d,0,0,N)
 Call Findi2(RCsspg,xx,N,ix)
 V_Cs_RO_sspg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -8086,14 +8086,14 @@ Data ECtsups/                                                                   
  0.16537288D+05,  0.16538363D+05,  0.16539418D+05,  0.16540455D+05,  0.16541472D+05  /
 
 Data roctsups/ 2.01d0/
-Data ECcsmaxtsupsh/ 333923d0/  
+Data ECcsmaxtsupsh/ 333923d0/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_sspu(xx)
 Parameter(N=195)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.313338508944889   , Bb=  52090.2127253701            
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.313338508944889   , Bb=  52090.2127253701
 Common/Param_Spline2_Cs_RO_sspu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsupsh,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8109,7 +8109,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sspu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -8202,14 +8202,14 @@ Data ECtsups/                                                                   
  0.16578010D+05,  0.16578509D+05  /
 
 Data roctsups/ 2.01d0/
-Data ECcsmaxtsups/335163/  
+Data ECcsmaxtsups/335163/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_spig(xx)
 Parameter(N=197)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.238700785744753    , Bb= 52536.0049121129            
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.238700785744753    , Bb= 52536.0049121129
 Common/Param_Spline2_Cs_RO_spig/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8225,7 +8225,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_spig= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_spiu
@@ -8315,14 +8315,14 @@ Data ECtsups/                                                                   
  0.16649905D+05,  0.16649444D+05,  0.16648992D+05   /
 
 Data roctsups/ 2.01d0/
-Data ECcsmaxtsupsl/35.0082E4/  
+Data ECcsmaxtsupsl/35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_spiu(xx)
 Parameter(N=193)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -9.693746290309241E-002    , Bb=22771.5176521541             
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -9.693746290309241E-002    , Bb=22771.5176521541
 Common/Param_Spline2_Cs_RO_spiu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsupsl,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8338,7 +8338,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_spiu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_sdg
@@ -8430,14 +8430,14 @@ Data ECtsups/                                                                   
  0.20945744D+05,  0.20945747D+05,  0.20945750D+05  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 349666d0/  
+Data ECcsmaxtsups/ 349666d0/
 Data rfctsups/30.0/
 End
 
 Double Precision Function V_Cs_RO_sdg(xx)
 Parameter(N=198)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.157784015584009     , Bb= 31892.6347290811              
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.157784015584009     , Bb= 31892.6347290811
 Common/Param_Spline2_Cs_RO_sdg/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8453,7 +8453,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sdg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -8548,14 +8548,14 @@ Data ECtsups/                                                                   
  0.16540455D+05,  0.16541472D+05  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tspg(xx)
 Parameter(N=202)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.209742043989252     , Bb=37264.7250280246              
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.209742043989252     , Bb=37264.7250280246
 Common/Param_Spline2_Cs_RO_tspg/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8571,7 +8571,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tspg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -8664,15 +8664,15 @@ Data ECtsups/                                                                   
 -0.35462923D+00, -0.34530786D+00, -0.33624575D+00, -0.32736079D+00, -0.31863971D+00  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 
 Double Precision Function V_Cs_RO_tspu(xx)
 Parameter(N=200)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.346732855964773     , Bb= 34188.2823548941              
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.346732855964773     , Bb= 34188.2823548941
 Common/Param_Spline2_Cs_RO_tspu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8688,7 +8688,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tspu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tpig
@@ -8780,7 +8780,7 @@ Data ECtsups/                                                                   
  0.16650373D+05,  0.16649905D+05,  0.16649444D+05,  0.16648992D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
@@ -8788,8 +8788,8 @@ End
 
 Double Precision Function V_Cs_RO_tpig(xx)
 Parameter(N=199)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -9.594794940262791E-002    , Bb=  32417.6114292589               
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -9.594794940262791E-002    , Bb=  32417.6114292589
 Common/Param_Spline2_Cs_RO_tpig/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8805,7 +8805,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tpig= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tdg
@@ -8895,7 +8895,7 @@ Data ECtsups/                                                                   
  0.20944958D+05,  0.20944976D+05,  0.20944995D+05,  0.20945013D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
@@ -8903,8 +8903,8 @@ End
 
 Double Precision Function V_Cs_RO_tdg(xx)
 Parameter(N=194)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.103313921352576    , Bb=  26512.4997159401                
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.103313921352576    , Bb=  26512.4997159401
 Common/Param_Spline2_Cs_RO_tdg/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -8920,7 +8920,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tdg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -9014,7 +9014,7 @@ Data ECtsups/                                                                   
  0.20945744D+05,  0.20945747D+05,  0.20945750D+05 /
 
 Data roctsups/ 2.02/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
@@ -9022,8 +9022,8 @@ End
 
 Double Precision Function V_Cs_RO_tdu(xx)
 Parameter(N=198)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=   -0.108247505742606     , Bb=  42065.1119146285               
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=   -0.108247505742606     , Bb=  42065.1119146285
 Common/Param_Spline2_Cs_RO_tdu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9039,7 +9039,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tdu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -9132,7 +9132,7 @@ Data ECtsups/                                                                   
  0.20944976D+05,  0.20944995D+05,  0.20945013D+05  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
@@ -9140,8 +9140,8 @@ End
 
 Double Precision Function V_Cs_RO_sdu(xx)
 Parameter(N=198)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.113472232126651      , Bb=   41761.8392554192               
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.113472232126651      , Bb=   41761.8392554192
 Common/Param_Spline2_Cs_RO_sdu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9157,7 +9157,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sdu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -9251,7 +9251,7 @@ Data ECtsups/                                                                   
  0.16576984D+05,  0.16577503D+05,  0.16578010D+05,  0.16578509D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
@@ -9259,8 +9259,8 @@ End
 
 Double Precision Function V_Cs_RO_tpiu(xx)
 Parameter(N=199)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.311633290346106        , Bb=   30658.6988775152             
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.311633290346106        , Bb=   30658.6988775152
 Common/Param_Spline2_Cs_RO_tpiu/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9276,7 +9276,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tpiu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -9371,14 +9371,14 @@ Data ECtsups/                                                                   
  0.16682214D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/35.0082E4/  
+Data ECcsmaxtsups/35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_sspg_plus(xx)
 Parameter(N=201)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.238227919759386 , Bb= 40145.6110650668       
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.238227919759386 , Bb= 40145.6110650668
 Common/Param_Spline2_Cs_RO_sspg_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9394,7 +9394,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sspg_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tspu_plus
@@ -9488,14 +9488,14 @@ Data ECtsups/                                                                   
  0.16682214D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tspu_plus(xx)
 Parameter(N=201)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.229571001569493  , Bb=60010.9945125910        
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.229571001569493  , Bb=60010.9945125910
 Common/Param_Spline2_Cs_RO_tspu_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9511,7 +9511,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tspu_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_sspu_plus
@@ -9603,14 +9603,14 @@ Data ECtsups/                                                                   
  0.20941798D+05,  0.20941888D+05,  0.20941974D+05,  0.20942059D+05,  0.20942141D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/35.0082E4/  
+Data ECcsmaxtsups/35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_sspu_plus(xx)
 Parameter(N=200)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.249025255210696    , Bb=  70185.0579759071        
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=-0.249025255210696    , Bb=  70185.0579759071
 Common/Param_Spline2_Cs_RO_sspu_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9626,7 +9626,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sspu_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_spig_plus
@@ -9720,14 +9720,14 @@ Data ECtsups/                                                                   
  0.20943240D+05  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_spig_plus(xx)
 Parameter(N=201)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.187605110278368     , Bb=   46267.6656361113          
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.187605110278368     , Bb=   46267.6656361113
 Common/Param_Spline2_Cs_RO_spig_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9743,7 +9743,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_spig_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_spiu_plus
@@ -9835,14 +9835,14 @@ Data ECtsups/                                                                   
  0.20946858D+05,  0.20946839D+05,  0.20946821D+05,  0.20946803D+05,  0.20946785D+05/
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_spiu_plus(xx)
 Parameter(N=200)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.122651719844972      , Bb= 33533.9172069846           
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.122651719844972      , Bb= 33533.9172069846
 Common/Param_Spline2_Cs_RO_spiu_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9858,7 +9858,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_spiu_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tspg_plus
@@ -9950,14 +9950,14 @@ Data ECtsups/                                                                   
  0.20941974D+05,  0.20942058D+05,  0.20942141D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tspg_plus(xx)
 Parameter(N=198)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.169202296003675      , Bb=   49550.6183236921           
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.169202296003675      , Bb=   49550.6183236921
 Common/Param_Spline2_Cs_RO_tspg_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -9972,7 +9972,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tspg_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tpig_plus
@@ -10064,14 +10064,14 @@ Data ECtsups/                                                                   
  0.20946839D+05,  0.20946821D+05,  0.20946803D+05,  0.20946785D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/35.0082E4/  
+Data ECcsmaxtsups/35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tpig_plus(xx)
 Parameter(N=199)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.147372747608518     , Bb=    45173.4948137909            
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -0.147372747608518     , Bb=    45173.4948137909
 Common/Param_Spline2_Cs_RO_tpig_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -10087,7 +10087,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tpig_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tpiu_plus
@@ -10177,14 +10177,14 @@ Data ECtsups/                                                                   
  0.20942994D+05,  0.20943057D+05,  0.20943121D+05,  0.20943181D+05,  0.20943240D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tpiu_plus(xx)
 Parameter(N=195)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa= -7.865489543608059E-002     , Bb=  25464.5073752341             
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa= -7.865489543608059E-002     , Bb=  25464.5073752341
 Common/Param_Spline2_Cs_RO_tpiu_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -10200,7 +10200,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tpiu_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -10291,14 +10291,14 @@ Data ECtsups/                                                                   
  0.20947530D+05,  0.20947499D+05,  0.20947466D+05,  0.20947435D+05,  0.20947405D+05 /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/ 35.0082E4/  
+Data ECcsmaxtsups/ 35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_sspg_plus_plus(xx)
 Parameter(N=195)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=   -0.397439187221325      , Bb= 100628.635463817               
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=   -0.397439187221325      , Bb= 100628.635463817
 Common/Param_Spline2_Cs_RO_sspg_plus_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -10314,7 +10314,7 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_sspg_plus_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 Block Data Inicio_Cs_RO_tspu_plus_plus
@@ -10406,14 +10406,14 @@ Data ECtsups/                                                                   
  0.20947531D+05,  0.20947499D+05,  0.20947466D+05,  0.20947435D+05,  0.20947405D+05  /
 
 Data roctsups/ 2.02d0/
-Data ECcsmaxtsups/  35.0082E4/  
+Data ECcsmaxtsups/  35.0082E4/
 Data rfctsups/30.0d0/
 End
 
 Double Precision Function V_Cs_RO_tspu_plus_plus(xx)
 Parameter(N=200)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.103891599870842     , Bb=     47349.0793098261                 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),Aa=  -0.103891599870842     , Bb=     47349.0793098261
 Common/Param_Spline2_Cs_RO_tspu_plus_plus/RCtsups(N),ECtsups(N),roctsups,ECcsmaxtsups,rfctsups
 
 If(xx.le.roctsups)Then
@@ -10429,110 +10429,110 @@ Endif
 Call spline2(RCtsups,ECtsups,a,b,c,d,0,0,N)
 Call Findi2(RCtsups,xx,N,ix)
 V_Cs_RO_tspu_plus_plus= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
 Double Precision Function V_Na2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=4.67189d0,B=2.97349d7        
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=4.67189d0,B=2.97349d7
 
 ! xx input in \AA
 !V_Na2_veffect output in K
 
   V_Na2_veffect = exp(-xx*A)*B
 
-Return 
+Return
 End
 
 
 
 Double Precision Function V_k2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=4.22812d0,B=2.18738d8        
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=4.22812d0,B=2.18738d8
 
 ! xx input in \AA
 !V_K2_veffect output in K
 
   V_K2_veffect = exp(-xx*A)*B
 
-Return 
+Return
 End
 
 Double Precision Function V_Rb2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=3.75276d0,B=2.2874d8        
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=3.75276d0,B=2.2874d8
 
 ! xx input in \AA
 !V_Rb2_veffect output in K
 
   V_Rb2_veffect = exp(-xx*A)*B
 
-Return 
+Return
 End
 
 Double Precision Function V_Cs2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=3.2311d0,B=2.16217d8        
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=3.2311d0,B=2.16217d8
 
 ! xx input in \AA
 !V_Cs2_veffect output in K
 
   V_Cs2_veffect = exp(-xx*A)*B
 
-Return 
+Return
 End
 
 
 Double Precision Function V_der_Na2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=4.67189d0,B=2.97349d7        
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=4.67189d0,B=2.97349d7
 
 ! xx input in \AA
 !V_der_Na2_veffect output in K
 
   V_der_Na2_veffect = -A*B*exp(-xx*A)
 
-Return 
+Return
 End
 
 Double Precision Function V_der_K2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=4.22812d0,B=2.18738d8         
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=4.22812d0,B=2.18738d8
 
 ! xx input in \AA
 !V_der_K2_veffect output in K
 
   V_der_K2_veffect = -A*B*exp(-xx*A)
 
-Return 
+Return
 End
 
 Double Precision Function V_der_Rb2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=3.75276d0,B=2.2874d8         
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=3.75276d0,B=2.2874d8
 
 ! xx input in \AA
 !V_der_Rb2_veffect output in K
 
   V_der_Rb2_veffect = -A*B*exp(-xx*A)
 
-Return 
+Return
 End
 
 Double Precision Function V_der_Cs2_veffect(xx)
-Implicit Real*8(A-H,O-Z) 
-Double Precision::A=3.2311d0,B=2.16217d8       
+Implicit Real*8(A-H,O-Z)
+Double Precision::A=3.2311d0,B=2.16217d8
 
 ! xx input in \AA
 !V_der_Cs2_veffect output in K
 
   V_der_Cs2_veffect = -A*B*exp(-xx*A)
 
-Return 
+Return
 End
 
-Block Data Inicio_Na2_sspg 
+Block Data Inicio_Na2_sspg
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -10573,7 +10573,7 @@ Data RCtsups/                                                                   
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECtsups/                                                                        &
   0.47917418D+05,  0.41789203D+05,  0.35647205D+05,  0.29826236D+05,  0.24425672D+05, &
  0.19461242D+05,  0.14927549D+05,  0.10820407D+05,  0.71413537D+04,  0.38942334D+04, &
@@ -10609,15 +10609,15 @@ Data ECtsups/                                                                   
 -0.46412961D+00, -0.44763290D+00, -0.43351586D+00, -0.41884905D+00, -0.40562692D+00, &
 -0.39371557D+00, -0.38084742D+00, -0.36962983D+00, -0.35812015D+00, -0.34695908D+00, &
 -0.33685207D+00  /
-    
+
 End
 
 
 Double Precision Function V_Na2_sspg (xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C6= -19270494.3907467d0,C8= 1946087689.72504d0 ,&
-   limdiso=  0.000000000000000E+000                
+   limdiso=  0.000000000000000E+000
 Common/Param_Spline2_Na2_sspg /RCtsups(N),ECtsups(N)
 
 if(xx.gt.RCtsups(N))then
@@ -10630,12 +10630,12 @@ Call Findi2(RCtsups,xx,N,ix)
 
 endif
 
-Return 
+Return
 End
 
 
 
-Block Data Inicio_Na2_tspu 
+Block Data Inicio_Na2_tspu
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -10676,7 +10676,7 @@ Data RCtsups/                                                                   
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECtsups/                                                                        &
    0.67750689D+05,  0.61474458D+05,  0.55152942D+05,  0.49149702D+05,  0.43579408D+05, &
  0.38458772D+05,  0.33771404D+05,  0.29494553D+05,  0.25608566D+05,  0.22097969D+05, &
@@ -10712,14 +10712,14 @@ Data ECtsups/                                                                   
 -0.46410751D+00, -0.44766384D+00, -0.43351112D+00, -0.41882442D+00, -0.40562219D+00, &
 -0.39370894D+00, -0.38086669D+00, -0.36963204D+00, -0.35813562D+00, -0.34692403D+00, &
 -0.33685365D+00 /
-    
+
 End
 
 Double Precision Function V_Na2_tspu(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C8=1988665534.34689d0,C6= -19394679.1487827d0,&
-   limdiso=  0.000000000000000E+000                
+   limdiso=  0.000000000000000E+000
 Common/Param_Spline2_Na2_tspu /RCtsups(N),ECtsups(N)
 
 
@@ -10732,13 +10732,13 @@ Call Findi2(RCtsups,xx,N,ix)
  V_Na2_tspu = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
 
-Block Data Inicio_Na2_sspg_sp 
+Block Data Inicio_Na2_sspg_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -10779,7 +10779,7 @@ Data RCsspg_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECsspg_sp/                                                                        &
    0.92408882D+05,  0.85488521D+05,  0.78580809D+05,  0.72052751D+05,  0.66016935D+05, &
  0.60482744D+05,  0.55423507D+05,  0.50806655D+05,  0.46606143D+05,  0.42804843D+05, &
@@ -10815,14 +10815,14 @@ Data ECsspg_sp/                                                                 
  0.24521657D+05,  0.24519749D+05,  0.24517884D+05,  0.24516065D+05,  0.24514283D+05, &
  0.24512546D+05,  0.24510845D+05,  0.24509183D+05,  0.24507561D+05,  0.24505972D+05, &
  0.24504419D+05 /
-    
+
 End
 
 Double Precision Function V_Na2_sspg_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3= 590699.406691780d0,C6= -127985824.416520d0,C8= 15252869442.7034d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_sspg_sp /RCsspg_sp(N),ECsspg_sp(N)
 
 
@@ -10835,13 +10835,13 @@ Call Findi2(RCsspg_sp,xx,N,ix)
  V_Na2_sspg_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
 
-Block Data Inicio_Na2_sspu_sp 
+Block Data Inicio_Na2_sspu_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -10882,7 +10882,7 @@ Data RCsspu_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECsspu_sp/                                                                        &
    0.81873695D+05,  0.75190358D+05,  0.68520122D+05,  0.62201325D+05,  0.56327559D+05, &
  0.50900238D+05,  0.45895090D+05,  0.41289641D+05,  0.37071831D+05,  0.33238676D+05, &
@@ -10918,14 +10918,14 @@ Data ECsspu_sp/                                                                 
  0.24302699D+05,  0.24304715D+05,  0.24306682D+05,  0.24308603D+05,  0.24310475D+05, &
  0.24312305D+05,  0.24314090D+05,  0.24315833D+05,  0.24317538D+05,  0.24319201D+05, &
  0.24320826D+05 /
-    
+
 End
 
 Double Precision Function V_Na2_sspu_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3=  -592169.450294567d0,C6= 109258572.046259d0,C8=   -30342703031.6001d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_sspu_sp /RCsspu_sp(N),ECsspu_sp(N)
 
 
@@ -10938,12 +10938,12 @@ Call Findi2(RCsspu_sp,xx,N,ix)
  V_Na2_sspu_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
-Block Data Inicio_Na2_spig_sp 
+Block Data Inicio_Na2_spig_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -10984,7 +10984,7 @@ Data RCspig_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECspig_sp/                                                                        &
     0.93254212D+05,  0.86383563D+05,  0.79542597D+05,  0.73098693D+05,  0.67166802D+05, &
  0.61758172D+05,  0.56845486D+05,  0.52391915D+05,  0.48363646D+05,  0.44733910D+05, &
@@ -11020,14 +11020,14 @@ Data ECspig_sp/                                                                 
  0.24358132D+05,  0.24359141D+05,  0.24360125D+05,  0.24361085D+05,  0.24362023D+05, &
  0.24362938D+05,  0.24363832D+05,  0.24364704D+05,  0.24365556D+05,  0.24366389D+05, &
  0.24367204D+05  /
-    
+
 End
 
 Double Precision Function V_Na2_spig_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3=-273317.698221609d0,C6= -288928420.489326d0,C8= 53529324381.9432d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_spig_sp /RCspig_sp(N),ECspig_sp(N)
 
 
@@ -11040,13 +11040,13 @@ Call Findi2(RCspig_sp,xx,N,ix)
  V_Na2_spig_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
 
-Block Data Inicio_Na2_spiu_sp 
+Block Data Inicio_Na2_spiu_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11087,7 +11087,7 @@ Data RCspiu_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02  /
 
-   
+
 Data ECspiu_sp/                                                                        &
   0.84374855D+05,  0.77719410D+05,  0.71102110D+05,  0.64874120D+05,  0.59139699D+05, &
  0.53906259D+05,  0.49149329D+05,  0.44839966D+05,  0.40954891D+05,  0.37477990D+05, &
@@ -11123,14 +11123,14 @@ Data ECspiu_sp/                                                                 
  0.24467750D+05,  0.24466791D+05,  0.24465853D+05,  0.24464937D+05,  0.24464044D+05, &
  0.24463169D+05,  0.24462315D+05,  0.24461480D+05,  0.24460665D+05,  0.24459868D+05, &
  0.24459090D+05 /
-    
+
 End
 
 Double Precision Function V_Na2_spiu_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3=305646.926518293d0,C6=  -212023969.685271d0,C8=  37662750695.5596d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_spiu_sp /RCspiu_sp(N),ECspiu_sp(N)
 
 
@@ -11143,12 +11143,12 @@ Call Findi2(RCspiu_sp,xx,N,ix)
  V_Na2_spiu_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
-Block Data Inicio_Na2_tspg_sp 
+Block Data Inicio_Na2_tspg_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11189,7 +11189,7 @@ Data RCtspg_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02   /
 
-   
+
 Data ECtspg_sp/                                                                        &
   0.92632384D+05,  0.85727676D+05,  0.78815487D+05,  0.72228559D+05,  0.66056003D+05, &
  0.60297700D+05,  0.54932505D+05,  0.49946058D+05,  0.45338111D+05,  0.41119170D+05, &
@@ -11225,14 +11225,14 @@ Data ECtspg_sp/                                                                 
  0.24302700D+05,  0.24304716D+05,  0.24306682D+05,  0.24308603D+05,  0.24310475D+05, &
  0.24312306D+05,  0.24314090D+05,  0.24315833D+05,  0.24317538D+05,  0.24319201D+05, &
  0.24320826D+05 /
-    
+
 End
 
 Double Precision Function V_Na2_tspg_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3= -588357.500963493d0,C6=  49227806.0992920d0,C8= -18057986352.4813d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_tspg_sp /RCtspg_sp(N),ECtspg_sp(N)
 
 
@@ -11245,11 +11245,11 @@ Call Findi2(RCtspg_sp,xx,N,ix)
  V_Na2_tspg_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
-Block Data Inicio_Na2_tspu_sp 
+Block Data Inicio_Na2_tspu_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11290,7 +11290,7 @@ Data RCtspu_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02  /
 
-   
+
 Data ECtspu_sp/                                                                        &
    0.10083194D+06,  0.94101885D+05,  0.87370616D+05,  0.80979610D+05,  0.75026452D+05, &
  0.69517687D+05,  0.64434776D+05,  0.59760500D+05,  0.55486419D+05,  0.51611083D+05, &
@@ -11326,14 +11326,14 @@ Data ECtspu_sp/                                                                 
  0.24521658D+05,  0.24519749D+05,  0.24517884D+05,  0.24516065D+05,  0.24514283D+05, &
  0.24512546D+05,  0.24510846D+05,  0.24509183D+05,  0.24507561D+05,  0.24505972D+05, &
  0.24504419D+05  /
-    
+
 End
 
 Double Precision Function V_Na2_tspu_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3= 594511.356066958d0,C6=   -188016591.057966d0,C8= 27537586263.9309d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_tspu_sp /RCtspu_sp(N),ECtspu_sp(N)
 
 
@@ -11346,11 +11346,11 @@ Call Findi2(RCtspu_sp,xx,N,ix)
  V_Na2_tspu_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
-Block Data Inicio_Na2_tpig_sp 
+Block Data Inicio_Na2_tpig_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11391,7 +11391,7 @@ Data RCtpig_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02   /
 
-   
+
 Data ECtpig_sp/                                                                        &
   0.97583689D+05,  0.90747792D+05,  0.83914704D+05,  0.77432888D+05,  0.71405197D+05, &
  0.65840815D+05,  0.60720880D+05,  0.56025283D+05,  0.51741131D+05,  0.47862044D+05, &
@@ -11427,14 +11427,14 @@ Data ECtpig_sp/                                                                 
  0.24467749D+05,  0.24466790D+05,  0.24465853D+05,  0.24464937D+05,  0.24464044D+05, &
  0.24463169D+05,  0.24462316D+05,  0.24461481D+05,  0.24460665D+05,  0.24459868D+05, &
  0.24459089D+05   /
-    
+
 End
 
 Double Precision Function V_Na2_tpig_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3=312921.313415430d0,C6=-327750013.463250d0,C8= 61497956719.4523d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_tpig_sp /RCtpig_sp(N),ECtpig_sp(N)
 
 
@@ -11447,14 +11447,14 @@ Call Findi2(RCtpig_sp,xx,N,ix)
  V_Na2_tpig_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 
 
 
-Block Data Inicio_Na2_tpiu_sp 
+Block Data Inicio_Na2_tpiu_sp
 Parameter(N=166)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11495,7 +11495,7 @@ Data RCtpiu_sp/                                                                 
  0.17992024D+02,  0.18097860D+02,  0.18203695D+02,  0.18309531D+02,  0.18415366D+02, &
  0.18521202D+02 /
 
-   
+
 Data ECtpiu_sp/                                                                        &
    0.68568477D+05,  0.61799930D+05,  0.55128169D+05,  0.48904856D+05,  0.43236587D+05, &
  0.38133776D+05,  0.33573906D+05,  0.29527115D+05,  0.25965098D+05,  0.22862371D+05, &
@@ -11531,14 +11531,14 @@ Data ECtpiu_sp/                                                                 
  0.24358132D+05,  0.24359140D+05,  0.24360124D+05,  0.24361085D+05,  0.24362024D+05, &
  0.24362938D+05,  0.24363832D+05,  0.24364704D+05,  0.24365557D+05,  0.24366389D+05, &
  0.24367203D+05 /
-    
+
 End
 
 Double Precision Function V_Na2_tpiu_sp(xx)
 Parameter(N=166)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N),C3=-266043.311320433d0,C6= -404654464.318037d0,C8= 77364530414.4876d0,&
-   limdiso= 24413.5149910313d0               
+   limdiso= 24413.5149910313d0
 Common/Param_Spline2_Na2_tpiu_sp /RCtpiu_sp(N),ECtpiu_sp(N)
 
 
@@ -11551,140 +11551,140 @@ Call Findi2(RCtpiu_sp,xx,N,ix)
  V_Na2_tpiu_sp = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx+V_Na2_veffect(xx)
 
 endif
-Return 
+Return
 End
 
 
 Double Precision Function V_Li2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_Li2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Li2_plus_ion = (1/(xx*conv_A_a0))*conv_har_K!+V_Na2_veffect(xx)
 
-Return 
+Return
 
 End
 
 Double Precision Function V_Na2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_Na2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Na2_plus_ion = (1/(xx*conv_A_a0))*conv_har_K+V_Na2_veffect(xx)
 
-Return 
+Return
 
 End
 
 Double Precision Function V_K2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_K2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_K2_plus_ion = (1/(xx*conv_A_a0))*conv_har_K+V_K2_veffect(xx)
 
-Return 
+Return
 
 End
 
 
 Double Precision Function V_Rb2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_Rb2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Rb2_plus_ion = (1/(xx*conv_A_a0))*conv_har_K+V_Rb2_veffect(xx)
 
-Return 
+Return
 
 End
 
 
 
 Double Precision Function V_Cs2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_Cs2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Cs2_plus_ion = (1/(xx*conv_A_a0))*conv_har_K+V_Cs2_veffect(xx)
 
-Return 
+Return
 
 End
 
 Double Precision Function V_Coulomb_explosion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038d0 
+conv_A_a0=1.d0/0.5291772109038d0
 
 ! xx input in \AA
 ! V_Cs2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Coulomb_explosion = (1/(xx*conv_A_a0))*conv_har_K
 
-Return 
+Return
 
 End
 
 
 
 Double Precision Function V_der_Li2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_der_Li2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_der_Li2_plus_ion = (-1/(xx**2*conv_A_a0))*conv_har_K!+V_der_Na2_veffect(xx)
 
-Return 
+Return
 
 End
 
 Double Precision Function V_der_Na2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_der_Na2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_der_Na2_plus_ion = (-1/(xx**2*conv_A_a0))*conv_har_K+V_der_Na2_veffect(xx)
 
-Return 
+Return
 
 End
 
@@ -11692,53 +11692,53 @@ End
 
 
 Double Precision Function V_der_K2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_der_K2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_der_K2_plus_ion = (-1/(xx**2*conv_A_a0))*conv_har_K+V_der_K2_veffect(xx)
 
-Return 
+Return
 
 End
 
 
 
 Double Precision Function V_der_Rb2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_der_Rb2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_der_Rb2_plus_ion = (-1/(xx**2*conv_A_a0))*conv_har_K+V_der_Rb2_veffect(xx)
 
-Return 
+Return
 
 End
 
 
 Double Precision Function V_der_Cs2_plus_ion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
-conv_A_a0=1.d0/0.5291772109038 
+conv_A_a0=1.d0/0.5291772109038
 
 ! xx input in \AA
 ! V_der_Cs2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_der_Cs2_plus_ion = (-1/(xx**2*conv_A_a0))*conv_har_K+V_der_Cs2_veffect(xx)
 
-Return 
+Return
 
 End
 
@@ -11746,7 +11746,7 @@ End
 
 
 Double Precision Function V_Der_Coulomb_explosion(xx)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 conv_har_K=3.157750248040761d5
 conv_A_a0=1.d0/0.5291772109038d0
 
@@ -11754,15 +11754,15 @@ conv_A_a0=1.d0/0.5291772109038d0
 ! V_der_Cs2_plus_ion output in K
 !1[H]=(1/r)[bohr-1]
 
- 
+
  V_Der_Coulomb_explosion = (-1/(xx**2*conv_A_a0))*conv_har_K
 
-Return 
+Return
 
 End
 
 
-Block Data Inicio_Na_plus_Saldan 
+Block Data Inicio_Na_plus_Saldan
 Parameter(N=93)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11788,7 +11788,7 @@ Data Esaldan/                                                                   
 -0.16420329D+00, -0.88417154D-01, -0.50524088D-01, -0.31576836D-01, -0.18945814D-01, &
 -0.12631022D-01, -0.64586693D-02, -0.31509213D-02 /
 
-    
+
 Data Rsaldan/                                                                        &
  0.17000000D+01,  0.18000000D+01,  0.19000000D+01,  0.20000000D+01,  0.21000000D+01, &
  0.21500000D+01,  0.22000000D+01,  0.22500000D+01,  0.23000000D+01,  0.23500000D+01, &
@@ -11809,13 +11809,13 @@ Data Rsaldan/                                                                   
  0.12000000D+02,  0.12500000D+02,  0.13000000D+02,  0.14000000D+02,  0.15000000D+02, &
  0.18000000D+02,  0.21000000D+02,  0.24000000D+02,  0.27000000D+02,  0.30000000D+02, &
  0.33000000D+02,  0.40000000D+02,  0.50000000D+02  /
-    
+
 End
 
 Double Precision Function V_Saldan_Na_plus_gs(xx)
 Parameter(N=93)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: a(N),b(N),c(N),d(N),C4= -25309.3737799200d0,C6=14040288.1727124d0,limdiso=0d0        
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),C4= -25309.3737799200d0,C6=14040288.1727124d0,limdiso=0d0
 Common/Param_Spline2_Na_plus_saldan/Rsaldan(N),Esaldan(N)
 
 
@@ -11830,15 +11830,15 @@ else
  V_Saldan_Na_plus_gs = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 endif
 
-Return 
+Return
 End
 
 
 
 Double Precision Function V_Tudela_Cs_plus_gs(xx)
 Parameter(N=93)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: epsilon=13.70d-3,beta=9.5d0,nr,rm=3.35d0,conv_ev_K=1.160451812d4  
+Implicit Real*8(A-H,O-Z)
+Double Precision:: epsilon=13.70d-3,beta=9.5d0,nr,rm=3.35d0,conv_ev_K=1.160451812d4
 Integer :: m=4
 
 
@@ -11849,15 +11849,15 @@ Integer :: m=4
 
 !!!! \AA and K
 
-Return 
+Return
 End
 
 
 
 Double Precision Function V_Rastogi_Li_plus_gs(xx)
 Parameter(N=93)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: epsilon=81.3d-3,beta=4.2d0,nr,rm=1.90d0,conv_ev_K=1.160451812d4  
+Implicit Real*8(A-H,O-Z)
+Double Precision:: epsilon=81.3d-3,beta=4.2d0,nr,rm=1.90d0,conv_ev_K=1.160451812d4
 Integer :: m=4
 
 
@@ -11868,12 +11868,12 @@ Integer :: m=4
 
 !!!! \AA and K
 
-Return 
+Return
 End
 
 
 
-Block Data Inicio_K_plus_Viehland 
+Block Data Inicio_K_plus_Viehland
 Parameter(N=42)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11889,7 +11889,7 @@ Data Eviehland/                                                                 
 -0.43882695D+01, -0.27192883D+01, -0.17696956D+01, -0.84887836D+00, -0.34530645D+00, &
 -0.11510215D+00, -0.57551075D-01  /
 
-    
+
 Data Rviehland/                                                                      &
  0.10000000D+01,  0.12000000D+01,  0.14000000D+01,  0.16000000D+01,  0.17000000D+01, &
  0.19000000D+01,  0.20000000D+01,  0.21000000D+01,  0.22000000D+01,  0.23000000D+01, &
@@ -11900,13 +11900,13 @@ Data Rviehland/                                                                 
  0.55000000D+01,  0.60000000D+01,  0.65000000D+01,  0.70000000D+01,  0.75000000D+01, &
  0.80000000D+01,  0.90000000D+01,  0.10000000D+02,  0.12000000D+02,  0.15000000D+02, &
  0.20000000D+02,  0.25000000D+02 /
-    
+
 End
 
 Double Precision Function V_Viehland_K_plus_gs(xx)
 Parameter(N=42)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: a(N),b(N),c(N),d(N),C4=-29706.7459180186d0,C6=4516160.75438734d0  ,limdiso=0d0             
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),C4=-29706.7459180186d0,C6=4516160.75438734d0  ,limdiso=0d0
 Common/Param_Spline2_K_plus_Viehland/Rviehland(N),Eviehland(N)
 
 if(xx.gt.Rviehland(N))then
@@ -11918,11 +11918,11 @@ else
  V_Viehland_K_plus_gs = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 endif
 !!!! \AA and K
-Return 
+Return
 End
 
 
-Block Data Inicio_V_HeHg_gs 
+Block Data Inicio_V_HeHg_gs
 Parameter(N=48)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11939,7 +11939,7 @@ Data Ehehg/                                                                     
 -0.13136241D-01, -0.41050754D-02, -0.94732509D-03, -0.94732509D-03, -0.94732509D-03, &
 -0.88417009D-03, -0.78943758D-03, -0.78943758D-03    /
 
-    
+
 Data Rhehg/                                                                          &
  0.79999949D+00,  0.10000020D+01,  0.15000004D+01,  0.19999987D+01,  0.23999985D+01, &
  0.26000010D+01,  0.27999982D+01,  0.30000007D+01,  0.31999980D+01,  0.34999991D+01, &
@@ -11951,13 +11951,13 @@ Data Rhehg/                                                                     
  0.57999990D+01,  0.69999982D+01,  0.90000022D+01,  0.99999989D+01,  0.11000001D+02, &
  0.14000002D+02,  0.16999997D+02,  0.19999998D+02,  0.24999997D+02,  0.29999997D+02, &
  0.31750631D+02,  0.34396517D+02,  0.37042403D+02  /
-    
+
 End
 
 Double Precision Function V_HeHg_gs (xx)
 Parameter(N=48)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: a(N),b(N),c(N),d(N)          
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_Spline2_He_Hg_gs/Rhehg(N),Ehehg(N)
 
 
@@ -11967,12 +11967,12 @@ Call Findi2(Rhehg,xx,N,ix)
  V_HeHg_gs = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 !!!! \AA and K
-Return 
+Return
 End
 
 
 
-Block Data Inicio_V_HeHgplus_gs 
+Block Data Inicio_V_HeHgplus_gs
 Parameter(N=33)
 Implicit Real*8(A-H,O-Z)
 !!!Energy in K and R in \AA
@@ -11986,7 +11986,7 @@ Data Ehehgplus/                                                                 
 -0.54673520D+01, -0.41724529D+01, -0.31653091D+01, -0.24459206D+01, -0.18704099D+01, &
 -0.14387769D+01, -0.11510215D+01, -0.71938843D+00  /
 
-    
+
 Data Rhehgplus/                                                                      &
  0.21167088D+01,  0.23812974D+01,  0.26458861D+01,  0.27517215D+01,  0.28575569D+01, &
  0.29633924D+01,  0.30692278D+01,  0.31750633D+01,  0.32808987D+01,  0.33867341D+01, &
@@ -11995,13 +11995,13 @@ Data Rhehgplus/                                                                 
  0.58209493D+01,  0.60855379D+01,  0.63501265D+01,  0.66147151D+01,  0.68793037D+01, &
  0.71438923D+01,  0.74084810D+01,  0.76730696D+01,  0.79376582D+01,  0.82022468D+01, &
  0.84668354D+01,  0.87314240D+01,  0.89960126D+01  /
-    
+
 End
 
 Double Precision Function V_HeHgplus_gs (xx)
 Parameter(N=33)
-Implicit Real*8(A-H,O-Z)   
-Double Precision:: a(N),b(N),c(N),d(N)          
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_Spline2_He_Hgplus_gs/Rhehgplus(N),Ehehgplus(N)
 
 
@@ -12011,14 +12011,14 @@ Call Findi2(Rhehgplus,xx,N,ix)
  V_HeHgplus_gs = a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 !!!! \AA and K
-Return 
+Return
 End
 
 
 
 Double Precision Function V_HeXe_gs (xx)
 
-Implicit Real*8(A-H,O-Z)   
+Implicit Real*8(A-H,O-Z)
 
 !!! Input xx in \AA
 !!! Output V in K
@@ -12036,16 +12036,16 @@ real      (kind=8) :: b         = 13.950d0
 real      (kind=8) :: C6        = 1.3499d0
 real      (kind=8) :: C8        = 0.4147d0
 real      (kind=8) :: C10       = 0.1716d0
-real      (kind=8) :: Za        = 2d0 !  atomic number in au for He 
+real      (kind=8) :: Za        = 2d0 !  atomic number in au for He
 real      (kind=8) :: Zb        = 54d0 !  atomic number in au for Xe
 real      (kind=8) :: Re        = 7.517d0!! au !!3.98d0 !  \AA
 real      (kind=8) :: De        = 8.897d-5 ! Eh (au) !!28.09d0  K
-real      (kind=8) :: R,xx       
+real      (kind=8) :: R,xx
 Integer   (kind=4) :: K
-real      (kind=8) :: sum,sum2       
+real      (kind=8) :: sum,sum2
 real      (kind=8) :: Fact(0:10)
 Real      (Kind=8) :: a_bohr= 0.529177d0  !!! Convert from \AA to au (bhor)
-Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K 
+Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K
 
   Fact(0) = 1.d0; Fact(1) = 1.d0
   Do i=2, 10
@@ -12065,10 +12065,10 @@ do i=3,5
       sum2=sum2+(b*R)**k/fact(k)
      ! Write(45,*)fact(k),k
     enddo
-    
+
      sum2=1d0-exp(-b*R)*sum2
-    
-   
+
+
      if(i.eq.3)  sum2=sum2*C6/R**(2*i)
      if(i.eq.4)  sum2=sum2*C8/R**(2*i)
      if(i.eq.5)  sum2=sum2*C10/R**(2*i)
@@ -12077,7 +12077,7 @@ do i=3,5
      sum2=0d0
 
 enddo
- 
+
 
 Uvdw=A*R**(gamma)*exp(-beta*R)-sum
 Ulong=(1d0-exp(-alpha*R))*Uvdw
@@ -12086,19 +12086,19 @@ Ulong=(1d0-exp(-alpha*R))*Uvdw
  V_HeXe_gs=V_HeXe_gs*au_k  !!!! Potential in K
 
 
-Return 
+Return
 End
 
 
 
 Double Precision Function V_HeXe_plus_gs(xx)
-Implicit Real*8(A-H,O-Z)   
+Implicit Real*8(A-H,O-Z)
 
 !!! Input xx in \AA
 !!! Output V in K
 conv_cm_K=1.43877687750393d0 !!! cm-1 -> K
 conv_a_A=0.5291772109038d0 !!!! ao-> A
-conv_har_K=3.157750248040761E5 !!!ao -> K 
+conv_har_K=3.157750248040761E5 !!!ao -> K
 
 !!!! From Table 2 of the paper you can differently deduct the alpha term corresponding a Morse potential:
 
@@ -12121,7 +12121,7 @@ VMorse=(De*(exp(-2d0*Alpha*(xx-Re))-2d0*exp(-Alpha*(xx-Re))))*conv_cm_K
 
 !!! We fit the Morse potential by using a Lenard-Jones (Dfit and sigmafit are obtained) potential and determine when both potentials are crossed
 !!! Rc=4.5 d0, later we sought where the polarizability and the Lenard-Jones intercept Rc=5.08
-!!! We use switching functions in order to build a smooth curve 
+!!! We use switching functions in order to build a smooth curve
 
 
 if(xx.le.4.5d0) V_HeXe_plus_gs=VMorse
@@ -12187,14 +12187,14 @@ Data ELi/                                                                       
 -0.57551074D-01, -0.57551074D-01, -0.43163306D-01, -0.43163306D-01  /
 
 Data roLi/ 1.75999998301268d0/
-Data ELimax/ 1716.52162000304/  
+Data ELimax/ 1716.52162000304/
 Data rfLi/30.69d0/
 End
 
 Double Precision Function V_Li_ssg(xx)
 Parameter(N=64)
 Implicit Real*8(A-H,O-Z)  !! When Fortran was originally developed memory was at a premium. Variables and procedure names could have a maximum of 6 characters, and variables were often implicitly typed. This means that the first letter of the variable name determines its type.
-Double Precision:: a(N),b(N),c(N),d(N),c6= -9788008.53363786d0 ,c8=  -183280212.928636d0,limdiso= 0 
+Double Precision:: a(N),b(N),c(N),d(N),c6= -9788008.53363786d0 ,c8=  -183280212.928636d0,limdiso= 0
 Common/Param_Spline2_Li_ssg/RLi(N),ELi(N),roLi,ELimax,rfLi
 
 If(xx.le.roLi)Then
@@ -12220,7 +12220,7 @@ Endif
 Call spline2(RLi,ELi,a,b,c,d,0,0,N)
 Call Findi2(RLi,xx,N,ix)
 V_Li_ssg= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  !+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -12262,14 +12262,14 @@ Data ELi/                                                                       
 -0.57551074D-01, -0.57551074D-01, -0.43163306D-01, -0.43163306D-01 /
 
 Data roLi/ 2.96251d0/
-Data ELimax/ 1033.71d0/  
+Data ELimax/ 1033.71d0/
 Data rfLi/30.69d0/
 End
 
 Double Precision Function V_Li_tspu(xx)
 Parameter(N=64)
 Implicit Real*8(A-H,O-Z)  !! When Fortran was originally developed memory was at a premium. Variables and procedure names could have a maximum of 6 characters, and variables were often implicitly typed. This means that the first letter of the variable name determines its type.
-Double Precision:: a(N),b(N),c(N),d(N),c6= -130306320.970014d0 ,c8=88760903428.3487d0,limdiso= 0 
+Double Precision:: a(N),b(N),c(N),d(N),c6= -130306320.970014d0 ,c8=88760903428.3487d0,limdiso= 0
 Common/Param_Spline2_Li_tspu/RLi(N),ELi(N),roLi,ELimax,rfLi
 
 If(xx.le.roLi)Then
@@ -12294,7 +12294,7 @@ Endif
 Call spline2(RLi,ELi,a,b,c,d,0,0,N)
 Call Findi2(RLi,xx,N,ix)
 V_Li_tspu= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  !+V_Cs2_veffect(xx)
-Return 
+Return
 End
 
 
@@ -12332,14 +12332,14 @@ Data ENaXe/                                                                     
 -0.23613206D-01, -0.20027774D-01, -0.17368914D-01 /
 
 Data roNaXe/  3.30999994836748d0/
-Data ENaXemax/ 1150.95488831012d0/  
+Data ENaXemax/ 1150.95488831012d0/
 Data rfNaXe/25d0/
 End
 
 Double Precision Function V_NaXe_gs(xx)
 Parameter(N=58)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_NaXe_gs/RNaXe(N),ENaXe(N),roNaXe,ENaXemax,rfNaXe
 
 
@@ -12357,7 +12357,7 @@ endif
 Call spline2(RNaXe,ENaXe,a,b,c,d,0,0,N)
 Call Findi2(RNaXe,xx,N,ix)
 
-V_NaXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_NaXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 
 End
@@ -13241,14 +13241,14 @@ Data EderNaXe/                                                                  
  0.32950080D-02,  0.32845820D-02,  0.32741774D-02    /
 
 Data roderNaXe/   3.32999994792044d0/
-Data EderNaXemax/ -2741.28585348033d0/  
+Data EderNaXemax/ -2741.28585348033d0/
 Data rfderNaXe/25d0/
 End
 
 Double Precision Function V_der_NaXe_gs(xx)
 Parameter(N=2168)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_der_NaXe_gs/RderNaXe(N),EderNaXe(N),roderNaXe,EderNaXemax,rfderNaXe
 
 
@@ -13266,7 +13266,7 @@ endif
 Call spline2(RderNaXe,EderNaXe,a,b,c,d,0,0,N)
 Call Findi2(RderNaXe,xx,N,ix)
 
-V_der_NaXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_der_NaXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 
 End
@@ -13306,13 +13306,13 @@ Data EKXe/                                                                      
 -0.33382788D-01, -0.27416325D-01, -0.22971367D-01 /
 
 Data roKXe/ 3.46999994479120d0/
-Data EKXemax/ 1105.59288304966d0/  
+Data EKXemax/ 1105.59288304966d0/
 Data rfKXe/26.458859d0/
 End
 
 Double Precision Function V_KXe_gs(xx)
 Parameter(N=58)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N) , C6=  -24484975.4983680d0,C8=18403860318.0368d0,C10=-4746695897462.95d0
 Common/Param_KXe_gs/RKXe(N),EKXe(N),roKXe,EKXemax,rfKXe
 
@@ -13333,7 +13333,7 @@ endif
 Call spline2(RKXe,EKXe,a,b,c,d,0,0,N)
 Call Findi2(RKXe,xx,N,ix)
 
-V_KXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_KXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -14310,14 +14310,14 @@ Data EderKXe/                                                                   
  0.00000000D+00,  0.00000000D+00,  0.00000000D+00  /
 
 Data roderKXe/ 3.48999994434416d0/
-Data EderKXemax/  -2975.60722748126d0/  
+Data EderKXemax/  -2975.60722748126d0/
 Data rfderKXe/25d0/
 End
-      
+
 Double Precision Function V_der_KXe_gs(xx)
 Parameter(N=2398)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_derKXe_gs/RderKXe(N),EderKXe(N),roderKXe,EderKXemax,rfderKXe
 
 If(xx.le.roderKXe)Then
@@ -14335,7 +14335,7 @@ endif
 Call spline2(RderKXe,EderKXe,a,b,c,d,0,0,N)
 Call Findi2(RderKXe,xx,N,ix)
 
-V_der_KXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_der_KXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -14375,14 +14375,14 @@ Data ELiXe/                                                                     
 -0.17121732D-01 /
 
 Data roLiXe/  3.13999995216727d0/
-Data ELiXemax/ 1025.63131427777d0/  
+Data ELiXemax/ 1025.63131427777d0/
 Data rfLiXe/26.458859d0/
 End
-          
+
 Double Precision Function V_LiXe_gs(xx)
 Parameter(N=56)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N),C6=-21559506.7681078d0,C8=16558097221.3217d0,C10=-3904653144919.11d0 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N),C6=-21559506.7681078d0,C8=16558097221.3217d0,C10=-3904653144919.11d0
 Common/Param_LiXe_gs/RLiXe(N),ELiXe(N),roLiXe,ELiXemax,rfLiXe
 
 If(xx.le.roliXe)Then
@@ -14400,7 +14400,7 @@ endif
 Call spline2(RLiXe,ELiXe,a,b,c,d,0,0,N)
 Call Findi2(RLiXe,xx,N,ix)
 
-V_LiXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_LiXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -15376,14 +15376,14 @@ Data EderLiXe/                                                                  
 -0.27755576D-16, -0.27755576D-16, -0.27755576D-16  /
 
 Data roderLiXe/  3.15999995172024d0/
-Data EderLiXemax/ -1848.51283328498d0/  
+Data EderLiXemax/ -1848.51283328498d0/
 Data rfderLiXe/25d0/
 End
-                
+
 Double Precision Function V_der_LiXe_gs(xx)
 Parameter(N=2398)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_derLiXe_gs/RderLiXe(N),EderLiXe(N),roderLiXe,EderLiXemax,rfderLiXe
 
 If(xx.le.roderliXe)Then
@@ -15401,7 +15401,7 @@ endif
 Call spline2(RderLiXe,EderLiXe,a,b,c,d,0,0,N)
 Call Findi2(RderLiXe,xx,N,ix)
 
-V_der_LiXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_der_LiXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -15988,13 +15988,13 @@ Data ERbXe/                                                                     
 -0.24990115D+00, -0.24899472D+00, -0.24808829D+00 /
 
 Data roRbXe/   3.97999993339181d0/
-Data ERbXemax/     1100.95218076999d0/  
+Data ERbXemax/     1100.95218076999d0/
 Data rfRbXe/16.98d0/
 End
-          
+
 Double Precision Function V_RbXe_gs(xx)
 Parameter(N=1428)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N) ,C6= 27783546.3472903d0,C8=-19275185745.6448d0,C10=2753528994516.63d0
 Common/Param_RbXe_gs/RRbXe(N),ERbXe(N),roRbXe,ERbXemax,rfRbXe
 
@@ -16012,7 +16012,7 @@ endif
 Call spline2(RRbXe,ERbXe,a,b,c,d,0,0,N)
 Call Findi2(RRbXe,xx,N,ix)
 
-V_RbXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_RbXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -16503,8 +16503,8 @@ Data RderRbXe/                                                                  
  0.24799999D+02,  0.24809999D+02,  0.24819999D+02,  0.24829999D+02,  0.24839999D+02, &
  0.24849999D+02,  0.24859999D+02,  0.24869999D+02,  0.24879999D+02,  0.24889999D+02, &
  0.24899999D+02,  0.24909999D+02,  0.24919999D+02,  0.24929999D+02,  0.24939999D+02, &
- 0.24949999D+02,  0.24959999D+02,  0.24969999D+02 /                                                                
-   
+ 0.24949999D+02,  0.24959999D+02,  0.24969999D+02 /
+
 
 Data EderRbXe/                                                                          &
  0.64222212D+05, -0.91746017D+04, -0.36379788D-11, -0.36379788D-11, -0.36379788D-11, &
@@ -16989,14 +16989,14 @@ Data EderRbXe/                                                                  
  0.44408921D-15,  0.44408921D-15,  0.44408921D-15 /
 
 Data roderRbXe/   4.46999992243946d0/
-Data EderRbXemax/     -1335.60497352124d0/  
+Data EderRbXemax/     -1335.60497352124d0/
 Data rfderRbXe/25d0/
 End
-          
+
 Double Precision Function V_der_RbXe_gs(xx)
 Parameter(N=2398)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_der_RbXe_gs/RderRbXe(N),EderRbXe(N),roderRbXe,EderRbXemax,rfderRbXe
 
 If(xx.le.roderRbXe)Then
@@ -17013,7 +17013,7 @@ endif
 Call spline2(RderRbXe,EderRbXe,a,b,c,d,0,0,N)
 Call Findi2(RderRbXe,xx,N,ix)
 
-V_der_RbXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_der_RbXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -17587,13 +17587,13 @@ Data ECsXe/                                                                     
 -0.29140986D+00, -0.29034517D+00, -0.28929486D+00 /
 
 Data roCsXe/  3.77999993786216d0/
-Data ECsXemax/     1107.64257880457d0/  
+Data ECsXemax/     1107.64257880457d0/
 Data rfCsXe/16.98d0/
 End
-                   
+
 Double Precision Function V_CsXe_gs(xx)
 Parameter(N=1398)
-Implicit Real*8(A-H,O-Z) 
+Implicit Real*8(A-H,O-Z)
 Double Precision:: a(N),b(N),c(N),d(N) ,C6= -91248806.1684443d0,C8=48742305027.9941d0,C10=-7044402047311.25d0
 Common/Param_CsXe_gs/RCsXe(N),ECsXe(N),roCsXe,ECsXemax,rfCsXe
 
@@ -17611,7 +17611,7 @@ endif
 Call spline2(RCsXe,ECsXe,a,b,c,d,0,0,N)
 Call Findi2(RCsXe,xx,N,ix)
 
-V_CsXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_CsXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -18101,8 +18101,8 @@ Data RderCsXe/                                                                  
  0.24799999D+02,  0.24809999D+02,  0.24819999D+02,  0.24829999D+02,  0.24839999D+02, &
  0.24849999D+02,  0.24859999D+02,  0.24869999D+02,  0.24879999D+02,  0.24889999D+02, &
  0.24899999D+02,  0.24909999D+02,  0.24919999D+02,  0.24929999D+02,  0.24939999D+02, &
- 0.24949999D+02,  0.24959999D+02,  0.24969999D+02 /                                                                
-   
+ 0.24949999D+02,  0.24959999D+02,  0.24969999D+02 /
+
 
 Data EderCsXe/                                                                          &
   0.64612485D+05, -0.92303550D+04,  0.36379788D-11,  0.36379788D-11,  0.36379788D-11, &
@@ -18587,15 +18587,15 @@ Data EderCsXe/                                                                  
  0.17092885D-01,  0.17079912D-01,  0.17066894D-01  /
 
 Data roderCsXe/ 3.8d0/
-Data EderCsXemax/ -2727.24d0/  
+Data EderCsXemax/ -2727.24d0/
 Data rfderCsXe/24.969999d0/
 End
 
 
 Double Precision Function V_der_CsXe_gs(xx)
 Parameter(N=2398)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_der_CsXe_gs/RderCsXe(N),EderCsXe(N),roderCsXe,EderCsXemax,rfderCsXe
 
 If(xx.le.roderCsXe)Then
@@ -18612,7 +18612,7 @@ endif
 Call spline2(RderCsXe,EderCsXe,a,b,c,d,0,0,N)
 Call Findi2(RderCsXe,xx,N,ix)
 
-V_der_CsXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_der_CsXe_gs= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End
 
@@ -18656,7 +18656,7 @@ do ielem=1,4
   if(elem.ne.celem(ielem)) cycle
   exit
 end do
- 
+
  cutoffpos=6.462863157d0 !!in ao
 
  if(dist.le.cutoffpos)then
@@ -18672,7 +18672,7 @@ end do
 
     if(dist.lt.R0) then
 
-      do i=0,5
+      do i=1,6
         innervariable=innervariable+bn(i)*((dist-R0)**(i+2))/(1+(dist-R0)**2)
       enddo
 
@@ -18697,7 +18697,7 @@ End
 
 
 double precision function V_Xe_Xe_2020(xx)
-Implicit Real*8(A-H,O-Z)   
+Implicit Real*8(A-H,O-Z)
 
 !!! Input xx in \AA
 !!! Output V in K
@@ -18715,16 +18715,16 @@ real      (kind=8) :: b         = 13.950d0
 real      (kind=8) :: C6        = 1.3499d0
 real      (kind=8) :: C8        = 0.4147d0
 real      (kind=8) :: C10       = 0.1716d0
-real      (kind=8) :: Za        = 54d0 !  atomic number in au for Xe 
+real      (kind=8) :: Za        = 54d0 !  atomic number in au for Xe
 real      (kind=8) :: Zb        = 54d0 !  atomic number in au for Xe
 real      (kind=8) :: Re        = 8.273d0!! au !!4.38d0 !  \AA
 real      (kind=8) :: De        = 88.663d-5 ! Eh (au) !!279.97d0  K
-real      (kind=8) :: R,xx       
+real      (kind=8) :: R,xx
 Integer   (kind=4) :: K
-real      (kind=8) :: sum,sum2       
+real      (kind=8) :: sum,sum2
 real      (kind=8) :: Fact(0:10)
 Real      (Kind=8) :: a_bohr= 0.529177d0  !!! Convert from \AA to au (bhor)
-Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K 
+Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K
 
   Fact(0) = 1.d0; Fact(1) = 1.d0
   Do i=2, 10
@@ -18744,10 +18744,10 @@ do i=3,5
       sum2=sum2+(b*R)**k/fact(k)
      ! Write(45,*)fact(k),k
     enddo
-    
+
      sum2=1d0-exp(-b*R)*sum2
-    
-   
+
+
      if(i.eq.3)  sum2=sum2*C6/R**(2*i)
      if(i.eq.4)  sum2=sum2*C8/R**(2*i)
      if(i.eq.5)  sum2=sum2*C10/R**(2*i)
@@ -18756,7 +18756,7 @@ do i=3,5
      sum2=0d0
 
 enddo
- 
+
 
 Uvdw=A*R**(gamma)*exp(-beta*R)-sum
 Ulong=(1d0-exp(-alpha*R))*Uvdw
@@ -18772,7 +18772,7 @@ End
 
 
 double precision function V_Xe_Xe_2017(xx)
-Implicit Real*8(A-H,O-Z)   
+Implicit Real*8(A-H,O-Z)
 
 !!! Input xx in \AA
 !!! Output V in K
@@ -18785,12 +18785,12 @@ real      (kind=8) :: a2        = -0.147746919d0 !! \AA **-2
 real      (kind=8) :: an1       = -2.89687722d0 !! \AA
 real      (kind=8) :: an2       = 2.58976595d0 !! \AA**2
 real      (kind=8) :: b         = 2.44337880d0  !! \AA**-1
-real      (kind=8) :: C_disp(3),C_disp_high(3)    
+real      (kind=8) :: C_disp(3),C_disp_high(3)
 real      (kind=8) :: De        = 279.975d0 !  K
 real      (kind=8) :: Re        = 4.37798d0 !  \AA
 real      (kind=8) :: Fact(0:16)
 Real      (Kind=8) :: a_bohr= 0.529177d0  !!! Convert from \AA to au (bhor)
-Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K 
+Real      (Kind=8) :: au_k= 3.1577502480407d5 !!! Convert from Eh (au) to K
 Real      (Kind=8) :: Vfirst_term,Vsecond_term,sum,sum2,posroff,umaxoff
 
 
@@ -18798,7 +18798,7 @@ posroff=3.3499999d0 !!! rcutoff
 
   if(xx.le.posroff) then
    V_Xe_Xe_2017=0.30477436E+04
-  
+
   Return
   endif
 
@@ -18818,7 +18818,7 @@ Vsecond_term=0d0
 sum2=0d0
 
 do i=3,8
-  
+
   sum=0d0
 
   do k=0,2*i
@@ -18829,19 +18829,19 @@ do i=3,8
      sum2=(C_disp(i-2)/xx**(2*i))
   else
 
-     if(i.eq.6)  C_disp_high(1)=C_disp(1)*(C_disp(3)/C_disp(2))**3 
-     if(i.eq.7)  C_disp_high(2)=C_disp(2)*(C_disp_high(1)/C_disp(3))**3 
-     if(i.eq.8)  C_disp_high(3)=C_disp(3)*(C_disp_high(2)/C_disp_high(1))**3 
-     
+     if(i.eq.6)  C_disp_high(1)=C_disp(1)*(C_disp(3)/C_disp(2))**3
+     if(i.eq.7)  C_disp_high(2)=C_disp(2)*(C_disp_high(1)/C_disp(3))**3
+     if(i.eq.8)  C_disp_high(3)=C_disp(3)*(C_disp_high(2)/C_disp_high(1))**3
+
     sum2=(C_disp_high(i-5)/xx**(2*i))
   endif
-  
+
 Vsecond_term=Vsecond_term+sum2*(1d0-exp(-b*xx)*sum)
 enddo
 
 
  V_Xe_Xe_2017 = Vfirst_term-Vsecond_term
- 
+
 
 Return
 End
@@ -20855,8 +20855,8 @@ Data RderXeXe2017/                                                              
  0.99799998D+02,  0.99809998D+02,  0.99819998D+02,  0.99829998D+02,  0.99839998D+02, &
  0.99849998D+02,  0.99859998D+02,  0.99869998D+02,  0.99879998D+02,  0.99889998D+02, &
  0.99899998D+02,  0.99909998D+02,  0.99919998D+02,  0.99929998D+02,  0.99939998D+02, &
- 0.99949998D+02,  0.99959998D+02,  0.99969998D+02  /                                                                
-   
+ 0.99949998D+02,  0.99959998D+02,  0.99969998D+02  /
+
 
 Data EderXeXe2017/                                                                     &
  0.17778505D+06, -0.25397864D+05,  0.72759576D-11,  0.72759576D-11,  0.72759576D-11, &
@@ -22861,18 +22861,18 @@ Data EderXeXe2017/                                                              
  0.12076062D-06,  0.12067605D-06,  0.12059154D-06    /
 
 Data roderXeXe2017/ 3.75999991595745d0/
-Data EderXeXe2017max/-2927.27156836147d0/  
+Data EderXeXe2017max/-2927.27156836147d0/
 Data rfderXeXe2017/99.989998d0/
 End
 
-      
+
 
 
 
 Double Precision Function V_derXe_Xe_2017(xx)
 Parameter(N=9998)
-Implicit Real*8(A-H,O-Z) 
-Double Precision:: a(N),b(N),c(N),d(N) 
+Implicit Real*8(A-H,O-Z)
+Double Precision:: a(N),b(N),c(N),d(N)
 Common/Param_der_XeXe_2017/RderXeXe2017(N),EderXeXe2017(N),roderXeXe2017,EderXeXe2017max,rfderXeXe2017
 
 If(xx.le.roderXeXe2017)Then
@@ -22889,6 +22889,6 @@ endif
 Call spline2(RderXeXe2017,EderXeXe2017,a,b,c,d,0,0,N)
 Call Findi2(RderXeXe2017,xx,N,ix)
 
-V_derXe_Xe_2017= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx  
+V_derXe_Xe_2017= a(ix) + (b(ix) + xx*(c(ix) + xx*d(ix)))*xx
 
 End

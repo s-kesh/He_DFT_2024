@@ -41,7 +41,7 @@ use lenard4
 use he4
 use util1
 use work1
-use ifport
+use gport
 use interpol
 use coalescence
 
@@ -53,7 +53,7 @@ logical              :: lfilepv         ! T-> print save file when change Paflo 
 logical              :: lpaflv=.false.  ! T-> allows change of Paflov coeffient
 logical              :: lrkpc=.true.    ! T-> allows to use diferent evolution procedures
 logical              :: lrk=.false.     ! T-> allows to only Runge-Kutta method
-logical              :: result		! Logical variable to store result of ifport.makedirqq(outdir)
+logical              :: result		! Logical variable to store result of gport.makedirqq(outdir)
 integer    (kind=4)  :: ndmax=2         ! maxima derivada a calcular
 integer    (kind=4)  :: naux            ! Auxiliar variable
 integer    (kind=4)  :: nstepp=1        ! Number of 'Paflov parameter'.
@@ -530,11 +530,9 @@ Endif
 if(core4.eq.'OTC') then
     !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx/2+1
             kalfs(ix,iy,iz) = exp(-(pi*l*pmod(ix,iy,iz))**2)
         end do
-        !$omp end simd
     end do; end do
     !$omp end parallel do
 end if
@@ -564,15 +562,12 @@ If((mode.eq.0 .OR. mode.eq.7) .And.Ldensity)then
    !$omp parallel do default(shared) private(ix,iy,iz,aux) collapse(2)
    do iz=1,nz
      do iy=1,ny
-        !$omp simd
         do ix=1,nx
             aux=x(ix)*xlamdax       &
                 +y(iy)*xlamday       &
                 +z(iz)*xlamdaz
-            psi(ix,iy,iz) = sqrt(den(ix,iy,iz)) &
-                        * cmplx(cos(aux),sin(aux))
+            psi(ix,iy,iz) = sqrt(den(ix,iy,iz))* cmplx(cos(aux),sin(aux))
         end do
-         !$omp end simd
      end do
    end do
    !$omp end parallel do
@@ -583,11 +578,9 @@ Endif
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx
         den(ix, iy, iz) = conjg(psi(ix,iy,iz))*psi(ix,iy,iz)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
@@ -621,14 +614,12 @@ call flush(6)
 ! This time it's a cylinder.
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1,nz; do iy=1,ny
-    !$omp simd
     do ix=1,nx
         timec(ix,iy,iz)=cmplx(Lambdah*(1.d0+tanh((abs(x(ix))-txmean)/txsurf)            &
                                  +1.d0+tanh((abs(y(iy))-tymean)/tysurf)            &
                                  +1.d0+tanh((abs(z(iz))-tzmean)/tzsurf))           &
                                  ,1.d0)
     enddo
-    !$omp end simd
     enddo; enddo
 !$omp end parallel do
 

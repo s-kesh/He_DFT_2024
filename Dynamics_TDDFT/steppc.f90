@@ -48,25 +48,21 @@ if(.not. ldroplet_frozen)then
     ! Predictor
     !$omp parallel do private(ix,iy,iz, tmp_ke, tmp_pot, tmp_tot) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx
             tmp_ke = h2o2m4*(sto1c(ix,iy,iz)+sto2c(ix,iy,iz)+sto3c(ix,iy,iz))
             tmp_pot = pot4(ix,iy,iz)*psi(ix,iy,iz)
             sto4c(ix,iy,iz) = timec(ix,iy,iz)*(tmp_ke - tmp_pot) - ci*uimp(ix,iy,iz)*psi(ix,iy,iz)
         end do
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
 
     !$omp parallel do private(ix,iy,iz) default(shared) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx
             Sto1c(ix,iy,iz) = psiold(ix,iy,iz,ioldp(3)) &
             + c4o3*deltat*(2.d0*Sto4c(ix,iy,iz)-hpsiold(ix,iy,iz,ioldh(1)) &
             + 2.d0*hpsiold(ix,iy,iz,ioldh(2)))
         enddo
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
 
@@ -75,13 +71,11 @@ if(.not. ldroplet_frozen)then
     call zcopy(nx*ny*nz, sto4c, 1, hpsiold(:,:,:,ioldh(2)), 1)
     !$omp parallel do private(ix,iy,iz) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx
             psi(ix,iy,iz) = Sto1c(ix,iy,iz) - c112*pc(ix,iy,iz)
             pc(ix,iy,iz) = Sto1c(ix,iy,iz)
             den(ix,iy,iz) = real(psi(ix,iy,iz))**2 + aimag(psi(ix,iy,iz))**2
         enddo
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
 
@@ -93,7 +87,6 @@ endif
 
 
 if(.not. Lcoalescence ) then
-    !$omp simd
     do i=1,N_imp
         ! Predictor
         stor(i,1) = rimpold(i,1,ioldr(3)) + c4o3*deltat*(2.d0*vimp(i,1) - vimpold(i,1,ioldv(1)) + 2.d0*vimpold(i,1,ioldv(2)))
@@ -105,9 +98,7 @@ if(.not. Lcoalescence ) then
         rimpold(i,2,ioldr(3)) = rimp(i,2)
         rimpold(i,3,ioldr(3)) = rimp(i,3)
     end do
-    !$omp end simd
 
-    !$omp simd
     do i=1,N_imp
         ! Modificador
         rimp(i,1) = stor(i,1) + c112*pcr(i,1)
@@ -117,10 +108,8 @@ if(.not. Lcoalescence ) then
         pcr(i,2) = stor(i,2)
         pcr(i,3) = stor(i,3)
     enddo
-    !$omp end simd
 
     !... velocities ...!
-    !$omp simd
     do i=1,N_imp
         !..................!
         ! Predictor
@@ -142,7 +131,6 @@ if(.not. Lcoalescence ) then
         aimpold(i,2,iolda(2)) = aimp(i,2)
         aimpold(i,3,iolda(2)) = aimp(i,3)
     end do
-    !$omp end simd
 
     ! Reubicacion indices
     iaux=iolda(2)  ; iolda(2)=iolda(1)   ; iolda(1)=iaux
@@ -160,20 +148,17 @@ if(.not. Ldroplet_frozen)then
 
     !$omp parallel do private(ix,iy,iz, tmp_ke, tmp_pot, tmp_tot) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx
             tmp_ke = h2o2m4*timec(ix,iy,iz)*(sto1c(ix,iy,iz)+sto2c(ix,iy,iz)+sto3c(ix,iy,iz))
             tmp_pot = (-timec(ix,iy,iz)*pot4(ix,iy,iz) - ci*uimp(ix,iy,iz))*psi(ix,iy,iz)
             tmp_tot = tmp_ke + tmp_pot
             sto4c(ix,iy,iz) = tmp_tot
         enddo
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
 
     !$omp parallel do private(ix,iy,iz) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
-        !$omp simd
         do ix=1,nx
             ! Corrector
             Sto5c(ix,iy,iz) = 0.125d0*( 9.d0*psiold(ix,iy,iz,ioldp(3)) - psiold(ix,iy,iz,ioldp(2))   &
@@ -184,17 +169,14 @@ if(.not. Ldroplet_frozen)then
             psi(ix,iy,iz) = Sto5c(ix,iy,iz) + c9*pc(ix,iy,iz)
             den(ix,iy,iz) = real(psi(ix,iy,iz))**2 + aimag(psi(ix,iy,iz))**2
         enddo
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
 
     !$omp parallel do private(ix,iy,iz) collapse(2) reduction(+:errHe)
     do iz=1,nz; do iy=1,ny
-        !$omp simd reduction(+:errHe)
         do ix=1,nx
             errHe = errHe + abs(pc(ix,iy,iz))
         enddo
-        !$omp end simd
     enddo; enddo
     !$omp end parallel do
     errHe=errHe*c9/nxyz
@@ -213,7 +195,6 @@ endif
 
 if(.not. Lcoalescence ) then
     !... positions ...!
-    !$omp simd
     do i=1,N_imp
         ! Corrector:
         stor(i,1) = 0.125d0*(9.d0*rimpold(i,1,ioldr(3)) - rimpold(i,1,ioldr(2))     &
@@ -226,9 +207,7 @@ if(.not. Lcoalescence ) then
                     + 3.d0*deltat*(vimpold(i,3,ioldv(3)) &
                     + 2.d0*vimp(i,i) - vimpold(i,3,ioldv(1))))
     enddo
-    !$omp end simd
 
-    !$omp simd
     do i=1,N_imp
         ! Corrector
         pcr(i,1) = pcr(i,1) - stor(i,1)
@@ -240,20 +219,16 @@ if(.not. Lcoalescence ) then
         rimp(i,2) = stor(i,2) + c9*pcr(i,2)
         rimp(i,3) = stor(i,3) + c9*pcr(i,3)
     enddo
-    !$omp end simd
 
-    !$omp simd reduction(+:errimp)
     do i=1,N_imp
         errimp = errimp + Abs(c9*pcr(i,1)) + Abs(c9*pcr(i,2)) + Abs(c9*pcr(i,3))
     enddo
-    !$omp end simd
     errimp = errimp*0.3333333333d0/N_imp
 
     ! Reubicacion
     iaux=ioldr(3) ; ioldr(3)=ioldr(2) ; ioldr(2)=ioldr(1) ; ioldr(1)=iaux
 
     !... velocities ...!
-    !$omp simd
     do i=1,N_imp
         ! Corrector:
         stor(i,1) = 0.125d0*(9.0d0*vimp(i,1) - vimpold(i,1,ioldv(2))) &
@@ -278,13 +253,10 @@ if(.not. Lcoalescence ) then
         vimp(i,2) = stor(i,2) + c9*pcv(i,2)
         vimp(i,3) = stor(i,3) + c9*pcv(i,3)
     enddo
-    !$omp end simd
 
-    !$omp simd reduction(+:errvimp)
     do i=1,N_imp
         errvimp = errvimp + Abs(c9*pcv(i,1)) + Abs(c9*pcv(i,2)) + Abs(c9*pcv(i,3))
     enddo
-    !$omp end simd
     errvimp = errvimp*0.3333333333d0/N_imp
 
     ! Reubicacion

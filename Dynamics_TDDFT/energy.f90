@@ -59,7 +59,6 @@ if(Lfrozen_first_iteration)then
     !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
     do iz=1,nz
         do iy=1,ny
-            !$omp simd reduction(+:ekin4,elj4,ecor4)
             do ix=1,nx
                 aux3  = den(ix,iy,iz)
                 aux4  = dencg(ix,iy,iz)
@@ -68,7 +67,6 @@ if(Lfrozen_first_iteration)then
                 elj4  = elj4  + delj4(ix,iy,iz)*aux3
                 ecor4 = ecor4 + aux5
             enddo
-            !$omp end simd
         enddo
     enddo
     !$omp end parallel do
@@ -83,13 +81,11 @@ if(Lfrozen_first_iteration)then
             !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
             do iz=1,nz
                 do iy=1,ny
-                    !$omp simd reduction(+:ealphas)
                     do ix=1,nx
                         ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
                         + dyden(ix,iy,iz)*intyalf(ix,iy,iz)&
                         + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
                     enddo
-                    !$omp end simd
                 enddo
             enddo
         ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
@@ -102,11 +98,9 @@ if(Lfrozen_first_iteration)then
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
         do iz=1,nz
             do iy=1,ny
-                !$omp simd reduction(+:esolid)
                 do ix=1,nx
                     esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
                 enddo
-                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
@@ -143,7 +137,6 @@ else ! If ldroplet_frozen
     !$omp parallel do default(shared) private(ix,iy,iz,aux3,aux4,aux5) collapse(2) reduction(+:ekin4,elj4,ecor4)
     do iz=1,nz
         do iy=1,ny
-            !$omp simd reduction(+:ekin4,elj4,ecor4)
             do ix=1,nx
                 aux3  = den(ix,iy,iz)
                 aux4  = dencg(ix,iy,iz)
@@ -152,7 +145,6 @@ else ! If ldroplet_frozen
                 elj4  = elj4  + delj4(ix,iy,iz)*aux3
                 ecor4 = ecor4 + aux5
             end do
-            !$omp end simd
         end do
     end do
     !$omp end parallel do
@@ -167,12 +159,10 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:ealphas)
         do iz=1,nz
             do iy=1,ny
-                !$omp simd reduction(+:ealphas)
                 do ix=1,nx
                     ealphas = ealphas + falfs(ix,iy,iz)*(dxden(ix,iy,iz)*intxalf(ix,iy,iz)&
                     + dyden(ix,iy,iz)*intyalf(ix,iy,iz) + dzden(ix,iy,iz)*intzalf(ix,iy,iz))
                 end do
-                !$omp end simd
             end do
         end do
         !$omp end parallel do
@@ -186,11 +176,9 @@ else ! If ldroplet_frozen
         !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:esolid)
         do iz=1,nz
             do iy=1,ny
-                !$omp simd reduction(+:esolid)
                 do ix=1,nx
                     esolid = esolid + den(ix,iy,iz)*(1.0d0 + dtanh(beta*(den(ix,iy,iz)-den_m)))
                 enddo
-                !$omp end simd
             enddo
         enddo
         !$omp end parallel do
@@ -216,11 +204,9 @@ endif ! If ldroplet_frozen
 
 ! Classic vecotrial particle energy:
 ekinx = 0d0
-!$omp simd
 do k=1, N_imp
     ekinx = ekinx + 0.5d0*m_imp(k)*sum(vimp(k,:)*vimp(k,:))
 enddo
-!$omp end simd
 eHeX = ddot(nx*ny*nz, uimp, 1, den, 1)*dxyz
 
 

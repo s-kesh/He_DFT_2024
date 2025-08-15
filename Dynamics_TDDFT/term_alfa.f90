@@ -26,14 +26,12 @@ integer  (kind=4) :: ix,iy,iz
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx
         falfs(ix,iy,iz) = (1.d0-denalf(ix,iy,iz)/den0s)   ! Obtain f(r) function.
         sto1(ix,iy,iz) = falfs(ix,iy,iz)*dxden(ix,iy,iz)  ! Obtain 'f(r)*grad(rho)'    (x-component)
         sto2(ix,iy,iz) = falfs(ix,iy,iz)*dyden(ix,iy,iz)  !   "                        (y-component)
         sto3(ix,iy,iz) = falfs(ix,iy,iz)*dzden(ix,iy,iz)  !   "                        (z-component)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
@@ -44,13 +42,11 @@ call fftfw_123() !   Obtain FFT[f(r)*grad(rho)] (all)
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx/2 + 1
         wk1(ix,iy,iz) = kalfs(ix,iy,iz)*wk1(ix,iy,iz)  ! Calculate FFT [ F(r,r') ] * FFT[ f(r)*grad(rho) ] (x-component)
         wk2(ix,iy,iz) = kalfs(ix,iy,iz)*wk2(ix,iy,iz)  !   "                                               (y-component)
         wk3(ix,iy,iz) = kalfs(ix,iy,iz)*wk3(ix,iy,iz)  !   "                                               (z-component)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
@@ -72,13 +68,11 @@ if(core4.eq.'OTC') then
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx
       sto1(ix,iy,iz) = (dxden(ix,iy,iz)*intxalf(ix,iy,iz)) +    &
                        (dyden(ix,iy,iz)*intyalf(ix,iy,iz)) +    &
                        (dzden(ix,iy,iz)*intzalf(ix,iy,iz))
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 !
@@ -87,11 +81,9 @@ call fftfw_1()         ! Obtain FFT[f(r)*grad(rho)]
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx/2 + 1
       wk1(ix,iy,iz) = kalfs(ix,iy,iz)*wk1(ix,iy,iz)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
@@ -108,13 +100,11 @@ call dscal(nx*ny*nz, 1.0/den0s, ualphas, 1)
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx
       sto1(ix,iy,iz)    = falfs(ix,iy,iz)*intxalf(ix,iy,iz)
       sto2(ix,iy,iz)    = falfs(ix,iy,iz)*intyalf(ix,iy,iz)
       sto3(ix,iy,iz)    = falfs(ix,iy,iz)*intzalf(ix,iy,iz)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
@@ -137,12 +127,10 @@ Call derivnD(1,nn,hz,3,Sto3,Sto6,Icon)
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
-    !$omp simd
     do ix=1, nx
         ualphas(ix,iy,iz) = ualphas(ix,iy,iz) + sto4(ix,iy,iz) + sto5(ix,iy,iz) + sto6(ix,iy,iz)
         ualphas(ix,iy,iz) = h2o2m4*alphas*ualphas(ix,iy,iz)
     end do
-    !$omp end simd
 end do; end do
 !$omp end parallel do
 
