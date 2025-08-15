@@ -55,7 +55,7 @@ do k=1,N_imp
     do iz=1,nz
         do iy=1,ny
             do ix=1,nx
-                temp(ix,iy,iz) = uimp_k(ix,iy,iz,k)
+                temp(ix,iy,iz) = uimp_k(k,ix,iy,iz)
             enddo
         enddo
     enddo
