@@ -15,10 +15,10 @@ CFLAGS   := -c -O3 -fopenmp -fopt-info-vec-optimized \
             -fcheck=all -fmax-errors=5 -ffree-line-length-512 \
             -fomit-frame-pointer -fno-math-errno \
             -funroll-loops -J$(MODDIR)
-LDFLAGS  := -fopenmp -lopenblas -openblas_threads -lfftw3 -lm -lfftw3_threads
+LDFLAGS  := -fopenmp -lopenblas -lfftw3 -lm -lfftw3_threads
 
 # Program name
-PROGNAME := 4hetddft-isotropic
+PROGNAME := 4hetddft
 
 # List of Fortran source files (no path)
 SRC := \

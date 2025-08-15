@@ -19,6 +19,9 @@ use coalescence
 
 implicit none
 
+real    (kind=8), intent(in) :: deltat
+real    (kind=8), intent(out) :: errHe, errimp,errvimp
+
 real (kind=8) :: c112=112.d0/121.d0
 real (kind=8) :: c9  =9.d0/121.d0
 real (kind=8) :: c1o3=1.d0/3.d0
@@ -26,13 +29,12 @@ real (kind=8) :: c4o3=4.d0/3.d0
 real (kind=8) :: c5o3=5.d0/3.d0
 
 integer (kind=4) :: ix,iy,iz,iaux
-real    (kind=8) :: deltat
-real    (kind=8) :: errHe, errimp,errvimp
 !real    (kind=8) :: auxr(3)
 complex (kind=8) :: auxc(6)
 complex (kind=8) :: aux1c,aux2c,aux3c,aux4c
 complex (kind=8) :: ci=cmplx(0.0d0,1.0d0)
 
+real    (kind=8) :: temp_errHe = 0.d0, temp_errimp = 0.d0, temp_errvimp = 0.d0
 complex (kind=8) :: tmp_ke, tmp_pot, tmp_tot
 real (kind=8), external :: zdotc
 integer:: i
@@ -97,10 +99,7 @@ if(.not. Lcoalescence ) then
         rimpold(i,1,ioldr(3)) = rimp(i,1)
         rimpold(i,2,ioldr(3)) = rimp(i,2)
         rimpold(i,3,ioldr(3)) = rimp(i,3)
-    end do
 
-    do i=1,N_imp
-        ! Modificador
         rimp(i,1) = stor(i,1) + c112*pcr(i,1)
         rimp(i,2) = stor(i,2) + c112*pcr(i,2)
         rimp(i,3) = stor(i,3) + c112*pcr(i,3)
@@ -149,10 +148,9 @@ if(.not. Ldroplet_frozen)then
     !$omp parallel do private(ix,iy,iz, tmp_ke, tmp_pot, tmp_tot) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
         do ix=1,nx
-            tmp_ke = h2o2m4*timec(ix,iy,iz)*(sto1c(ix,iy,iz)+sto2c(ix,iy,iz)+sto3c(ix,iy,iz))
-            tmp_pot = (-timec(ix,iy,iz)*pot4(ix,iy,iz) - ci*uimp(ix,iy,iz))*psi(ix,iy,iz)
-            tmp_tot = tmp_ke + tmp_pot
-            sto4c(ix,iy,iz) = tmp_tot
+            tmp_ke = h2o2m4*(sto1c(ix,iy,iz)+sto2c(ix,iy,iz)+sto3c(ix,iy,iz))
+            tmp_pot = pot4(ix,iy,iz)*psi(ix,iy,iz)
+            sto4c(ix,iy,iz) = timec(ix,iy,iz)*(tmp_ke - tmp_pot) - ci*uimp(ix,iy,iz)*psi(ix,iy,iz)
         enddo
     enddo; enddo
     !$omp end parallel do
@@ -172,14 +170,14 @@ if(.not. Ldroplet_frozen)then
     enddo; enddo
     !$omp end parallel do
 
-    !$omp parallel do private(ix,iy,iz) collapse(2) reduction(+:errHe)
+    !$omp parallel do private(ix,iy,iz) collapse(2) reduction(+:temp_errHe)
     do iz=1,nz; do iy=1,ny
         do ix=1,nx
-            errHe = errHe + abs(pc(ix,iy,iz))
+            temp_errHe = temp_errHe + abs(pc(ix,iy,iz))
         enddo
     enddo; enddo
     !$omp end parallel do
-    errHe=errHe*c9/nxyz
+    errHe=temp_errHe*c9/nxyz
 
     !
     ! Aqui reubicamos los indices para no tener que mover las fuciones
@@ -221,9 +219,9 @@ if(.not. Lcoalescence ) then
     enddo
 
     do i=1,N_imp
-        errimp = errimp + Abs(c9*pcr(i,1)) + Abs(c9*pcr(i,2)) + Abs(c9*pcr(i,3))
+        temp_errimp = temp_errimp + Abs(c9*pcr(i,1)) + Abs(c9*pcr(i,2)) + Abs(c9*pcr(i,3))
     enddo
-    errimp = errimp*0.3333333333d0/N_imp
+    errimp = temp_errimp*0.3333333333d0/N_imp
 
     ! Reubicacion
     iaux=ioldr(3) ; ioldr(3)=ioldr(2) ; ioldr(2)=ioldr(1) ; ioldr(1)=iaux
@@ -255,9 +253,9 @@ if(.not. Lcoalescence ) then
     enddo
 
     do i=1,N_imp
-        errvimp = errvimp + Abs(c9*pcv(i,1)) + Abs(c9*pcv(i,2)) + Abs(c9*pcv(i,3))
+        temp_errvimp = temp_errvimp + Abs(c9*pcv(i,1)) + Abs(c9*pcv(i,2)) + Abs(c9*pcv(i,3))
     enddo
-    errvimp = errvimp*0.3333333333d0/N_imp
+    errvimp = temp_errvimp*0.3333333333d0/N_imp
 
     ! Reubicacion
     iaux=ioldv(3) ; ioldv(3)=ioldv(2) ; ioldv(2)=ioldv(1) ; ioldv(1)=iaux

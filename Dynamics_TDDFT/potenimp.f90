@@ -109,33 +109,22 @@ real (kind=8) :: ximp, yimp, zimp
 
 !Write(*,*) rmaxinterpol
 
-do k=1,N_imp
-    ximp = rimp(k,1)
-    yimp = rimp(k,2)
-    zimp = rimp(k,3)
-    !$omp parallel do private(ix,iy,iz,r,yt,zt,ir,rmod) default(shared) collapse(2)
-    do iz=1,nz
-        zt = (z(iz)-zimp)**2
-        do iy=1,ny
-            yt = (y(iy)-yimp)**2 + zt
-            do ix=1,nx
-                r = dsqrt((x(ix)-ximp)**2 + yt)
-                ir = int(r/DelInter)+1
-
-                if(r.gt.rmaxinterpol .and. lgridnoout)then
-                lstopimp=.true.
-                lgridnoout=.false.
-                print *,'>>> WARNING in updatepoten, k,ix,iy,iz= ',k, ix, iy, iz,' r = ',r,' greater than rmax = ',rmaxinterpol
-                r=rmaxinterpol
-                endif
-
-                rmod = mod(r,DelInter)/DelInter
-                uimp_k(k,ix,iy,iz) =  potion(k,ir)*(1.d0-rmod) +  potion(k,ir+1)*rmod
-            enddo
-        enddo
+!$omp parallel do private(ix,iy,iz,k,r,ir,rmod,lstopimp,lgridnoout) default(shared) collapse(3)
+do iz=1,nz; do iy=1,ny; do ix=1,nx
+    do k = 1, N_imp
+        r = dsqrt((x(ix)-rimp(k,1))**2 + (y(iy)-rimp(k,2))**2 + (z(iz)-rimp(k,3))**2)
+        ir = int(r/DelInter)+1
+        if(r.gt.rmaxinterpol .and. lgridnoout)then
+            lstopimp=.true.
+            lgridnoout=.false.
+            print *,'>>> WARNING in updatepoten, k,ix,iy,iz= ',k, ix, iy, iz,' r = ',r,' greater than rmax = ',rmaxinterpol
+            r=rmaxinterpol
+        endif
+        rmod = mod(r,DelInter)/DelInter
+        uimp_k(k,ix,iy,iz) =  potion(k,ir)*(1.d0-rmod) +  potion(k,ir+1)*rmod
     enddo
-    !$omp end parallel do
-enddo
+enddo; enddo; enddo
+!$end parallel do
 
 !$omp parallel do private(ix,iy,iz) collapse(3)
 do iz=1,nz; do iy=1,ny; do ix=1,nx
