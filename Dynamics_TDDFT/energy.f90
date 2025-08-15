@@ -212,11 +212,11 @@ eHeX = ddot(nx*ny*nz, uimp, 1, den, 1)*dxyz
 
 eimpu_impu = 0
 do k=1,N_imp
-do m=k+1,N_imp
-    r_ij(:) = rimp(k,:)-rimp(m,:)
-    aux1 = dsqrt(sum(r_ij(:)**2))
-    eimpu_impu = eimpu_impu + Select_pot(selec_gs_k_k(k,m),aux1,r_cutoff_gs_k_k(k,m),umax_gs_k_k(k,m))
-enddo
+    do m=k+1,N_imp
+        r_ij(:) = rimp(k,:)-rimp(m,:)
+        aux1 = dsqrt(sum(r_ij(:)**2))
+        eimpu_impu = eimpu_impu + Select_pot(selec_gs_k_k(k,m),aux1,r_cutoff_gs_k_k(k,m),umax_gs_k_k(k,m))
+    enddo
 enddo
 
 eimpu = ekinx + eHeX + eimpu_impu

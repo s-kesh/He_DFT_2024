@@ -34,7 +34,7 @@ complex (kind=8) :: auxc(6)
 complex (kind=8) :: aux1c,aux2c,aux3c,aux4c
 complex (kind=8) :: ci=cmplx(0.0d0,1.0d0)
 
-real    (kind=8) :: temp_errHe = 0.d0, temp_errimp = 0.d0, temp_errvimp = 0.d0
+real    (kind=8) :: temp_errHe = 0.d0
 complex (kind=8) :: tmp_ke, tmp_pot, tmp_tot
 real (kind=8), external :: zdotc
 integer:: i
@@ -87,49 +87,23 @@ if(.not. ldroplet_frozen)then
     ioldh(1)=iaux
 endif
 
-
 if(.not. Lcoalescence ) then
-    do i=1,N_imp
-        ! Predictor
-        stor(i,1) = rimpold(i,1,ioldr(3)) + c4o3*deltat*(2.d0*vimp(i,1) - vimpold(i,1,ioldv(1)) + 2.d0*vimpold(i,1,ioldv(2)))
-        stor(i,2) = rimpold(i,2,ioldr(3)) + c4o3*deltat*(2.d0*vimp(i,2) - vimpold(i,2,ioldv(1)) + 2.d0*vimpold(i,2,ioldv(2)))
-        stor(i,3) = rimpold(i,3,ioldr(3)) + c4o3*deltat*(2.d0*vimp(i,3) - vimpold(i,3,ioldv(1)) + 2.d0*vimpold(i,3,ioldv(2)))
-
-        ! Modificador
-        rimpold(i,1,ioldr(3)) = rimp(i,1)
-        rimpold(i,2,ioldr(3)) = rimp(i,2)
-        rimpold(i,3,ioldr(3)) = rimp(i,3)
-
-        rimp(i,1) = stor(i,1) + c112*pcr(i,1)
-        rimp(i,2) = stor(i,2) + c112*pcr(i,2)
-        rimp(i,3) = stor(i,3) + c112*pcr(i,3)
-        pcr(i,1) = stor(i,1)
-        pcr(i,2) = stor(i,2)
-        pcr(i,3) = stor(i,3)
-    enddo
+    ! Predictor
+    stor(:,:) = rimpold(:,:,ioldr(3)) + c4o3*deltat*(2.d0*vimp(:,:) - vimpold(:,:,ioldv(1)) + 2.d0*vimpold(:,:,ioldv(2)))
+    ! Modificador
+    rimpold(:,:,ioldr(3)) = rimp(:,:)
+    rimp(:,:) = Stor(:,:) - c112*pcr(:,:)
+    pcr = Stor
 
     !... velocities ...!
-    do i=1,N_imp
-        !..................!
-        ! Predictor
-        Stor(i,1) = vimpold(i,1,ioldv(3)) + c4o3*deltat*(2.d0*aimp(i,1) - aimpold(i,1,iolda(1)) + 2.d0*aimpold(i,1,iolda(2)))
-        Stor(i,2) = vimpold(i,2,ioldv(3)) + c4o3*deltat*(2.d0*aimp(i,2) - aimpold(i,2,iolda(1)) + 2.d0*aimpold(i,2,iolda(2)))
-        Stor(i,3) = vimpold(i,3,ioldv(3)) + c4o3*deltat*(2.d0*aimp(i,3) - aimpold(i,3,iolda(1)) + 2.d0*aimpold(i,3,iolda(2)))
+    ! Predictor
+    Stor(:,:) = vimpold(:,:,ioldv(3)) + c4o3*deltat*(2.d0*aimp(:,:) - aimpold(:,:,iolda(1)) + 2.d0*aimpold(:,:,iolda(2)))
+    ! Modificador
+    vimpold(:,:,ioldv(3)) = stor(:,:) - c112*pcv(:,:)
+    pcv = Stor
 
-        ! Modificador
-        vimpold(i,1,ioldv(3)) = stor(i,1) - c112*pcv(i,1)
-        vimpold(i,2,ioldv(3)) = stor(i,2) - c112*pcv(i,2)
-        vimpold(i,3,ioldv(3)) = stor(i,3) - c112*pcv(i,3)
-        pcv(i,1) = stor(i,1)
-        pcv(i,2) = stor(i,2)
-        pcv(i,3) = stor(i,3)
-
-
-        !... accelerations ...!
-        aimpold(i,1,iolda(2)) = aimp(i,1)
-        aimpold(i,2,iolda(2)) = aimp(i,2)
-        aimpold(i,3,iolda(2)) = aimp(i,3)
-    end do
+    !... accelerations ...!
+    aimpold(:,:,iolda(2)) = aimp(:,:)
 
     ! Reubicacion indices
     iaux=iolda(2)  ; iolda(2)=iolda(1)   ; iolda(1)=iaux
@@ -193,69 +167,27 @@ endif
 
 if(.not. Lcoalescence ) then
     !... positions ...!
-    do i=1,N_imp
-        ! Corrector:
-        stor(i,1) = 0.125d0*(9.d0*rimpold(i,1,ioldr(3)) - rimpold(i,1,ioldr(2))     &
-                    + 3.d0*deltat*(vimpold(i,1,ioldv(3)) &
-                    + 2.d0*vimp(i,i) - vimpold(i,1,ioldv(1))))
-        stor(i,2) = 0.125d0*(9.d0*rimpold(i,2,ioldr(3)) - rimpold(i,2,ioldr(2))     &
-                    + 3.d0*deltat*(vimpold(i,2,ioldv(3)) &
-                    + 2.d0*vimp(i,i) - vimpold(i,2,ioldv(1))))
-        stor(i,3) = 0.125d0*(9.d0*rimpold(i,3,ioldr(3)) - rimpold(i,3,ioldr(2))     &
-                    + 3.d0*deltat*(vimpold(i,3,ioldv(3)) &
-                    + 2.d0*vimp(i,i) - vimpold(i,3,ioldv(1))))
-    enddo
-
-    do i=1,N_imp
-        ! Corrector
-        pcr(i,1) = pcr(i,1) - stor(i,1)
-        pcr(i,2) = pcr(i,2) - stor(i,2)
-        pcr(i,3) = pcr(i,3) - stor(i,3)
-
-        ! Valor final:
-        rimp(i,1) = stor(i,1) + c9*pcr(i,1)
-        rimp(i,2) = stor(i,2) + c9*pcr(i,2)
-        rimp(i,3) = stor(i,3) + c9*pcr(i,3)
-    enddo
-
-    do i=1,N_imp
-        temp_errimp = temp_errimp + Abs(c9*pcr(i,1)) + Abs(c9*pcr(i,2)) + Abs(c9*pcr(i,3))
-    enddo
-    errimp = temp_errimp*0.3333333333d0/N_imp
+    ! Corrector
+    Stor(:,:) = 0.125d0*( 9.d0*rimpold(:,:,ioldr(3)) - rimpold(:,:,ioldr(2))     &
+                     +3.d0*deltat*(vimpold(:,:,ioldv(3)) + 2.d0*vimp(:,:) - vimpold(:,:,ioldv(1)) ))
+    pcr = pcr - stor
+    ! Valor final
+    rimp = stor + c9*pcr
+    errimp = sum(abs(c9*pcr))*0.3333333333333333d0/N_imp
 
     ! Reubicacion
     iaux=ioldr(3) ; ioldr(3)=ioldr(2) ; ioldr(2)=ioldr(1) ; ioldr(1)=iaux
 
     !... velocities ...!
-    do i=1,N_imp
-        ! Corrector:
-        stor(i,1) = 0.125d0*(9.0d0*vimp(i,1) - vimpold(i,1,ioldv(2))) &
-                    + 3.d0*deltat*(aimp(i,1) &
-                    + 2.d0*aimpold(i,1,iolda(1)) - aimpold(i,1,iolda(2)))
-        stor(i,2) = 0.125d0*(9.0d0*vimp(i,2) - vimpold(i,2,ioldv(2))) &
-                    + 3.d0*deltat*(aimp(i,2) &
-                    + 2.d0*aimpold(i,2,iolda(1)) - aimpold(i,2,iolda(2)))
-        stor(i,3) = 0.125d0*(9.0d0*vimp(i,3) - vimpold(i,3,ioldv(2))) &
-                    + 3.d0*deltat*(aimp(i,3) &
-                    + 2.d0*aimpold(i,3,iolda(1)) - aimpold(i,3,iolda(2)))
+    ! Corrector:
+    stor(:,:) = 0.125d0*( 9.d0*vimp(:,:) - vimpold(:,:,ioldv(2))     &
+                     +3.d0*deltat*(aimp(:,:) + 2.d0*aimpold(:,:,iolda(1)) - aimpold(:,:,iolda(2)) ))
+    pcv = pcv - stor
+    vimpold(:,:,ioldv(3)) = vimp(:,:)
+    ! Valor final
+    vimp = stor + c9*pcv
 
-        pcv(i,1) = pcv(i,1) - stor(i,1)
-        pcv(i,2) = pcv(i,2) - stor(i,2)
-        pcv(i,3) = pcv(i,3) - stor(i,3)
-        vimpold(i,1,ioldv(3)) = vimp(i,1)
-        vimpold(i,2,ioldv(3)) = vimp(i,2)
-        vimpold(i,3,ioldv(3)) = vimp(i,3)
-
-        ! Valor final
-        vimp(i,1) = stor(i,1) + c9*pcv(i,1)
-        vimp(i,2) = stor(i,2) + c9*pcv(i,2)
-        vimp(i,3) = stor(i,3) + c9*pcv(i,3)
-    enddo
-
-    do i=1,N_imp
-        temp_errvimp = temp_errvimp + Abs(c9*pcv(i,1)) + Abs(c9*pcv(i,2)) + Abs(c9*pcv(i,3))
-    enddo
-    errvimp = temp_errvimp*0.3333333333d0/N_imp
+    errvimp = sum(abs(c9*pcv))*0.3333333333d0/N_imp
 
     ! Reubicacion
     iaux=ioldv(3) ; ioldv(3)=ioldv(2) ; ioldv(2)=ioldv(1) ; ioldv(1)=iaux

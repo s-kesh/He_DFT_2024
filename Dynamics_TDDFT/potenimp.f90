@@ -101,18 +101,18 @@ use grid
 use interpol
 implicit none
 real    (kind=8)              :: dist(3)
-real    (kind=8)              :: r,yt,zt,rmod
+real    (kind=8)              :: r,xt,yt,zt,rmod
 integer (kind=4)              :: ix,iy,iz,ir,k,m
 !save (lgridnoout)
 
-real (kind=8) :: ximp, yimp, zimp
 
 !Write(*,*) rmaxinterpol
 
 !$omp parallel do private(ix,iy,iz,k,r,ir,rmod,lstopimp,lgridnoout) default(shared) collapse(3)
 do iz=1,nz; do iy=1,ny; do ix=1,nx
+    xt = x(ix); yt = y(iy); zt = z(iz)
     do k = 1, N_imp
-        r = dsqrt((x(ix)-rimp(k,1))**2 + (y(iy)-rimp(k,2))**2 + (z(iz)-rimp(k,3))**2)
+        r = dsqrt((xt-rimp(k,1))**2 + (yt-rimp(k,2))**2 + (zt-rimp(k,3))**2)
         ir = int(r/DelInter)+1
         if(r.gt.rmaxinterpol .and. lgridnoout)then
             lstopimp=.true.
