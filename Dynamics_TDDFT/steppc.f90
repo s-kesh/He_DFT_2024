@@ -36,7 +36,6 @@ complex (kind=8) :: ci=cmplx(0.0d0,1.0d0)
 
 real    (kind=8) :: temp_errHe = 0.d0
 complex (kind=8) :: tmp_ke, tmp_pot, tmp_tot
-real (kind=8), external :: zdotc
 integer:: i
 
 
@@ -68,12 +67,12 @@ if(.not. ldroplet_frozen)then
     enddo; enddo
     !$omp end parallel do
 
-    ! Modifier
-    call zcopy(nx*ny*nz, psi, 1, psiold(:,:,:,ioldp(3)), 1)
-    call zcopy(nx*ny*nz, sto4c, 1, hpsiold(:,:,:,ioldh(2)), 1)
     !$omp parallel do private(ix,iy,iz) schedule(static) collapse(2)
     do iz=1,nz; do iy=1,ny
         do ix=1,nx
+            ! Modifier
+            psiold(ix,iy,iz,ioldp(3)) = psi(ix,iy,iz)
+            hpsiold(ix,iy,iz,2) = sto4c(ix,iy,iz)
             psi(ix,iy,iz) = Sto1c(ix,iy,iz) - c112*pc(ix,iy,iz)
             pc(ix,iy,iz) = Sto1c(ix,iy,iz)
             den(ix,iy,iz) = real(psi(ix,iy,iz))**2 + aimag(psi(ix,iy,iz))**2

@@ -172,9 +172,6 @@ namelist /imp/rimp,vimp,m_imp_u,selec_gs_k,r_cutoff_gs_k,umax_gs_k,		&
 				drselec_gs_k_k,drr_cutoff_gs_k_k,drumax_gs_k_k,			&
 				filerimp_k, filevimp_k, fileaimp_k
 
-! External blas functions
-complex (kind=8), external :: zdotc
-
 !................................ Start main Program ..............................
 call timer(t0)
 
@@ -386,9 +383,9 @@ call flush(8)
 
 if(Lcoalescence ) then
   ! Write(*,*) "Coalescence between droplets, no impurit/ies"
-  else
+else
   call potenimpini() ! interpolation + first call to updatepoten
- endif
+endif
 
 !................................
 !... read density or build-it ...
@@ -456,7 +453,7 @@ write(6,6037) cp4,cpp4,den4c,alphas,l,den0s,h2o2m4
 !... Prepara \alpha_s term in case of Orsay-Trento Interaction.  ...
 !...................................................................
 
-If(Lsolid)core4='OT '
+If(Lsolid) core4='OT '
 
 select case(core4)
    case('OP ')
@@ -515,16 +512,12 @@ call fforma(core4,b4,eps4,sigma4,h4,nx,ny,nz,pmod,fvlj4)
 
 
 If(Lsolid)Then
-
   aux=h4!*1.065d0
   write(6,'("    Initialize Coarse-graining kernel, for Solid DF, h_cg=",1p, E15.6)')aux
   call initcg(aux,wcgk)
-
 Else
-
   write(6,'("    Initialize Coarse-graining kernel, h_cg=",1p, E15.6)')h4
   call initcg(h4,wcgk)
-
 Endif
 
 if(core4.eq.'OTC') then
@@ -554,8 +547,8 @@ end do; end do
 auxn4 = auxn4*dxyz
 
 if(xlamda.ne.0.d0)then
-write(*,*)'xlambda not equal zero'
-xlamdaz = xlamda*7.63822291d0/(2.d0*h2o2m4)
+    write(*,*)'xlambda not equal zero'
+    xlamdaz = xlamda*7.63822291d0/(2.d0*h2o2m4)
 endif
 
 If((mode.eq.0 .OR. mode.eq.7) .And.Ldensity)then
@@ -584,19 +577,19 @@ do iz=1, nz; do iy=1, ny;
 end do; end do
 !$omp end parallel do
 
-  if(Lcoalescence ) then
+if(Lcoalescence ) then
     Write(*,*) "Coalescence between droplets, no impurity/ies"
     call poten()              ! First Potential  (for Lagrange Equation)
-  else
+else
     call potenimp()
     call poten()              ! First Potential  (for Lagrange Equation)
     call forceimp()
-   aimp(:,1) = F(:,1)/m_imp(:)
-   aimp(:,2) = F(:,2)/m_imp(:)
-   aimp(:,3) = F(:,3)/m_imp(:)
-  endif
+    aimp(:,1) = F(:,1)/m_imp(:)
+    aimp(:,2) = F(:,2)/m_imp(:)
+    aimp(:,3) = F(:,3)/m_imp(:)
+endif
 
-   call energy()             ! Calculate energies
+call energy()             ! Calculate energies
 
 
 call respar(x,y,z,nx,ny,nz,1,'uimp','den',uimp,den)
@@ -620,7 +613,7 @@ do iz=1,nz; do iy=1,ny
                                  +1.d0+tanh((abs(z(iz))-tzmean)/tzsurf))           &
                                  ,1.d0)
     enddo
-    enddo; enddo
+enddo; enddo
 !$omp end parallel do
 
 
@@ -693,30 +686,28 @@ Open(unit=137,FIle="Energies")
 iter0=iter0+1
 do iter=iter0,niter  ! <--------- Iterative procedure starts here.
 
-Iteraux = iter - iter0 + 1
+    Iteraux = iter - iter0 + 1
 
-pr%it = iter
+    pr%it = iter
 
-if((iter-iter0+1).le.3.Or.lrk)then
-    call steprk(deltat)
+    if((iter-iter0+1).le.3.Or.lrk)then
+        call steprk(deltat)
+    else
+        call steppc(deltat,errHe,errimp,errvimp)
+        write(6,'(" Error( He, imp) (From Steppc)...",1p,3E15.6)')errHe,errimp,errvimp
+    endif
 
-else
-    call steppc(deltat,errHe,errimp,errvimp)
-    write(6,'(" Error( He, imp) (From Steppc)...",1p,3E15.6)')errHe,errimp,errvimp
-endif
+    if(Lcoalescence ) then
+        call poten()
+    else
+        call potenimp()
+        call poten()
+        call forceimp()
 
- if(Lcoalescence ) then
-  call poten()
-  else
-    call potenimp()
-    call poten()
-    call forceimp()
-
-
-    aimp(:,1) = F(:,1)/m_imp(:)
-    aimp(:,2) = F(:,2)/m_imp(:)
-    aimp(:,3) = F(:,3)/m_imp(:)
-  endif
+        aimp(:,1) = F(:,1)/m_imp(:)
+        aimp(:,2) = F(:,2)/m_imp(:)
+        aimp(:,3) = F(:,3)/m_imp(:)
+    endif
 
 
     aux1 = time0 + Iteraux*deltatps
@@ -741,10 +732,8 @@ endif
       write(137,7111)aux1,eimpu_impu,eimpu,ekinx,eHeX,etot
 
       eold = etot4
-
     if( Ldroplet_frozen) then
        !Nothing to do
-
     else
         call r_cm(den,n4,xcm4,ycm4,zcm4)    ! Center of mass of 4He Drop
 
@@ -753,130 +742,147 @@ endif
           Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
           Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
           Call derivnD(1,nn,hz,3,psi,sto3c,Icon)
-!
-! Z Component of angular momentum
-!
-          caux = (0.d0, 0.d0)
-          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((y(iy)-ycm)*sto1c(ix,iy,iz) - (x(ix)-xcm)*sto2c(ix,iy,iz))
-              EndDo
+        !
+        ! Z Component of angular momentum
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
+        Do iy=1, ny
+            Do ix=1, nx
+            caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
+            ((y(iy)-ycm)*sto1c(ix,iy,iz) - (x(ix)-xcm)*sto2c(ix,iy,iz))
             EndDo
-          EndDo
-          !$omp end parallel do
-          xlz = caux*dxyz
-!
-! Y Component of angular momentum
-!
-          caux = (0.d0, 0.d0)
-          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((x(ix)-xcm)*sto3c(ix,iy,iz) - (z(iz)-zcm)*sto1c(ix,iy,iz))
-              EndDo
+        EndDo
+        EndDo
+        !$omp end parallel do
+        xlz = caux*dxyz
+        !
+        ! Y Component of angular momentum
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
+        Do iy=1, ny
+            Do ix=1, nx
+            caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
+            ((x(ix)-xcm)*sto3c(ix,iy,iz) - (z(iz)-zcm)*sto1c(ix,iy,iz))
             EndDo
-          EndDo
-          !$omp end parallel do
-          xly = caux*dxyz
-!
-! X Component of angular momentum
-!
-          caux = (0.d0, 0.d0)
-          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
-          Do iz=1, nz
-            Do iy=1, ny
-              Do ix=1, nx
-                caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
-                ((z(iz)-zcm)*sto2c(ix,iy,iz) - (y(iy)-ycm)*sto3c(ix,iy,iz))
-              EndDo
+        EndDo
+        EndDo
+        !$omp end parallel do
+        xly = caux*dxyz
+        !
+        ! X Component of angular momentum
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
+        Do iy=1, ny
+            Do ix=1, nx
+            caux = caux + Ci*Conjg(Psi(ix,iy,iz))*                  &
+            ((z(iz)-zcm)*sto2c(ix,iy,iz) - (y(iy)-ycm)*sto3c(ix,iy,iz))
             EndDo
-          EndDo
-          !$omp end parallel do
-          xlx = caux*dxyz
+        EndDo
+        EndDo
+        !$omp end parallel do
+        xlx = caux*dxyz
 
         Write(6,'("<Lx,Ly,Lz>.......:",1p,3E20.11)')xlx,xly,xlz
 
-
-
-
-
-!
-! V_com_X Component of Velocity COM drop
-!
-       caux = (0.d0, 0.d0)
-       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto1c, 1)
-       vcomx=(caux*dxyz)/(auxn4*mhe)
-
-
-!
-! V_com_y Component of Velocity COM drop
-!
-       caux = (0.d0, 0.d0)
-       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto2c, 1)
-       vcomy=(caux*dxyz)/(auxn4*mhe)
-
-!
-! V_com_z Component of Velocity COM drop
-!
-       caux = (0.d0, 0.d0)
-       caux = -Ci*zdotc(nx*ny*nz, psi, 1, sto3c, 1)
-       vcomz=(caux*dxyz)/(auxn4*mhe)
-
- Write(6,'("<Vcom_x,Vcom_y,Vcom_z>.......:",1p,3E20.11)')vcomx,vcomy,vcomz
-
-
-          aux1 = 0.d0
-          aux2 = 0.d0
-          aux3 = 0.d0
-          !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:aux1,aux2,aux3)
-          Do iz=1, nz
+        !
+        ! V_com_X Component of Velocity COM drop
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
             Do iy=1, ny
-              Do ix=1, nx
-                aux1 = aux1 + den(ix,iy,iz)*x(ix)**2
-                aux2 = aux2 + den(ix,iy,iz)*y(iy)**2
-                aux3 = aux3 + den(ix,iy,iz)*z(iz)**2
-              EndDo
+            Do ix=1, nx
+                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto1c(ix,iy,iz)
             EndDo
-          EndDo
-          !$omp end parallel do
-          aux1 = aux1*dxyz
-          aux2 = aux2*dxyz
-          aux3 = aux3*dxyz
+            EndDo
+        EndDo
+        !$omp end parallel do
+        vcomx=(caux*dxyz)/(auxn4*mhe)
 
+        !
+        ! V_com_y Component of Velocity COM drop
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
+            Do iy=1, ny
+            Do ix=1, nx
+                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto2c(ix,iy,iz)
+            EndDo
+            EndDo
+        EndDo
+        !$omp end parallel do
+        vcomy=(caux*dxyz)/(auxn4*mhe)
+
+        !
+        ! V_com_z Component of Velocity COM drop
+        !
+        caux = (0.d0, 0.d0)
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:caux)
+        Do iz=1, nz
+            Do iy=1, ny
+            Do ix=1, nx
+                caux = caux - Ci*Conjg(Psi(ix,iy,iz))*sto3c(ix,iy,iz)
+            EndDo
+            EndDo
+        EndDo
+        !$omp end parallel do
+        vcomz=(caux*dxyz)/(auxn4*mhe)
+
+        Write(6,'("<Vcom_x,Vcom_y,Vcom_z>.......:",1p,3E20.11)')vcomx,vcomy,vcomz
+
+
+        aux1 = 0.d0
+        aux2 = 0.d0
+        aux3 = 0.d0
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:aux1,aux2,aux3)
+        Do iz=1, nz
+        Do iy=1, ny
+            Do ix=1, nx
+            aux1 = aux1 + den(ix,iy,iz)*x(ix)**2
+            aux2 = aux2 + den(ix,iy,iz)*y(iy)**2
+            aux3 = aux3 + den(ix,iy,iz)*z(iz)**2
+            EndDo
+        EndDo
+        EndDo
+        !$omp end parallel do
+        aux1 = aux1*dxyz
+        aux2 = aux2*dxyz
+        aux3 = aux3*dxyz
     endif !Ldroplet_frozen
 
-        pr%r2(1)   = aux1
-        pr%r2(2)   = aux2
-        pr%r2(3)   = aux3
-        pr%ang(1)  = xlx
-        pr%ang(2)  = xly
-        pr%ang(3)  = xlz
-        pr%cm(1)   = xcm4
-        pr%cm(2)   = ycm4
-        pr%cm(3)   = zcm4
-        pr%ekin    = ekin4
-        pr%elj     = elj4
-        pr%ealphas = ealphas
-        pr%esolid  = esolid
-        pr%ecor    = ecor4
-        pr%auxn4   = auxn4
-        pr%ekinx   = ekinx
-        pr%evx     = eimpu
-        pr%etot    = etot
-        pr%time    = temps
-        pr%Vcom_arr(1)  = vcomx
-        pr%Vcom_arr(2)  = vcomy
-        pr%Vcom_arr(3)  = vcomz
-		pr%rimp(:,:)  = rimp(:,:)
-		pr%vimp(:,:)    = vimp(:,:)
-        write(6,7100) xcm4,ycm4,zcm4
-
-   end if
+    pr%r2(1)   = aux1
+    pr%r2(2)   = aux2
+    pr%r2(3)   = aux3
+    pr%ang(1)  = xlx
+    pr%ang(2)  = xly
+    pr%ang(3)  = xlz
+    pr%cm(1)   = xcm4
+    pr%cm(2)   = ycm4
+    pr%cm(3)   = zcm4
+    pr%ekin    = ekin4
+    pr%elj     = elj4
+    pr%ealphas = ealphas
+    pr%esolid  = esolid
+    pr%ecor    = ecor4
+    pr%auxn4   = auxn4
+    pr%ekinx   = ekinx
+    pr%evx     = eimpu
+    pr%etot    = etot
+    pr%time    = temps
+    pr%Vcom_arr(1)  = vcomx
+    pr%Vcom_arr(2)  = vcomy
+    pr%Vcom_arr(3)  = vcomz
+	pr%rimp(:,:)  = rimp(:,:)
+	pr%vimp(:,:)    = vimp(:,:)
+    write(6,7100) xcm4,ycm4,zcm4
+end if
 
 !..............................................................................
 

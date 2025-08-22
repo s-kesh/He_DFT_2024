@@ -25,135 +25,111 @@ implicit none
 !.........................................
 !.. Arrays for real and momentum grids ...
 !.........................................
-!
-allocate (x(nx)) ; allocate (px(nx)) ;
-allocate (y(ny)) ; allocate (py(ny)) ;
-allocate (z(nz)) ; allocate (pz(nz)) ;
-allocate ( pmod(nx/2+1,ny,nz))    ! Array with the modules of p.
+allocate (x(nx))      ; x = 0.0d0
+allocate (px(nx))     ; px = 0.0d0
+allocate (y(ny))      ; y = 0.0d0
+allocate (py(ny))     ; py = 0.0d0
+allocate (z(nz))      ; z = 0.0d0
+allocate (pz(nz))     ; pz = 0.0d0
+allocate (pmod(nx/2+1,ny,nz)) ; pmod = 0.0d0
 
 !............................................
 !.. Arrays for Lennard-Jones calculations ...
 !............................................
-!
-allocate (fvlj4(nx/2+1,ny,nz))    ! Array with the FFT of the Kernel of LJ potential
-allocate (delj4(nx    ,ny,nz))    ! Array with rhe energy-density of LJ
+allocate (fvlj4(nx/2+1,ny,nz)) ; fvlj4 = 0.0d0
+allocate (delj4(nx,ny,nz))     ; delj4 = 0.0d0
 
 !..................................................
 !.. Arrays for partial derivatives of densities ...
 !..................................................
-!
-allocate(dxden(nx,ny,nz))       ! Array for partial derivatives.
-allocate(dyden(nx,ny,nz))       !        "
-allocate(dzden(nx,ny,nz))       !        "
+allocate(dxden(nx,ny,nz)) ; dxden = 0.0d0
+allocate(dyden(nx,ny,nz)) ; dyden = 0.0d0
+allocate(dzden(nx,ny,nz)) ; dzden = 0.0d0
 
 !..........................
 !.. Arrays for Helium 4 ...
 !..........................
-!
-allocate (     pot4(nx,ny,nz))    ! Array with al the 'potential'
-allocate (     hpsi(nx,ny,nz))    ! Array with H PSi
-allocate (  den(nx    ,ny,nz))    ! Array with the density
-allocate (  psi(nx    ,ny,nz))    ! Array with the field
-allocate ( psiold(nx   ,ny,nz,3))  ! Array with the field 1-step old iteration
-allocate ( hpsiold(nx  ,ny,nz,2))  ! Array with the field 1-step old iteration
-allocate (dencg(nx    ,ny,nz))    ! Array with the coarse-graining density.
-allocate ( fden(nx/2+1,ny,nz))    ! Array with the density in p-space
-!allocate ( fpsi(nx/2+1,ny,nz))    ! Array with the FFT-field
-allocate ( wcgk(nx/2+1,ny,nz))    ! Array with the kernel of the coarse-graining
+allocate (pot4(nx,ny,nz))     ; pot4 = 0.0d0
+allocate (hpsi(nx,ny,nz))     ; hpsi = 0.0d0
+allocate (den(nx,ny,nz))      ; den = 0.0d0
+allocate (psi(nx,ny,nz))      ; psi = 0.0d0
+allocate (psiold(nx,ny,nz,3)) ; psiold = 0.0d0
+allocate (hpsiold(nx,ny,nz,2)); hpsiold = 0.0d0
+allocate (dencg(nx,ny,nz))    ; dencg = 0.0d0
+allocate (fden(nx/2+1,ny,nz)) ; fden = 0.0d0
+!allocate (fpsi(nx/2+1,ny,nz))
+allocate (wcgk(nx/2+1,ny,nz)) ; wcgk = 0.0d0
 
 !..............................
 !.. Arrays for the impurity ...
 !..............................
-!
-   allocate( uext(nx,ny,nz))      ! Fourier transform of the impurity external potential
-   If(Lsolid)allocate(penalty(nx,ny,nz))      ! Potential of penalty term, for the solid functional
-   allocate(uimp(nx,ny,nz))      ! Fourier transform of the impurity external potential
-   allocate(uimp_k(N_imp,nx,ny,nz))      ! Fourier transform of the impurity external potential
-   allocate(qr(N_imp,3)); qr = 0.d0       ! Array test particles
-   allocate(qv(N_imp,3)); qv = 0.d0       ! Array test particles
-   allocate(Stor(N_imp,3)); Stor = 0.d0   ! Array test particles
-   allocate(pcr(N_imp,3)); pcr = 0.d0     ! Array test particles
-   allocate(pcv(N_imp,3)); pcv = 0.d0     ! Array test particles
-   allocate(rimp(N_imp,3))       ! Array test particles
-   allocate(vimp(N_imp,3))       ! Array test particles
-   allocate(aimp(N_imp,3))       ! Array test particles
-   allocate(F(N_imp,3))       ! Array test particles
-   allocate(F_ij(N_imp,N_imp,3))       ! Array test particles
-   allocate(rimpold(N_imp,3,3))       ! Array test particles
-   allocate(vimpold(N_imp,3,3))       ! Array test particles
-   allocate(aimpold(N_imp,3,2))       ! Array test particles
-   allocate(filerimp_k(N_imp))
-   allocate(filevimp_k(N_imp))
-   allocate(fileaimp_k(N_imp))
-   allocate(m_imp_u(N_imp))
-   allocate(m_imp(N_imp))
-   allocate(selec_gs_k(N_imp))
-   allocate(selec_gs_k_k(N_imp,N_imp))
-   allocate(drselec_gs_k_k(N_imp,N_imp))
-   allocate(r_cutoff_gs_k(N_imp))
-   allocate(r_cutoff_gs_k_k(N_imp,N_imp))
-   allocate(drr_cutoff_gs_k_k(N_imp,N_imp))
-   allocate(umax_gs_k(N_imp))
-   allocate(umax_gs_k_k(N_imp,N_imp))
-   allocate(drumax_gs_k_k(N_imp,N_imp))
+allocate(uext(nx,ny,nz)) ; uext = 0.0d0
+if (Lsolid) then
+   allocate(penalty(nx,ny,nz))
+   penalty = 0.0d0
+end if
+allocate(uimp(nx,ny,nz))            ; uimp = 0.0d0
+allocate(uimp_k(N_imp,nx,ny,nz))    ; uimp_k = 0.0d0
 
-!  allocate(pairpot(nx,ny,nz,6))      ! Fourier transform of the impurity external potential
-!    allocate( uextimp(nx,ny,nz))      ! Fourier transform of the impurity external potential
+allocate(qr(N_imp,3))    ; qr    = 0.0d0
+allocate(qv(N_imp,3))    ; qv    = 0.0d0
+allocate(Stor(N_imp,3))  ; Stor  = 0.0d0
+allocate(pcr(N_imp,3))   ; pcr   = 0.0d0
+allocate(pcv(N_imp,3))   ; pcv   = 0.0d0
+allocate(rimp(N_imp,3))  ; rimp  = 0.0d0
+allocate(vimp(N_imp,3))  ; vimp  = 0.0d0
+allocate(aimp(N_imp,3))  ; aimp  = 0.0d0
+allocate(F(N_imp,3))     ; F     = 0.0d0
+allocate(F_ij(N_imp,N_imp,3)) ; F_ij = 0.0d0
+allocate(rimpold(N_imp,3,3))  ; rimpold = 0.0d0
+allocate(vimpold(N_imp,3,3))  ; vimpold = 0.0d0
+allocate(aimpold(N_imp,3,2))  ; aimpold = 0.0d0
 
-! if(limp) then                     ! Things for impurities.
-!    allocate(hpsix(nx,ny,nz))      ! Array with H PSi_x
-!    allocate(upotx(nx,ny,nz))      ! Mean field for the impurity
-!    allocate(potx4(nx,ny,nz))      !
-!    allocate( psix(nx,ny,nz))      ! Wave function for the impurity
-!    allocate(psixold(nx,ny,nz,3))  ! Wave function for the impurity
-!    allocate(hpsixold(nx,ny,nz,2))  ! Wave function for the impurity
-!    allocate( denx(nx,ny,nz))      ! density function for the impurity
-! !   allocate(fpsix(nx/2+1,ny,nz))  ! Fourier Transform of the Wave function for the impurity
-!    allocate(fdenx(nx/2+1,ny,nz))  ! Fourier Transform of the Wave function for the impurity
-!    allocate(vq(nx/2+1,ny,nz))     !
-!    allocate(Epsix(nx,ny,nz))      ! Envelop function
-!    allocate(rmod0(nx,ny,nz))      ! For the  envelop function
-! end if
-
+allocate(filerimp_k(N_imp))
+allocate(filevimp_k(N_imp))
+allocate(fileaimp_k(N_imp))
+allocate(m_imp_u(N_imp))      ; m_imp_u    = 0.0d0
+allocate(m_imp(N_imp))        ; m_imp      = 0.0d0
+allocate(selec_gs_k(N_imp))
+allocate(selec_gs_k_k(N_imp,N_imp))
+allocate(drselec_gs_k_k(N_imp,N_imp))
+allocate(r_cutoff_gs_k(N_imp))        ; r_cutoff_gs_k = 0.0d0
+allocate(r_cutoff_gs_k_k(N_imp,N_imp)); r_cutoff_gs_k_k = 0.0d0
+allocate(drr_cutoff_gs_k_k(N_imp,N_imp)) ; drr_cutoff_gs_k_k = 0.0d0
+allocate(umax_gs_k(N_imp))            ; umax_gs_k = 0.0d0
+allocate(umax_gs_k_k(N_imp,N_imp))    ; umax_gs_k_k = 0.0d0
+allocate(drumax_gs_k_k(N_imp,N_imp))  ; drumax_gs_k_k = 0.0d0
 
 !....................................................
 !.. Arrays for temporal storage and working areas ...
 !....................................................
-!
-allocate(sto1(nx,ny,nz))       ! Real*8 Array for temporal calculations...
-allocate(sto2(nx,ny,nz))       !    "
-allocate(sto3(nx,ny,nz))       !    "
-allocate(sto4(nx,ny,nz))       !    "
-allocate(sto5(nx,ny,nz))       !    "
-allocate(sto6(nx,ny,nz))       !    "
-allocate(wk1(nx/2+1,ny,nz))    ! Complex array for FFT temporal calculations
-allocate(wk2(nx/2+1,ny,nz))    !    "
-allocate(wk3(nx/2+1,ny,nz))    !    "
-allocate(sto1c(nx,ny,nz))      ! Complex*8 Array for temporal calculations...
-allocate(sto2c(nx,ny,nz))      !    "
-allocate(sto3c(nx,ny,nz))      !    "
-allocate(sto4c(nx,ny,nz))      !    "
-allocate(sto5c(nx,ny,nz))      !    "
-allocate(sto6c(nx,ny,nz))      !    "
-allocate(sto7c(nx,ny,nz))      !    "
-allocate(sto8c(nx,ny,nz))      !    "
+allocate(sto1(nx,ny,nz)) ; sto1 = 0.0d0
+allocate(sto2(nx,ny,nz)) ; sto2 = 0.0d0
+allocate(sto3(nx,ny,nz)) ; sto3 = 0.0d0
+allocate(sto4(nx,ny,nz)) ; sto4 = 0.0d0
+allocate(sto5(nx,ny,nz)) ; sto5 = 0.0d0
+allocate(sto6(nx,ny,nz)) ; sto6 = 0.0d0
+
+allocate(wk1(nx/2+1,ny,nz)) ; wk1 = (0.0d0,0.0d0)
+allocate(wk2(nx/2+1,ny,nz)) ; wk2 = (0.0d0,0.0d0)
+allocate(wk3(nx/2+1,ny,nz)) ; wk3 = (0.0d0,0.0d0)
+
+allocate(sto1c(nx,ny,nz)) ; sto1c = (0.0d0,0.0d0)
+allocate(sto2c(nx,ny,nz)) ; sto2c = (0.0d0,0.0d0)
+allocate(sto3c(nx,ny,nz)) ; sto3c = (0.0d0,0.0d0)
+allocate(sto4c(nx,ny,nz)) ; sto4c = (0.0d0,0.0d0)
+allocate(sto5c(nx,ny,nz)) ; sto5c = (0.0d0,0.0d0)
+allocate(sto6c(nx,ny,nz)) ; sto6c = (0.0d0,0.0d0)
+allocate(sto7c(nx,ny,nz)) ; sto7c = (0.0d0,0.0d0)
+allocate(sto8c(nx,ny,nz)) ; sto8c = (0.0d0,0.0d0)
+
 !...................................................................
 !.. Array for Runge-Kutta-Gill & Predictor-Corrector-Modificator ...
 !...................................................................
-!
-allocate(q(nx,ny,nz))
-allocate(pc(nx,ny,nz))
-q  = 0.d0
-pc = 0.d0
-! if(limp) then                     ! Things for impurities.
-! allocate(qx(nx,ny,nz))
-! allocate(pcx(nx,ny,nz))
-! qx  = 0.d0
-! pcx = 0.d0
-! end if
+allocate(q(nx,ny,nz))  ; q  = 0.0d0
+allocate(pc(nx,ny,nz)) ; pc = 0.0d0
 
+allocate(timec(nx,ny,nz)) ; timec = 0.0d0
 
-allocate(timec(nx,ny,nz))
 return
-
 end

@@ -32,7 +32,6 @@ real (kind=8)    ::  aux1,aux2,aux3,aux4,aux5 ! Auxiliar variables
 complex (kind=8) :: invars(6)
 integer (kind=4) :: ix,iy,iz,k,m
 real (kind=8) :: r_ij(3), Select_pot
-real (kind=8), external :: ddot
 
 !  Call derivnD(1,nn,hx,1,psi,sto1c,Icon)
 !  Call derivnD(1,nn,hy,2,psi,sto2c,Icon)
@@ -88,7 +87,7 @@ if(Lfrozen_first_iteration)then
                     enddo
                 enddo
             enddo
-        ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
+            ealphas = -h2o2m4*0.5d0*alphas*dxyz*ealphas
         case default
             continue
     end select
@@ -119,7 +118,15 @@ if(Lfrozen_first_iteration)then
             continue
     end select
 
-    etot4 = etot4 + ddot(nx*ny*nz, uext, 1, den, 1)*dxyz
+    !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:etot4)
+    do iz=1,nz
+        do iy=1,ny
+            do ix=1,nx
+                etot4 = etot4 + uext(ix,iy,iz)*den(ix,iy,iz)*dxyz
+            enddo
+        enddo
+    enddo
+    !$omp end parallel do
 
     Lfrozen_first_iteration=.false. ! Disable the energy calculation for the next iterations
 endif ! If Lfrozen_first_iteration
@@ -197,7 +204,15 @@ else ! If ldroplet_frozen
             continue
     end select
 
-    etot4 = etot4 + ddot(nx*ny*nz, uext, 1, den, 1)*dxyz
+    !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:etot4)
+    do iz=1,nz
+        do iy=1,ny
+            do ix=1,nx
+                etot4 = etot4 + uext(ix,iy,iz)*den(ix,iy,iz)*dxyz
+            enddo
+        enddo
+    enddo
+    !$omp end parallel do
 
 endif ! If ldroplet_frozen
 
@@ -207,7 +222,18 @@ ekinx = 0d0
 do k=1, N_imp
     ekinx = ekinx + 0.5d0*m_imp(k)*sum(vimp(k,:)*vimp(k,:))
 enddo
-eHeX = ddot(nx*ny*nz, uimp, 1, den, 1)*dxyz
+
+
+eHeX = 0d0
+!$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:eHeX)
+do iz=1,nz
+    do iy=1,ny
+        do ix=1,nx
+            eHeX = eHeX + uimp(ix,iy,iz)*den(ix,iy,iz)*dxyz
+        enddo
+    enddo
+enddo
+!$omp end parallel do
 
 
 eimpu_impu = 0

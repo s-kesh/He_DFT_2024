@@ -90,6 +90,22 @@ return
 
 end
 
+subroutine dscal(nx, ny, nz, scaler, vector)
+    implicit none
+    integer, intent(in) :: nx, ny, nz
+    double precision, intent(in) :: scaler
+    double precision, intent(inout) :: vector(nx, ny, nz)
+    integer :: ix, iy, iz
+
+    !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
+    do iz=1, nz; do iy=1, ny
+        do ix=1, nx
+            vector(ix,iy,iz) = vector(ix,iy,iz) * scaler
+        end do
+    end do; end do
+    !$omp end parallel do
+end subroutine
+
 
 
 ! Rutinas forward:
@@ -120,7 +136,7 @@ use rho , only: dencg
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_cg)
- call dscal(npx*npy*npz, renor, dencg, 1)
+ call dscal(npx,npy,npz, renor, dencg)
 end subroutine
 
 subroutine fftbk_lj()
@@ -128,7 +144,7 @@ use lenard4, only: delj4
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_lj)
- call dscal(npx*npy*npz, renor, delj4, 1)
+ call dscal(npx,npy,npz, renor, delj4)
 end subroutine
 
 subroutine fftbk_1()
@@ -136,7 +152,7 @@ use work1 , only:sto1
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_1)
- call dscal(npx*npy*npz, renor, sto1, 1)
+ call dscal(npx,npy,npz, renor, sto1)
 end subroutine
 
 subroutine fftbk_as()
@@ -144,7 +160,7 @@ use alphasterm, only:denalf
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_as)
- call dscal(npx*npy*npz, renor, denalf, 1)
+ call dscal(npx,npy,npz, renor, denalf)
 end subroutine
 
 subroutine fftbk_ua()
@@ -152,7 +168,7 @@ use alphasterm, only:ualphas
 use fftmodule
 implicit none
  call dfftw_execute(pfftbk_ua)
- call dscal(npx*npy*npz, renor, ualphas, 1)
+ call dscal(npx,npy,npz, renor, ualphas)
 end subroutine
 
 subroutine fftbk_xyz()
@@ -162,9 +178,9 @@ implicit none
  call dfftw_execute(pfftbk_1x)
  call dfftw_execute(pfftbk_2y)
  call dfftw_execute(pfftbk_3z)
- call dscal(npx*npy*npz, renor, intxalf, 1)
- call dscal(npx*npy*npz, renor, intyalf, 1)
- call dscal(npx*npy*npz, renor, intzalf, 1)
+ call dscal(npx,npy,npz, renor, intxalf)
+ call dscal(npx,npy,npz, renor, intyalf)
+ call dscal(npx,npy,npz, renor, intzalf)
 end subroutine
 
 

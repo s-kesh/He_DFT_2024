@@ -85,11 +85,17 @@ do jrun=1,4
 
 
         if (jrun.eq.1) then
-            call zcopy(nx*ny*nz, hpsiold(:,:,:,1), 1, hpsiold(:,:,:,2), 1)
-            call zcopy(nx*ny*nz, sto4c, 1, hpsiold(:,:,:,1), 1)
-            call zcopy(nx*ny*nz, psiold(:,:,:,2), 1, psiold(:,:,:,3), 1)
-            call zcopy(nx*ny*nz, psiold(:,:,:,1), 1, psiold(:,:,:,2), 1)
-            call zcopy(nx*ny*nz, psi, 1, psiold(:,:,:,1), 1)
+            !$omp parallel do private(ix,iy,iz) collapse(2) schedule(static)
+            do iz=1,nz; do iy=1,ny
+                do ix=1,nx
+                    hpsiold(ix,iy,iz,2) = hpsiold(ix,iy,iz,1)
+                    hpsiold(ix,iy,iz,1) = sto4c(ix,iy,iz)
+                    psiold(ix,iy,iz,3) = psiold(ix,iy,iz,2)
+                    psiold(ix,iy,iz,2) = psiold(ix,iy,iz,1)
+                    psiold(ix,iy,iz,1) = psi(ix,iy,iz)
+                enddo
+            enddo; enddo
+            !$omp end parallel do
         endif
 
 

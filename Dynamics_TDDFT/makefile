@@ -7,15 +7,35 @@ MODDIR   := modules
 BINDIR   := bin
 
 
-# Compiler and flags
+# Compiler
 FC       := gfortran
 INCLUDES := -I$(MODDIR) -I/usr/include
-CFLAGS   := -c -O3 -fopenmp -fopt-info-vec-optimized \
+
+# Build type (default = release)
+BUILD ?= release
+
+# Flags for different builds
+ifeq ($(BUILD),release)
+  CFLAGS := -c -O3 -fopenmp -fopt-info-vec-optimized \
             -falign-commons -march=native -ffast-math \
             -fcheck=all -fmax-errors=5 -ffree-line-length-512 \
             -fomit-frame-pointer -fno-math-errno \
             -funroll-loops -J$(MODDIR)
-LDFLAGS  := -fopenmp -lopenblas -lfftw3 -lm -lfftw3_threads
+  LDFLAGS := -fopenmp -lfftw3 -lm -lfftw3_threads
+endif
+
+ifeq ($(BUILD),debug)
+  CFLAGS := -c -O0 -g -fcheck=all -Wall -Wextra -fbacktrace \
+            -ffree-line-length-512 -J$(MODDIR)
+  LDFLAGS := -g -fcheck=all -fbacktrace -lfftw3 -lm -lfftw3_threads
+endif
+
+ifeq ($(BUILD),profile)
+  CFLAGS := -c -O2 -pg -fopenmp -march=native -ffast-math \
+            -ffree-line-length-512 -J$(MODDIR)
+  LDFLAGS := -pg -fopenmp -lfftw3 -lm -lfftw3_threads
+endif
+
 
 # Program name
 PROGNAME := 4hetddft
