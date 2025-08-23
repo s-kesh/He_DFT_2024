@@ -722,7 +722,17 @@ do iter=iter0,niter  ! <--------- Iterative procedure starts here.
    if(mod(iter,pener).eq.0) then          ! Compute New energy and max of density
 
         Write(6,'(" Iteration....:",I10)')iter
-        auxn4 =sum(den)*dxyz
+
+        auxn4 = 0
+        !$omp parallel do default(shared) private(ix,iy,iz) collapse(2) reduction(+:auxn4)
+        do iz=1,nz; do iy=1,ny
+            do ix=1, nx
+                auxn4 = auxn4 + den(ix,iy,iz)
+            end do
+        end do; end do
+        !$omp end parallel do
+        auxn4 =auxn4*dxyz
+
         Write(6,'(" Number of particles....:",1p,E18.10)')auxn4
 
         call energy()

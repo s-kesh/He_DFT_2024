@@ -96,7 +96,7 @@ call fftbk_ua()      ! Obtain first term of the U_alphas mean field.
 !... Term with the gradient  and a single integral
 !....................................................
 
-call dscal(nx*ny*nz, 1.0/den0s, ualphas, 1)
+call dscal(nx, ny, nz, 1.0/den0s, ualphas)
 
 !$omp parallel do default(shared) private(ix,iy,iz) collapse(2)
 do iz=1, nz; do iy=1, ny;
