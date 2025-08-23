@@ -10,11 +10,11 @@ Type, Public  :: info_printout
   Real      (Kind=8) :: Time0, Time, hx, hy, hz, xmax, ymax, zmax
   Real      (Kind=8), Allocatable :: r_cutoff_gs_k(:), r_cutoff_gs_k_k(:,:), drr_cutoff_gs_k_k(:,:)
   Real      (Kind=8), Allocatable :: umax_gs_k(:),umax_gs_k_k(:,:),drumax_gs_k_k(:,:)
-  Real      (Kind=8), Allocatable :: rimp(:,:), vimp(:,:)
+  Real		(Kind=8), Allocatable :: rimp(:,:), vimp(:,:)
   Complex   (Kind=8), Allocatable :: psi(:,:,:)
 End type info_printout
 
-End Module Impressio
+End Module Impressio        
 !------------------------------------------------------------------
 !---                    MODULES                                 ---
 !------------------------------------------------------------------
@@ -23,7 +23,7 @@ real    (kind=8) , allocatable  :: denalf(:,:,:)  ! Gaussian weighted density
 real    (kind=8) , allocatable  :: falfs(:,:,:)   ! f(r) function for alpha_s term
 real    (kind=8) , allocatable  :: intxalf(:,:,:) ! Intermediate integral in alpha_s terms
 real    (kind=8) , allocatable  :: intyalf(:,:,:) !    "
-real    (kind=8) , allocatable  :: intzalf(:,:,:) !    "
+real    (kind=8) , allocatable  :: intzalf(:,:,:) !    " 
 real    (kind=8) , allocatable  :: kalfs(:,:,:)   ! FFT-kernel for the gaussian.
 real    (kind=8) , allocatable  :: ualphas(:,:,:)  ! Piece of field due to the alpha_s term.
 end module alphasterm
@@ -63,8 +63,8 @@ end module field
 module fftmodule
 
 character (len=15)            :: fftwplan="FFTW_PATIENT"
-! real    (kind=8), allocatable :: fin(:,:,:)  ! Work Array for FFT
-! complex (kind=8), allocatable :: fout(:,:,:) ! Work Array for FFT
+! real    (kind=8), allocatable :: fin(:,:,:)  ! Work Array for FFT 
+! complex (kind=8), allocatable :: fout(:,:,:) ! Work Array for FFT 
 ! integer (kind=8)              :: pfftfw      ! Pointer for FFT forward
 ! integer (kind=8)              :: pfftbk      ! Pointer for FFT bakward
 integer (kind=8)              :: pfftfw_den  ! Pointer for FFT forward
@@ -213,9 +213,9 @@ Logical :: ldroplet_frozen=.false. ! To keep frozen the droplet when it is true
 Logical :: Lfrozen_first_iteration=.true.  !!! To enable the first energy iteration
 Logical :: Lcoalescence=.false. ! To enable the coalescence without impurity/ies
 Real    (Kind=8), Allocatable :: den_coales1(:,:,:),den_coales2(:,:,:) ! To store the input density
-Complex (Kind=8), Allocatable :: den_coales_total(:,:,:)
+Complex (Kind=8), Allocatable :: den_coales_total(:,:,:) 
 Real    (Kind=8), Allocatable :: xcoa(:),ycoa(:),zcoa(:) ! temporal files
-Real    (Kind=8)              :: k_coales ! Initial velocity for both of the drops
+Real    (Kind=8)              :: k_coales ! Initial velocity for both of the drops 
 !
 end module coalescence
 
@@ -224,7 +224,7 @@ end module coalescence
 !------------------------------------------------------------------
 module lenard4
 real      (kind=8), allocatable  ::   fvlj4(:,:,:)
-real      (kind=8)               ::   h4
+real      (kind=8)               ::   h4  
 
 real      (kind=8)               ::     h4op =2.359665d0   ! \AA
 real      (kind=8)               ::     h4ot =2.190323d0   ! \AA
@@ -385,10 +385,10 @@ end module Aziz
 !------------------------------------------------------------------
 module interpol
 real      (kind=8) :: DelInter
-real      (kind=8) , allocatable :: potion(:,:)
+real      (kind=8) , allocatable :: potion(:,:) 
 real      (kind=8) :: rmaxinterpol
 integer   (kind=4) :: npot
-!real      (kind=8) , allocatable :: Vion(:,:,:)
+!real      (kind=8) , allocatable :: Vion(:,:,:) 
 !real      (kind=8) :: lastr(3)
 logical  :: lstopimp=.false.
 logical,save :: lgridnoout !! To avoid r>rmax interpolation function
