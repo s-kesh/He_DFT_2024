@@ -37,9 +37,7 @@ SUBROUTINE STEPPC(deltat,errHe,errimp,errvimp)
 
 
 
-    if(ldroplet_frozen)then
-        ! Nothing to do
-    else
+    if(.not. ldroplet_frozen)then
         Call derivnD(2,nn,hx,1,psi,sto1c,Icon)
         Call derivnD(2,nn,hy,2,psi,sto2c,Icon)
         Call derivnD(2,nn,hz,3,psi,sto3c,Icon)
@@ -97,31 +95,29 @@ SUBROUTINE STEPPC(deltat,errHe,errimp,errvimp)
 
 
 
-    if(Lcoalescence ) then
-        ! Write(*,*) "Coalescence between droplets, no impurit/ies"
-    else
+    if(.not. Lcoalescence ) then
         !................!
         !... position ...!
         !................!
         ! Predictor
-        stor(:,:) = rimpold(:,:,ioldr(3)) + c4o3*deltat*(2.d0*vimp(:,:) - vimpold(:,:,ioldv(1)) + 2.d0*vimpold(:,:,ioldv(2)))
+        stor = rimpold(:,:,ioldr(3)) + c4o3*deltat*(2.d0*vimp - vimpold(:,:,ioldv(1)) + 2.d0*vimpold(:,:,ioldv(2)))
         ! Modificador
-        rimpold(:,:,ioldr(3)) = rimp(:,:)
-        rimp(:,:) = Stor(:,:) - c112*pcr(:,:)
+        rimpold(:,:,ioldr(3)) = rimp
+        rimp = Stor - c112*pcr
         pcr = Stor
 
         !..................!
         !... velocities ...!
         !..................!
         ! Predictor
-        Stor(:,:) = vimpold(:,:,ioldv(3)) + c4o3*deltat*(2.d0*aimp(:,:) - aimpold(:,:,iolda(1)) + 2.d0*aimpold(:,:,iolda(2)))
+        Stor = vimpold(:,:,ioldv(3)) + c4o3*deltat*(2.d0*aimp - aimpold(:,:,iolda(1)) + 2.d0*aimpold(:,:,iolda(2)))
         ! Modificador
-        vimpold(:,:,ioldv(3)) = stor(:,:) - c112*pcv(:,:)
+        vimpold(:,:,ioldv(3)) = stor - c112*pcv
         pcv = Stor
 
 
 
-        aimpold(:,:,iolda(2)) = aimp(:,:)
+        aimpold(:,:,iolda(2)) = aimp
         ! Reubicacion indices
         iaux=iolda(2)  ; iolda(2)=iolda(1)   ; iolda(1)=iaux
 
@@ -134,10 +130,7 @@ SUBROUTINE STEPPC(deltat,errHe,errimp,errvimp)
     endif
 
 
-    if(Ldroplet_frozen)then
-        !Nothing to do
-        errHe=0d0  ! To avoid numerical issues
-    else
+    if(.not. Ldroplet_frozen)then
         Call derivnD(2,nn,hx,1,psi,sto1c,Icon)
         Call derivnD(2,nn,hy,2,psi,sto2c,Icon)
         Call derivnD(2,nn,hz,3,psi,sto3c,Icon)
@@ -186,19 +179,20 @@ SUBROUTINE STEPPC(deltat,errHe,errimp,errvimp)
         ioldp(3)=ioldp(2)
         ioldp(2)=ioldp(1)
         ioldp(1)=iaux
+    else
+        !Nothing to do
+        errHe=0d0  ! To avoid numerical issues
     endif
 
 
 
-    if(Lcoalescence ) then
-        ! Write(*,*) "Coalescence between droplets, no impurit/ies"
-    else
+    if(.not. Lcoalescence ) then
         !.................!
         !... positions ...!
         !.................!
         ! Corrector:
-        Stor(:,:) = 0.125d0*( 9.d0*rimpold(:,:,ioldr(3)) - rimpold(:,:,ioldr(2))     &
-                        +3.d0*deltat*(vimpold(:,:,ioldv(3)) + 2.d0*vimp(:,:) - vimpold(:,:,ioldv(1)) ))
+        Stor = 0.125d0*( 9.d0*rimpold(:,:,ioldr(3)) - rimpold(:,:,ioldr(2))     &
+                        +3.d0*deltat*(vimpold(:,:,ioldv(3)) + 2.d0*vimp - vimpold(:,:,ioldv(1)) ))
         ! vpold3 is actually the v_temporal just computed, so it is the 'newest'.
         ! The combination of v and vold is different because THE INDEXS HAVE NOT BEEN REALLOCATED YET.
         pcr = pcr -Stor
@@ -212,10 +206,10 @@ SUBROUTINE STEPPC(deltat,errHe,errimp,errvimp)
         !... velocities ...!
         !..................!
         ! Corrector:
-        stor(:,:) = 0.125d0*( 9.d0*vimp(:,:) - vimpold(:,:,ioldv(2))     &
-                        +3.d0*deltat*(aimp(:,:) + 2.d0*aimpold(:,:,iolda(1)) - aimpold(:,:,iolda(2)) ))
+        stor = 0.125d0*( 9.d0*vimp - vimpold(:,:,ioldv(2))     &
+                        +3.d0*deltat*(aimp + 2.d0*aimpold(:,:,iolda(1)) - aimpold(:,:,iolda(2)) ))
         pcv = pcv -Stor
-        vimpold(:,:,ioldv(3)) = vimp(:,:)
+        vimpold(:,:,ioldv(3)) = vimp
         ! Valor final:
         vimp = stor + c9*pcv
         errvimp = sum(Abs(c9*pcv))*0.3333333333d0/N_imp

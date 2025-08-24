@@ -14,6 +14,7 @@ use he4        ! (h2o2m4,den0s)
 use rho        ! (den)
 use util1      ! (nn,mmx,iw)
 use work1      ! (wk1,wk2,wk3,workx,worky,workz,sto1....sto7)
+use utils
 
 implicit none
 integer  (kind=4) :: ix,iy,iz

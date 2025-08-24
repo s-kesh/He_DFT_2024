@@ -42,7 +42,7 @@ PROGNAME := 4hetddft
 
 # List of Fortran source files (no path)
 SRC := \
-	modules.f90	init_deriv_parallel.f90	spline.f90 \
+	modules.f90	utils.f90 init_deriv_parallel.f90	spline.f90 \
 	V_impur.f90	gport.f90 DFT4He3d.f90	derden.f90 \
 	dimen.f90	energy.f90	 fforma.f90	fft.f90		initcg.f90 \
 	morse.f90	mates.f90	 poten.f90	printoutc.f90	r_cm.f90 \

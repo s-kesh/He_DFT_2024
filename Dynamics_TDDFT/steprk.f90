@@ -59,9 +59,7 @@ do jrun=1,4
     br = brun(jrun)
     cr = crun(jrun)
 
-    if(ldroplet_frozen)then
-        !Nothing to do
-    else
+    if(.not. ldroplet_frozen)then
         Call derivnD(2,nn,hx,1,psi,sto1c,Icon)
         Call derivnD(2,nn,hy,2,psi,sto2c,Icon)
         Call derivnD(2,nn,hz,3,psi,sto3c,Icon)
@@ -109,9 +107,7 @@ do jrun=1,4
         !$omp end parallel do
     endif
 
-    if(Lcoalescence ) then
-    ! Write(*,*) "Coalescence between droplets, no impurit/ies"
-    else
+    if(.not. Lcoalescence ) then
         !
         ! Impurity evolution if it is necessary
         !
