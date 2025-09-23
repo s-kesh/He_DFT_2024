@@ -1,6 +1,6 @@
 program BCN4HeDFT
 !--------------------------------------------------------------------------------------
-!        
+!
 !                This code computes the structure and energetics of pure or doped
 !                helium-4 droplets within Density Functional Theory.
 !
@@ -8,7 +8,7 @@ program BCN4HeDFT
 !                (1990)], Orsay-Trento with alpha_s term but no backflow term -
 !                static conditions- [Dalfovo et al, PRB 52, 1193 (1995)] or the solid-
 !                like functional by Ancilotto et al, PRB 72, 214522 (2005).
-!                
+!
 !                The impurity can be treated either as a quantum particle by solving
 !                the corresponding Schroedinger equation or as an external field.
 !                Constrained calculations on the impurity location are also possible.
@@ -41,7 +41,7 @@ use energies
 use rho
 use field
 use fftmodule
-use grid 
+use grid
 use gridk
 use impur
 use lenard4
@@ -83,8 +83,8 @@ real       (kind=8)  :: p,px2,py2,pz2   ! Temporary variables for momentum value
 real       (kind=8)  :: mu4=10.d0,mu4err      ! Value of Chemical potential and associated error
 real       (kind=8)  :: epsx,epsxerr    ! Value of autovalue and associated error
 real       (kind=8)  :: errmu4          ! Relative change betwen iteration for chemical potential
-real       (kind=8)  :: Select_pot 
-logical              :: lexternalpotential=.false. ! To read the potential of the impurity@HeN from a extern file 
+real       (kind=8)  :: Select_pot
+logical              :: lexternalpotential=.false. ! To read the potential of the impurity@HeN from a extern file
 real       (kind=8)  :: deltat0,deltat  ! Step of time unvariable part and 'real step'
 real       (kind=8)  :: deltat0x,deltatx ! Step of time unvariable part and 'real step'
 real       (kind=8)  :: pafl=0.10       ! Default value for Paflov parameter
@@ -115,17 +115,6 @@ character  (len=60)  :: namefile,namefile1
 Logical              :: Lprint=.false.
 Logical              :: LHe_frozen=.false., LFT_Test_numerica=.false.
 real       (kind=8)  ::  sigma_x,sigma_y,sigma_z,zcom,ycom,xcom, V_Pi, V_Sigma, V_Delta
-
-interface
-  double precision function v_alka(d,elem)
-       character (len=3),  intent(in) :: elem
-       real      (kind=8), intent(in) :: d
-  end function v_alka
-end interface
-
-
-Write(6,*) "name file pure=",filepure
-N_imp=1 !! default value
 
 !....................Variables read in a NAMELIST statement ..............................
 
@@ -160,11 +149,12 @@ namelist /input/title,fftwplan,nthread,nsfiles,                         &
                 Laverage_P_value,Lexcite_state_external,                    &
                 L_anell, r_anell, a_anell,                                  &
                 L_esfera, r_esfera, a_esfera, lexternalpotential,           &
-                Exciplex, Lexciplex_state_fix,r_exc,expotential,filepure     
+                Exciplex, Lexciplex_state_fix,r_exc,expotential,filepure
 
 
 
-namelist /imp/rimp,zdist,ydist,xdist,ximp,yimp,zimp                      
+namelist /imp/rimp,zdist,ydist,xdist,ximp,yimp,zimp
+
 !................................ Start main Program ..............................
 call timer(t0)
 
@@ -216,7 +206,7 @@ endif
 
 
 !
-!  Aqui modifiquem els coeficients C4 dels potencials: 
+!  Aqui modifiquem els coeficients C4 dels potencials:
 !      Ba_plus_gs_fixC4, Ba_plus_pi_fixC4 i Ba_plus_sigma_fixC4
 !
 Pg_Ba_plus_gs_fixC4(1)    = Pg_Ba_plus_gs_fixC4(1)   *(1.0d0-Quita_C4_Ba_plus_gs_fix_C4   )
@@ -432,7 +422,7 @@ Endif
     n4real=sum(den)*dxyz
     n4=n4+0.5
     Write(6,'(" Nombre de part\EDcules...:",1p,E15.6)')n4real
-  Else 
+  Else
     Write(6,'(" Nombre de part\EDcules...:",1p,E15.6)')(sum(den)*dxyz)
   Endif
 
@@ -504,7 +494,7 @@ if(lexternal)then
    Endif
 
 !
-!  Construim la matriu factt, responsable de la variaci\F3 local del temps imaginary 
+!  Construim la matriu factt, responsable de la variaci\F3 local del temps imaginary
 !
 
   Do ix=1,nx
@@ -565,11 +555,11 @@ select case(mode)
       write(6,6012) filedenout
    case(2,3) !................................... Start from scratch one drop with impurity
       write(6,6013) filedenout,fileimpout
-   case(5) 
+   case(5)
      Write(6,*) "We use a previous pure droplet converged to make a good aproximation for the density profile"
-   case(6) 
+   case(6)
      Write(6,*) "We use a previous pure droplet converged to make a good aproximation for the density profile,multi-impurities-holes"
-    
+
     open(1,file="imp.input")
     read(1,nml=imp)
     close(1)
@@ -669,7 +659,7 @@ select case(core4)
      write(6,*) '    Use Orsay-Trento Interaction. '
      write(6,*) '    Calculate Alpha_s contribution ONLY in the energy..'
      write(6,6040) core4,h4,eps4,sigma4,b4
-     allocate( denalf(nx  ,ny,nz))                                                            
+     allocate( denalf(nx  ,ny,nz))
      allocate(  falfs(nx  ,ny,nz))
      allocate(kalfs(nx/2+1,ny,nz))
      allocate(intxalf(nx  ,ny,nz))
@@ -680,7 +670,7 @@ select case(core4)
      write(6,*) '    Use Orsay-Trento Interaction.'
      write(6,*) '    Full Orsay-Trento calculation. (Field and Energy)'
      write(6,6040) core4,h4,eps4,sigma4,b4
-     allocate( denalf(nx  ,ny,nz))                                                            
+     allocate( denalf(nx  ,ny,nz))
      allocate(  falfs(nx  ,ny,nz))
      allocate(kalfs(nx/2+1,ny,nz))
      allocate(intxalf(nx  ,ny,nz))
@@ -748,14 +738,14 @@ if(limp) then
    Hq   = qmax/(Nq-1)
    If(Trim(selec_gs).Eq.'LJ_OT')Then
       Write(6,"('Usamos la interacci\F3n de OT para la impuerza')")
-   Endif        
+   Endif
    Do iz=1, nz
      Do iy=1, ny
        Do ix=1, nx/2 + 1
          p=pmod(ix,iy,iz)
          If(Trim(selec_gs).Eq.'LJ_OT')Then
            Vq(ix,iy,iz) = fvlj4(ix,iy,iz)
-         Else        
+         Else
            Vq(ix,iy,iz) = cmplx(FT_V_spline(p,qmax,Hq,Selec_gs,r_cutoff_gs,umax_gs))
          Endif
        EndDo
@@ -1089,7 +1079,7 @@ do iter=1,niter       ! <--------------------------------- Iterative procedure s
 !.......................................... if the change of the Paflov parameter
 !.......................................... calculate the deltat adequate.
 
-   if(lpaflv) then                        
+   if(lpaflv) then
      do ix=1,nstepp
        naux   = iter-nitera(ix)
        deltat = paflv(ix)*deltat0
@@ -1133,13 +1123,13 @@ do iter=1,niter       ! <--------------------------------- Iterative procedure s
 !  Despla\E7em la impure\E7a per tal que vagi cap el minim de potencial
 !
    call fftfw(den,fden)   ! FFT of den
- EndIf   
-   if(limp) then 
+ EndIf
+   if(limp) then
        call evolox(deltatx,epsx,epsxerr)         ! Get new (density, chemical potential...)
        call fftfw(denx,fdenx)                    ! FFT of den
    end if
  If(.Not.LHe_frozen)Then
-   if(core4.eq.'OTC'.or.core4.eq.'OTE') then     
+   if(core4.eq.'OTC'.or.core4.eq.'OTE') then
       forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
          wk1(ix,iy,iz) = fden(ix,iy,iz)*wcgk(ix,iy,iz)
          wk2(ix,iy,iz) = fden(ix,iy,iz)*kalfs(ix,iy,iz)
@@ -1156,13 +1146,13 @@ do iter=1,niter       ! <--------------------------------- Iterative procedure s
 !..............................................................................
 
    if(mod(iter,ppot).eq.0) then           ! Compute New Potential
-      call poten()                       
+      call poten()
    end if
 !
 !  Desplacem la impure\E7a si ho creiem convenient
 !
    If(Mod(iter,pdespl).Eq.0.And.limp_despl.And..Not.limp)Then
-     
+
      Do it=1,N_Newton
        Call derivnD(1,nn,hz,3,den,dzden,Icon)
        Call derivnD(2,nn,hz,3,den,sto1,Icon)
@@ -1257,7 +1247,7 @@ print*,'---- CONSTRAINT ENERGY: ',enercons
 ! ..............................................
 
 Endif
- 
+
       write(6,7010) etot4,(etot-eold),etot/n4,ekin4,elj4,ealphas,esolid,ecor4
       call varmu(n4,mu4,errmu4)           ! Error in mu4
       write(6,7017) mu4,errmu4
@@ -1340,9 +1330,9 @@ Endif
      ! Let's compute the width of the impurity wavefunction to first order
      ! ................................................................... !
      if(lexternal)then
-       sigma_x = ( 0.5d0*h2o2mx / (sum(den*dx2uext)*dxyz) )**0.25d0      
-       sigma_y = ( 0.5d0*h2o2mx / (sum(den*dy2uext)*dxyz) )**0.25d0      
-       sigma_z = ( 0.5d0*h2o2mx / (sum(den*dz2uext)*dxyz) )**0.25d0      
+       sigma_x = ( 0.5d0*h2o2mx / (sum(den*dx2uext)*dxyz) )**0.25d0
+       sigma_y = ( 0.5d0*h2o2mx / (sum(den*dy2uext)*dxyz) )**0.25d0
+       sigma_z = ( 0.5d0*h2o2mx / (sum(den*dz2uext)*dxyz) )**0.25d0
        write(*,*)'::::... Width of the impurity wavefunction ...:::'
        write(*,*)'Sigma(x/y/z)= ',sigma_x,sigma_y,sigma_z
        write(*,*)'::::..........................................:::'
@@ -1632,13 +1622,13 @@ T6,'Title of the run: ',A)
 !         1         2         3         4         5         6         7         8
 !|2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-end program 
+end program
 !--------------------------------------------------------------------
 !---                  Subroutine FForma                           ---
 !--------------------------------------------------------------------
 
 ! Gives the FFT of lennard-Jones potential.
-! Thre are two cores possible: 
+! Thre are two cores possible:
 !    OP -> Orsay-Paris  core.
 !    OT -> Orsay-Trento core.
 
@@ -1695,10 +1685,10 @@ contains
 !--------------------------------------------------------------------
 
 function sinx11(a,x) result(res)
- 
+
 ! Esta funcion calcula la integral \int{ \frac{\sin(ax)}{x^11} }
 ! entre x e infinito. La expresion fue calculada con Mathematica
- 
+
 implicit none
 
 real    (kind=8)             :: a,x
@@ -1711,7 +1701,7 @@ integer (kind=4)             :: ifail
 y = a*x
 y2= y*y
 
-b(1) = 40320.d0 ; c(1) = 362880.d0  ; d(1) =   1.d0   
+b(1) = 40320.d0 ; c(1) = 362880.d0  ; d(1) =   1.d0
 b(2) =  -720.d0 ; c(2) =  -5040.d0  ; d(2) =   y2
 b(3) =    24.d0 ; c(3) =    120.d0  ; d(3) =   y2**2
 b(4) =    -2.d0 ; c(4) =     -6.d0  ; d(4) =   y2**3
@@ -1730,10 +1720,10 @@ end function sinx11
 !--------------------------------------------------------------------
 
 function sinx5(a,x) result(res)
- 
+
 ! Esta funcion calcula la integral \int{ \frac{\sin(ax)}{x^11} }
 ! entre x e infinito. La expresion fue calculada con Mathematica
- 
+
 implicit none
 
 real    (kind=8), intent(in) :: a,x
@@ -1778,7 +1768,7 @@ real    (kind=8), parameter  :: aux0 = -1
 real    (kind=8)             :: halfpi,pi
 integer (kind=4), parameter  :: maxn   = 500! 'Solo 51 terminos'
 integer (kind=4)             :: n,aux1
-integer (kind=4)             :: ifail 
+integer (kind=4)             :: ifail
 
 interface
   double precision function s13adf(x,ifail)
@@ -1796,7 +1786,7 @@ y     = (a*x)
 !y2    = y*y
 !yact  = y
 !res   = 0.0d0
- 
+
 !signo = -1.0d0
 !do n=1,maxn
 ! signo  = signo*aux0
@@ -1843,10 +1833,10 @@ end function factorial
 !--------------------------------------------------------------------
 
 function intcore(a,x) result(res)
- 
-! Esta funcion calcula la integral la transformada de fourier del 
+
+! Esta funcion calcula la integral la transformada de fourier del
 ! core Orsay-Paris del potencial de Lennard-Jones
- 
+
 implicit none
 
 real (kind=8) :: a,x
@@ -1903,4 +1893,4 @@ end if
 return
 end function bforce
 
-end 
+end
