@@ -78,6 +78,9 @@ $(OBJDIR):
 $(MODDIR):
 	mkdir -p $(MODDIR)
 
+$(BINDIR):
+	mkdir -p $(BINDIR)
+
 # Clean targets
 clean:
 	rm -f $(OBJDIR)/*.o $(MODDIR)/*.mod *.lst *.bak $(BINDIR)/*
