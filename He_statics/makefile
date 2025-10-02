@@ -57,7 +57,7 @@ SRC := \
 OBJ := $(SRC:%.f90=$(OBJDIR)/%.o)
 
 # Default target
-all: $(MODDIR) $(OBJDIR) $(PROGNAME)
+all: $(MODDIR) $(OBJDIR) $(BINDIR) $(PROGNAME)
 
 # Link
 $(PROGNAME): $(OBJ)
