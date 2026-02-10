@@ -26,7 +26,7 @@ real    (kind=8) :: constraint_sum=0d0
 
 forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
    wk1(ix,iy,iz) = fden(ix,iy,iz)*fvlj4(ix,iy,iz)
-end forall 
+end forall
 call fftbk(wk1,delj4) ! Get delj4 -> (   int{ rho_4*V_4 dr'}  )
 
 !........................
@@ -41,13 +41,13 @@ a1 = cpp4/3.d0               ! Auxiliar variable useful for saving operations
 
 forall(ix=1:nx,iy=1:ny,iz=1:nz)
    sto1(ix,iy,iz) = den(ix,iy,iz)*dencg(ix,iy,iz)*(cp4+cpp4*dencg(ix,iy,iz))
-end forall 
+end forall
 
 call fftfw(sto1,wk1)
 
 forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
    wk2(ix,iy,iz) = wk1(ix,iy,iz)*wcgk(ix,iy,iz)
-end forall 
+end forall
 
 call fftbk(wk2,sto1)
 
@@ -95,14 +95,14 @@ if(limp) then
    forall(ix=1:nx/2+1,iy=1:ny,iz=1:nz)
       wk1(ix,iy,iz) = fden(ix,iy,iz) *vq(ix,iy,iz)  ! FFT(den_4)*FFT(V_x)
       wk2(ix,iy,iz) = fdenx(ix,iy,iz)*vq(ix,iy,iz)  ! FFT(den_x)*FFT(V_x)
-   end forall 
+   end forall
 
    call fftbk(wk1,upotx) ! Get  ( int{ rho_4    * V_X dr'} ) Potential due to 4He for the impurity
    call fftbk(wk2,potx4) ! Get  ( int{ Psi_x**2 * V_X dr'} ) Potential due to the impurity for the 4He
 
   forall(ix=1:nx,iy=1:ny,iz=1:nz)
      pot4(ix,iy,iz) = pot4(ix,iy,iz) + potx4(ix,iy,iz)
-  end forall 
+  end forall
 
 end if
 
@@ -111,15 +111,15 @@ end if
 If(lsolid)Then
   forall(ix=1:nx,iy=1:ny,iz=1:nz)
     pot4(ix,iy,iz) = pot4(ix,iy,iz) + penalty(ix,iy,iz)
-  end forall 
+  end forall
 Endif
 
 
 
 If(lconstraint_y)Then
 
-! INTRODUCE CONSTRAINT: 
-constraint_sum=0d0  
+! INTRODUCE CONSTRAINT:
+constraint_sum=0d0
 
   ycom = 0.d0
   do iy=1,ny
@@ -209,7 +209,7 @@ If(lconstraint)Then
 
   forall(ix=1:nx,iy=1:ny,iz=1:nz)
      pot4(ix,iy,iz) = pot4(ix,iy,iz)+Intens*(zimp-zcom-zdist)*(-z(iz)/n4real)
-  end forall 
+  end forall
 Endif
 
 
